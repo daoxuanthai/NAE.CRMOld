@@ -338,7 +338,7 @@ namespace tcs.crm.Models
 
         [Required(ErrorMessage = "Vui lòng nhập nội dung chăm sóc")]
         [MinLength(10, ErrorMessage = "Nội dung chăm sóc tối thiểu 10 ký tự")]
-        [MaxLength(1000, ErrorMessage = "Nội dung chăm sóc tối đa 1000 ký tự")]
+        [MaxLength(4000, ErrorMessage = "Nội dung chăm sóc tối đa 4000 ký tự")]
         public string Advisory { get; set; }
 
         public bool IsAlarm { get; set; }

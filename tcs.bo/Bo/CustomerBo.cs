@@ -150,12 +150,16 @@ namespace tcs.bo
             return new CustomerStatus();
         }
 
-        public static ConstantsValue NotCaring = new ConstantsValue(0, "Chưa chăm sóc");
-        public static ConstantsValue ContinueCare = new ConstantsValue(1, "Tiếp tục chăm sóc");
-        public static ConstantsValue Potential = new ConstantsValue(2, "Tiềm năng");
-        public static ConstantsValue NotPotential = new ConstantsValue(3, "Không tiềm năng");
-        public static ConstantsValue MaybeContract = new ConstantsValue(4, "Có thể ký hợp đồng");
-        public static ConstantsValue Contracted = new ConstantsValue(5, "Đã ký hợp đồng");
+        public static ConstantsValue NotContact = new ConstantsValue(0, "Chưa liên hệ");
+        public static ConstantsValue Contacted = new ConstantsValue(1, "Đã liên hệ");
+        public static ConstantsValue NoContact = new ConstantsValue(2, "Không liên hệ được");
+        public static ConstantsValue ContactLater = new ConstantsValue(3, "Hẹn gọi lại sau");
+        public static ConstantsValue BookingOnline = new ConstantsValue(4, "Booking tư vấn online");
+        public static ConstantsValue BookingOffline = new ConstantsValue(5, "Booking tư vấn offline");
+        public static ConstantsValue ShowUp = new ConstantsValue(6, "Show up");
+        public static ConstantsValue ReshowUp = new ConstantsValue(7, "Reshow up");
+        public static ConstantsValue ReviewContract = new ConstantsValue(8, "review hợp đồng");
+        public static ConstantsValue Contracted = new ConstantsValue(9, "Đã ký hợp đồng");
     }
 
     [Serializable]
@@ -182,6 +186,7 @@ namespace tcs.bo
         public static ConstantsValue MrNam = new ConstantsValue(13, "Thầy Nam");
         public static ConstantsValue HiddenData = new ConstantsValue(14, "Data ẩn");
         public static ConstantsValue OldData = new ConstantsValue(15, "Data cũ");
+        public static ConstantsValue Hotline = new ConstantsValue(15, "Hotline");
     }
 
     [Serializable]
@@ -235,10 +240,12 @@ namespace tcs.bo
             return new CustomerDesire();
         }
 
-        public static ConstantsValue Desire1 = new ConstantsValue(1, "Không muốn đi");
-        public static ConstantsValue Desire2 = new ConstantsValue(2, "Đi cũng được và không đi cũng được");
-        public static ConstantsValue Desire3 = new ConstantsValue(3, "Muốn");
-        public static ConstantsValue Desire4 = new ConstantsValue(4, "Rất muốn");
+        public static ConstantsValue NotPotential = new ConstantsValue(1, "Không tiềm năng");
+        public static ConstantsValue Potential = new ConstantsValue(2, "Tiềm năng (dưới 1 tháng)");
+        public static ConstantsValue Follow6 = new ConstantsValue(3, "Follow ngắn hạn (dưới 6 tháng)");
+        public static ConstantsValue Follow12 = new ConstantsValue(4, "Follow trung hạn (dưới 12 tháng)");
+        public static ConstantsValue Follow13 = new ConstantsValue(5, "Follow dài hạn ( từ 12 tháng trở lên)");
+        public static ConstantsValue NotFollow = new ConstantsValue(6, "Ngừng follow (đã ký bên khác, đổi ý,...)");
     }
 
     [Serializable]

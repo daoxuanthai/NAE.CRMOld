@@ -33,7 +33,7 @@ namespace tcs.api.Controllers
                 var checkCustomer = CustomerDb.Instance.GetByPhone(customer.Phone, customer.PartnerId);
                 if(checkCustomer != null && checkCustomer.Status != CustomerStatus.Contracted.Key)
                 {
-                    checkCustomer.Status = CustomerStatus.NotCaring.Key;
+                    checkCustomer.Status = CustomerStatus.NotContact.Key;
                     CustomerDb.Instance.Update(checkCustomer);
 
                     var history = new RegisterHistoryBo()
@@ -60,7 +60,7 @@ namespace tcs.api.Controllers
                     var checkCustomerEmail = CustomerDb.Instance.GetByEmail(customer.Email, customer.PartnerId);
                     if (checkCustomerEmail != null && checkCustomerEmail.Status != CustomerStatus.Contracted.Key)
                     {
-                        checkCustomerEmail.Status = CustomerStatus.NotCaring.Key;
+                        checkCustomerEmail.Status = CustomerStatus.NotContact.Key;
                         CustomerDb.Instance.Update(checkCustomerEmail);
 
                         var history = new RegisterHistoryBo()

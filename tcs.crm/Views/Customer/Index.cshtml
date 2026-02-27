@@ -129,10 +129,9 @@
                             <tr>
                                 <td class="center">
                                     <input data-id="@item.Id" type="checkbox" class="cbdelete cbcustomer" onchange="ToogleCheck();" />
-                                    <a href="/Customer?view=@item.Id" target="_blank">#Link</a>
                                 </td>
                                 <td class="center">@(index++)</td>
-                                <td class="center">@item.Id</td>
+                                <td class="center">@item.Id <a href="/Customer?view=@item.Id" target="_blank">#Link</a></td>
                                 <td class="rel name">
                                     <ul class="info">
                                         <li><a href="javascript:;" class="customername" data-id="@item.Id">Họ tên: @item.Fullname</a></li>
@@ -164,7 +163,8 @@
                                     <a href="javascript:;" class="updatelink" data-id="@item.Id">Cập nhật</a>
                                 </td>
                                 <td class="center col-action">
-                                    <span class="@(item.Status == CustomerStatus.Potential.Key ? "lbl green" : "")">@CustomerStatus.Instant().GetValueByKey(item.Status)</span>
+                                    @*<span class="@(item.Desire != CustomerDesire.NotPotential.Key && item.Desire != CustomerDesire.NotFollow.Key ? "lbl green" : "")">@CustomerStatus.Instant().GetValueByKey(item.Status)</span>*@
+                                    <span>@CustomerStatus.Instant().GetValueByKey(item.Status)</span>
                                     <a href="javascript:;" onclick="return deleteCustomerById(@item.Id)" class="deletelink">Xóa</a>
                                     @if (item.LastCare.HasValue && item.LastCare.Value != DateTime.MinValue && item.LastCare.Value < DateTime.Now.AddDays(-7)
                                             && ViewHelper.IsContinueCare(item.Status))
@@ -172,9 +172,9 @@
                                         <label class="lbl blue">Chăm sóc gần nhất: @item.LastCare.Value.ToString(ConfigMgr.DefaultDateFormat)</label>
                                     }
                                     @*@if (Model.AccountInfo.TitleType != CompanyTitleType.Agency.Key)
-                                    {
-                                        <a href="javascript:;" onclick="return seminarRegister(@item.Id)" class="deletelink">Đăng ký hội thảo</a>
-                                    }*@
+        {
+            <a href="javascript:;" onclick="return seminarRegister(@item.Id)" class="deletelink">Đăng ký hội thảo</a>
+        }*@
                                 </td>
                                 <td class="center care">
                                     @if (!string.IsNullOrEmpty(item.AdvisoryNote))

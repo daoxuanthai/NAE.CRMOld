@@ -1649,7 +1649,7 @@ namespace tcs.crm.Controllers
                             Email = tmp.Email,
                             Address = tmp.Address,
                             Gender = 0,
-                            Status = CustomerStatus.NotCaring.Key,
+                            Status = CustomerStatus.NotContact.Key,
                             ProvinceId = 0,
                             CustomerNote = tmp.Content + " - " + tmp.Note,
                             EmployeeId = 0,

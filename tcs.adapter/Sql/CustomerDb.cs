@@ -82,41 +82,6 @@ namespace tcs.adapter.Sql
             //    return result;
             //}
 
-            if (ConfigMgr.IsElastic)
-            {
-                var total = 0L;
-                var outStatus = new Dictionary<int, int>();
-                var outCountry = new Dictionary<int, int>();
-                var company = !string.IsNullOrEmpty(query.Company) ? query.Company.SplitToIntArr() : new int[] { };
-                var office = !string.IsNullOrEmpty(query.Office) ? query.Office.SplitToIntArr() : new int[] { };
-                var status = !string.IsNullOrEmpty(query.Status) ? query.Status.SplitToIntArr() : new int[] { };
-                var country = !string.IsNullOrEmpty(query.Country) ? query.Country.SplitToIntArr() : new int[] { };
-                var source = !string.IsNullOrEmpty(query.Source) ? query.Source.SplitToIntArr() : new int[] { };
-                var sourceType = !string.IsNullOrEmpty(query.SourceType) ? query.SourceType.SplitToIntArr() : new int[] { };
-                var educationLevel = !string.IsNullOrEmpty(query.EducationLevel) ? query.EducationLevel.SplitToIntArr() : new int[] { };
-                var employee = !query.Employee.ToLower().Equals("admin") ? query.Employee.SplitToIntArr() : new int[] { };
-                var agency = !string.IsNullOrEmpty(query.Agency) ? query.Agency.SplitToIntArr() : new int[] { };
-
-                var lstId = CustomerSearch.Instance.Search(query.Keyword, company, office,
-                    query.From, query.To, status, country, employee, employee, source,
-                    sourceType, educationLevel, agency, out total, out outStatus, out outCountry,
-                    query.Page, query.PageSize, false, query.Sort, query.IsAgency);
-                if (lstId != null && lstId.Any())
-                {
-                    query.TotalRecord = (int)total;
-                    var tmp = string.Join(",", lstId.ToArray());
-                    var result = CustomerSql.Instance.GetByListId(tmp);
-                    if (result != null)
-                    {
-                        result = result.OrderBy(i => lstId.IndexOf(i.Id)).ToList();
-                        //Cacher.Add(cacheTotal, (int)total);
-                        //Cacher.Add(cacheKey, result);
-                        return result;
-                    }
-                }
-                return null;
-            }
-
             var lstCustomer = CustomerSql.Instance.Select(query);
             if(lstCustomer != null)
             {
@@ -401,27 +366,27 @@ namespace tcs.adapter.Sql
             if (query == null)
                 query = new CustomerQuery();
 
-            var total = 0L;
-            var outStatus = new Dictionary<int, int>();
-            var outCountry = new Dictionary<int, int>();
-            var company = !string.IsNullOrEmpty(query.Company) ? query.Company.SplitToIntArr() : new int[] { };
-            var office = !string.IsNullOrEmpty(query.Office) ? query.Office.SplitToIntArr() : new int[] { };
-            var status = !string.IsNullOrEmpty(query.Status) ? query.Status.SplitToIntArr() : new int[] { };
-            var employee = !query.Employee.ToLower().Equals("admin") ? query.Employee.SplitToIntArr() : new int[] { };
+            //var total = 0L;
+            //var outStatus = new Dictionary<int, int>();
+            //var outCountry = new Dictionary<int, int>();
+            //var company = !string.IsNullOrEmpty(query.Company) ? query.Company.SplitToIntArr() : new int[] { };
+            //var office = !string.IsNullOrEmpty(query.Office) ? query.Office.SplitToIntArr() : new int[] { };
+            //var status = !string.IsNullOrEmpty(query.Status) ? query.Status.SplitToIntArr() : new int[] { };
+            //var employee = !query.Employee.ToLower().Equals("admin") ? query.Employee.SplitToIntArr() : new int[] { };
 
-            var lstId = CustomerSearch.Instance.GetCustomerNotify(company, office, employee, status, out total, query.From, query.To,
-                            query.Page, query.PageSize, query.Sort);
-            if (lstId != null && lstId.Any())
-            {
-                query.TotalRecord = (int)total;
-                var tmp = string.Join(",", lstId.ToArray());
-                var result = CustomerSql.Instance.GetByListId(tmp);
-                if (result != null)
-                {
-                    result = result.OrderBy(i => lstId.IndexOf(i.Id)).ToList();
-                    return result;
-                }
-            }
+            //var lstId = CustomerSearch.Instance.GetCustomerNotify(company, office, employee, status, out total, query.From, query.To,
+            //                query.Page, query.PageSize, query.Sort);
+            //if (lstId != null && lstId.Any())
+            //{
+            //    query.TotalRecord = (int)total;
+            //    var tmp = string.Join(",", lstId.ToArray());
+            //    var result = CustomerSql.Instance.GetByListId(tmp);
+            //    if (result != null)
+            //    {
+            //        result = result.OrderBy(i => lstId.IndexOf(i.Id)).ToList();
+            //        return result;
+            //    }
+            //}
             return null;
         }
 

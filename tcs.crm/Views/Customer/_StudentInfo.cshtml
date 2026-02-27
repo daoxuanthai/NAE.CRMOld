@@ -74,24 +74,24 @@
                 <i class="ierror">!</i>
             </div>
         </div>
-        <div class="field two">
+        @*<div class="field two">
             <label>Link bài tin</label>
             <div class="control">
                 @Html.TextBoxFor(m => m.NewsUrlRef, new { maxlength = "255", @readonly = "readonly" })
                 <i class="ierror">!</i>
             </div>
-        </div>
+        </div>*@
     </div>
     <div class="tdrow">
         <div class="field">
-            <label>Mong muốn DH</label>
+            <label>Tiềm năng</label>
             <div class="control">
                 @Html.DropDownListFor(m => Model.Desire, new SelectList(Model.ListDesire, "Key", "Value"))
                 <i class="ierror">!</i>
             </div>
         </div>
         <div class="field">
-            <label>Tiềm năng</label>
+            <label>Trạng thái</label>
             <div class="control">
                 @Html.DropDownListFor(m => Model.Status, new SelectList(Model.ListStatus, "Key", "Value"))
                 <i class="ierror">!</i>

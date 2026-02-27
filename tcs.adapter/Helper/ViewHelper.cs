@@ -271,8 +271,7 @@ namespace tcs.adapter.Helper
 
         public static bool IsContinueCare(int status)
         {
-            return status == CustomerStatus.NotCaring.Key || status == CustomerStatus.ContinueCare.Key || 
-                status == CustomerStatus.Potential.Key || status == CustomerStatus.MaybeContract.Key;
+            return status != CustomerStatus.NoContact.Key;
         }
 
         public static bool IsValidFileUpload(string fileExtension, string validFileTypes)

@@ -14,7 +14,7 @@
             <div class="field full advisory">
                 <label>Nội dung chăm sóc</label>
                 <div class="control">
-                    @Html.TextAreaFor(m => m.Advisory, new { maxlength = "1000", @rows = 5 })
+                    @Html.TextAreaFor(m => m.Advisory, new { maxlength = "4000", @rows = 7 })
                     <i class="ierror">!</i>
                 </div>
             </div>
@@ -39,7 +39,7 @@
             <div class="divbtn">
                 <button onclick="return submitCustomerCare();" class="btn btn-info" type="button">Lưu thông tin</button>
                 <button class="btn btn-danger" type="reset">Nhập mới</button>
-                <button class="btn btn-success" type="button" onclick="return finishInsertUpdate('CustomerCare');">Hoàn tất</button>
+                <button class="btn btn-success" type="button" onclick="return finishInsertUpdate('CustomerCare');">Đóng</button>
                 <div class="frmerr"></div>
             </div>
         </div>

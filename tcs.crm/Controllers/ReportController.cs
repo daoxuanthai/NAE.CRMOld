@@ -53,15 +53,15 @@ namespace tcs.crm.Controllers
                 Total = (int)data.Sum(t => t.Total)
             };
 
-            if(data != null && data.Any())
-            {
-                result.NotCaring = data.Where(s => s.Status == CustomerStatus.NotCaring.Key).Sum(s => s.Total);
-                result.ContinueCare = data.Where(s => s.Status == CustomerStatus.ContinueCare.Key).Sum(s => s.Total);
-                result.Potential = data.Where(s => s.Status == CustomerStatus.Potential.Key).Sum(s => s.Total);
-                result.NotPotential = data.Where(s => s.Status == CustomerStatus.NotPotential.Key).Sum(s => s.Total);
-                result.MaybeContract = data.Where(s => s.Status == CustomerStatus.MaybeContract.Key).Sum(s => s.Total);
-                result.Contracted = data.Where(s => s.Status == CustomerStatus.Contracted.Key).Sum(s => s.Total);
-            }
+            //if(data != null && data.Any())
+            //{
+            //    result.NotCaring = data.Where(s => s.Status == CustomerStatus.NotCaring.Key).Sum(s => s.Total);
+            //    result.ContinueCare = data.Where(s => s.Status == CustomerStatus.ContinueCare.Key).Sum(s => s.Total);
+            //    result.Potential = data.Where(s => s.Status == CustomerStatus.Potential.Key).Sum(s => s.Total);
+            //    result.NotPotential = data.Where(s => s.Status == CustomerStatus.NotPotential.Key).Sum(s => s.Total);
+            //    result.MaybeContract = data.Where(s => s.Status == CustomerStatus.MaybeContract.Key).Sum(s => s.Total);
+            //    result.Contracted = data.Where(s => s.Status == CustomerStatus.Contracted.Key).Sum(s => s.Total);
+            //}
 
             return new Extension.JsonResult(HttpStatusCode.OK, result);
         }
@@ -185,8 +185,8 @@ namespace tcs.crm.Controllers
                 Data = string.Join(",", totalByDate.Select(i => i.Total).ToArray())
             });
 
-            var continueCare = data
-                .Where(r => r.Status == CustomerStatus.ContinueCare.Key)
+            var notContact = data
+                .Where(r => r.Status == CustomerStatus.NotContact.Key)
                 .GroupBy(r => DateTime.ParseExact(r.Date, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture))
                 .OrderBy(g => g.Key)
                 .Select(g => new StatusReport
@@ -197,25 +197,25 @@ namespace tcs.crm.Controllers
                 })
                 .ToList();
             
-            if (continueCare.Count > 0)
+            if (notContact.Count > 0)
             {
                 model.Series.Items.Add(new Item()
                 {
-                    Name = "Tiếp tục chăm sóc",
-                    Data = string.Join(",", continueCare.Select(i => i.Total).ToArray())
+                    Name = "Chưa liên hệ",
+                    Data = string.Join(",", notContact.Select(i => i.Total).ToArray())
                 });
             }
             else
             {
                 model.Series.Items.Add(new Item()
                 {
-                    Name = "Tiếp tục chăm sóc",
+                    Name = "Chưa liên hệ",
                     Data = string.Join(",", totalByDate.Select(i => 0).ToArray())
                 });
             }
 
-            var contracted = data
-                .Where(r => r.Status == CustomerStatus.Contracted.Key)
+            var contacted = data
+                .Where(r => r.Status == CustomerStatus.Contacted.Key)
                 .GroupBy(r => DateTime.ParseExact(r.Date, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture))
                 .OrderBy(g => g.Key)
                 .Select(g => new StatusReport
@@ -226,6 +226,238 @@ namespace tcs.crm.Controllers
                 })
                 .ToList();
             
+            if (contacted.Count > 0)
+            {
+                model.Series.Items.Add(new Item()
+                {
+                    Name = "Đã liên hệ",
+                    Data = string.Join(",", contacted.Select(i => i.Total).ToArray())
+                });
+            }
+            else
+            {
+                model.Series.Items.Add(new Item()
+                {
+                    Name = "Đã liên hệ",
+                    Data = string.Join(",", totalByDate.Select(i => 0).ToArray())
+                });
+            }
+
+            var noContact = data
+                .Where(r => r.Status == CustomerStatus.NoContact.Key)
+                .GroupBy(r => DateTime.ParseExact(r.Date, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture))
+                .OrderBy(g => g.Key)
+                .Select(g => new StatusReport
+                {
+                    Date = g.Key.ToString("dd-MM-yyyy"),
+                    Status = 1,
+                    Total = g.Sum(x => x.Total)
+                })
+                .ToList();
+           
+            if (noContact.Count > 0)
+            {
+                model.Series.Items.Add(new Item()
+                {
+                    Name = "Không liên hệ được",
+                    Data = string.Join(",", noContact.Select(i => i.Total).ToArray())
+                });
+            }
+            else
+            {
+                model.Series.Items.Add(new Item()
+                {
+                    Name = "Không liên hệ được",
+                    Data = string.Join(",", totalByDate.Select(i => 0).ToArray())
+                });
+            }
+
+            var contactLater = data
+               .Where(r => r.Status == CustomerStatus.ContactLater.Key)
+               .GroupBy(r => DateTime.ParseExact(r.Date, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture))
+               .OrderBy(g => g.Key)
+               .Select(g => new StatusReport
+               {
+                   Date = g.Key.ToString("dd-MM-yyyy"),
+                   Status = 1,
+                   Total = g.Sum(x => x.Total)
+               })
+               .ToList();
+            
+            if (contactLater.Count > 0)
+            {
+                model.Series.Items.Add(new Item()
+                {
+                    Name = "Hẹn gọi lại sau",
+                    Data = string.Join(",", contactLater.Select(i => i.Total).ToArray())
+                });
+            }
+            else
+            {
+                model.Series.Items.Add(new Item()
+                {
+                    Name = "Hẹn gọi lại sau",
+                    Data = string.Join(",", totalByDate.Select(i => 0).ToArray())
+                });
+            }
+
+            var bookingOnline = data
+               .Where(r => r.Status == CustomerStatus.BookingOnline.Key)
+               .GroupBy(r => DateTime.ParseExact(r.Date, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture))
+               .OrderBy(g => g.Key)
+               .Select(g => new StatusReport
+               {
+                   Date = g.Key.ToString("dd-MM-yyyy"),
+                   Status = 1,
+                   Total = g.Sum(x => x.Total)
+               })
+               .ToList();
+            
+            if (bookingOnline.Count > 0)
+            {
+                model.Series.Items.Add(new Item()
+                {
+                    Name = "Booking online",
+                    Data = string.Join(",", bookingOnline.Select(i => i.Total).ToArray())
+                });
+            }
+            else
+            {
+                model.Series.Items.Add(new Item()
+                {
+                    Name = "Booking online",
+                    Data = string.Join(",", totalByDate.Select(i => 0).ToArray())
+                });
+            }
+
+            var bookingOffline = data
+               .Where(r => r.Status == CustomerStatus.BookingOffline.Key)
+               .GroupBy(r => DateTime.ParseExact(r.Date, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture))
+               .OrderBy(g => g.Key)
+               .Select(g => new StatusReport
+               {
+                   Date = g.Key.ToString("dd-MM-yyyy"),
+                   Status = 1,
+                   Total = g.Sum(x => x.Total)
+               })
+               .ToList();
+            
+            if (bookingOffline.Count > 0)
+            {
+                model.Series.Items.Add(new Item()
+                {
+                    Name = "Booking offline",
+                    Data = string.Join(",", bookingOffline.Select(i => i.Total).ToArray())
+                });
+            }
+            else
+            {
+                model.Series.Items.Add(new Item()
+                {
+                    Name = "Booking offline",
+                    Data = string.Join(",", totalByDate.Select(i => 0).ToArray())
+                });
+            }
+
+            var showup = data
+               .Where(r => r.Status == CustomerStatus.ShowUp.Key)
+               .GroupBy(r => DateTime.ParseExact(r.Date, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture))
+               .OrderBy(g => g.Key)
+               .Select(g => new StatusReport
+               {
+                   Date = g.Key.ToString("dd-MM-yyyy"),
+                   Status = 1,
+                   Total = g.Sum(x => x.Total)
+               })
+               .ToList();
+
+            if (showup.Count > 0)
+            {
+                model.Series.Items.Add(new Item()
+                {
+                    Name = "Showup",
+                    Data = string.Join(",", showup.Select(i => i.Total).ToArray())
+                });
+            }
+            else
+            {
+                model.Series.Items.Add(new Item()
+                {
+                    Name = "Showup",
+                    Data = string.Join(",", totalByDate.Select(i => 0).ToArray())
+                });
+            }
+
+            var reshowUp = data
+               .Where(r => r.Status == CustomerStatus.ReshowUp.Key)
+               .GroupBy(r => DateTime.ParseExact(r.Date, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture))
+               .OrderBy(g => g.Key)
+               .Select(g => new StatusReport
+               {
+                   Date = g.Key.ToString("dd-MM-yyyy"),
+                   Status = 1,
+                   Total = g.Sum(x => x.Total)
+               })
+               .ToList();
+
+            if (reshowUp.Count > 0)
+            {
+                model.Series.Items.Add(new Item()
+                {
+                    Name = "ReshowUp",
+                    Data = string.Join(",", reshowUp.Select(i => i.Total).ToArray())
+                });
+            }
+            else
+            {
+                model.Series.Items.Add(new Item()
+                {
+                    Name = "ReshowUp",
+                    Data = string.Join(",", totalByDate.Select(i => 0).ToArray())
+                });
+            }
+
+            var reviewContract = data
+               .Where(r => r.Status == CustomerStatus.ReviewContract.Key)
+               .GroupBy(r => DateTime.ParseExact(r.Date, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture))
+               .OrderBy(g => g.Key)
+               .Select(g => new StatusReport
+               {
+                   Date = g.Key.ToString("dd-MM-yyyy"),
+                   Status = 1,
+                   Total = g.Sum(x => x.Total)
+               })
+               .ToList();
+
+            if (reviewContract.Count > 0)
+            {
+                model.Series.Items.Add(new Item()
+                {
+                    Name = "Review hợp đồng",
+                    Data = string.Join(",", reviewContract.Select(i => i.Total).ToArray())
+                });
+            }
+            else
+            {
+                model.Series.Items.Add(new Item()
+                {
+                    Name = "Review hợp đồng",
+                    Data = string.Join(",", totalByDate.Select(i => 0).ToArray())
+                });
+            }
+
+            var contracted = data
+               .Where(r => r.Status == CustomerStatus.Contracted.Key)
+               .GroupBy(r => DateTime.ParseExact(r.Date, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture))
+               .OrderBy(g => g.Key)
+               .Select(g => new StatusReport
+               {
+                   Date = g.Key.ToString("dd-MM-yyyy"),
+                   Status = 1,
+                   Total = g.Sum(x => x.Total)
+               })
+               .ToList();
+
             if (contracted.Count > 0)
             {
                 model.Series.Items.Add(new Item()
@@ -243,122 +475,8 @@ namespace tcs.crm.Controllers
                 });
             }
 
-            var maybeContract = data
-                .Where(r => r.Status == CustomerStatus.MaybeContract.Key)
-                .GroupBy(r => DateTime.ParseExact(r.Date, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture))
-                .OrderBy(g => g.Key)
-                .Select(g => new StatusReport
-                {
-                    Date = g.Key.ToString("dd-MM-yyyy"),
-                    Status = 1,
-                    Total = g.Sum(x => x.Total)
-                })
-                .ToList();
-           
-            if (maybeContract.Count > 0)
-            {
-                model.Series.Items.Add(new Item()
-                {
-                    Name = "Có thể ký hợp đồng",
-                    Data = string.Join(",", maybeContract.Select(i => i.Total).ToArray())
-                });
-            }
-            else
-            {
-                model.Series.Items.Add(new Item()
-                {
-                    Name = "Có thể ký hợp đồng",
-                    Data = string.Join(",", totalByDate.Select(i => 0).ToArray())
-                });
-            }
-
-            var notCare = data
-               .Where(r => r.Status == CustomerStatus.NotCaring.Key)
-               .GroupBy(r => DateTime.ParseExact(r.Date, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture))
-               .OrderBy(g => g.Key)
-               .Select(g => new StatusReport
-               {
-                   Date = g.Key.ToString("dd-MM-yyyy"),
-                   Status = 1,
-                   Total = g.Sum(x => x.Total)
-               })
-               .ToList();
-            
-            if (notCare.Count > 0)
-            {
-                model.Series.Items.Add(new Item()
-                {
-                    Name = "Chưa chăm sóc",
-                    Data = string.Join(",", notCare.Select(i => i.Total).ToArray())
-                });
-            }
-            else
-            {
-                model.Series.Items.Add(new Item()
-                {
-                    Name = "Chưa chăm sóc",
-                    Data = string.Join(",", totalByDate.Select(i => 0).ToArray())
-                });
-            }
-
-            var notPotential = data
-               .Where(r => r.Status == CustomerStatus.NotPotential.Key)
-               .GroupBy(r => DateTime.ParseExact(r.Date, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture))
-               .OrderBy(g => g.Key)
-               .Select(g => new StatusReport
-               {
-                   Date = g.Key.ToString("dd-MM-yyyy"),
-                   Status = 1,
-                   Total = g.Sum(x => x.Total)
-               })
-               .ToList();
-            
-            if (notPotential.Count > 0)
-            {
-                model.Series.Items.Add(new Item()
-                {
-                    Name = "Không tiềm năng",
-                    Data = string.Join(",", notPotential.Select(i => i.Total).ToArray())
-                });
-            }
-            else
-            {
-                model.Series.Items.Add(new Item()
-                {
-                    Name = "Không tiềm năng",
-                    Data = string.Join(",", totalByDate.Select(i => 0).ToArray())
-                });
-            }
-            var potential = data
-               .Where(r => r.Status == CustomerStatus.Potential.Key)
-               .GroupBy(r => DateTime.ParseExact(r.Date, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture))
-               .OrderBy(g => g.Key)
-               .Select(g => new StatusReport
-               {
-                   Date = g.Key.ToString("dd-MM-yyyy"),
-                   Status = 1,
-                   Total = g.Sum(x => x.Total)
-               })
-               .ToList();
-            
-            if (notPotential.Count > 0)
-            {
-                model.Series.Items.Add(new Item()
-                {
-                    Name = "Tiềm năng",
-                    Data = string.Join(",", potential.Select(i => i.Total).ToArray())
-                });
-            }
-            else
-            {
-                model.Series.Items.Add(new Item()
-                {
-                    Name = "Tiềm năng",
-                    Data = string.Join(",", totalByDate.Select(i => 0).ToArray())
-                });
-            }
             model.Total = data.Sum(s => s.Total);
-            model.TotalContract = contracted.Sum(s => s.Total);
+            model.TotalContract = contacted.Sum(s => s.Total);
 
             return new Extension.JsonResult(HttpStatusCode.OK, model);
         }

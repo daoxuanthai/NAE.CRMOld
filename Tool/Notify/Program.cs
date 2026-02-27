@@ -41,16 +41,16 @@ namespace Notify
                 foreach (var cus in result)
                 {
                     
-                    if((cus.Status == CustomerStatus.NotCaring.Key || cus.Status == CustomerStatus.ContinueCare.Key ||
-                        cus.Status == CustomerStatus.Potential.Key || cus.Status == CustomerStatus.MaybeContract.Key) 
-                        && cus.AlarmTime != DateTime.MinValue && cus.IsAlarm)
-                    {
-                        Console.WriteLine((index++).ToString() + ".Notify.ID: " + cus.Id);
-                        var title = $"KH: {cus.Fullname} đã đến hạn chăm sóc hôm nay {DateTime.Now.ToString("dd/MM")}";
-                        var content = $"KH: <b>{cus.Fullname}</b> đã đến hạn chăm sóc hôm nay <b>{DateTime.Now.ToString("dd/MM")}</b>";
-                        NotifyDb.Instance.CreateNotify(cus.EmployeeId, title, content, NotifyType.Customer.Key, NotifyType.Customer.Value,
-                                                            cus.Id, createUserId: -99, createUserName: "Administrator");
-                    }
+                    //if((cus.Status == CustomerStatus.NotCaring.Key || cus.Status == CustomerStatus.ContinueCare.Key ||
+                    //    cus.Status == CustomerStatus.Potential.Key || cus.Status == CustomerStatus.MaybeContract.Key) 
+                    //    && cus.AlarmTime != DateTime.MinValue && cus.IsAlarm)
+                    //{
+                    //    Console.WriteLine((index++).ToString() + ".Notify.ID: " + cus.Id);
+                    //    var title = $"KH: {cus.Fullname} đã đến hạn chăm sóc hôm nay {DateTime.Now.ToString("dd/MM")}";
+                    //    var content = $"KH: <b>{cus.Fullname}</b> đã đến hạn chăm sóc hôm nay <b>{DateTime.Now.ToString("dd/MM")}</b>";
+                    //    NotifyDb.Instance.CreateNotify(cus.EmployeeId, title, content, NotifyType.Customer.Key, NotifyType.Customer.Value,
+                    //                                        cus.Id, createUserId: -99, createUserName: "Administrator");
+                    //}
                 }
             }
             Console.WriteLine("DONE");
