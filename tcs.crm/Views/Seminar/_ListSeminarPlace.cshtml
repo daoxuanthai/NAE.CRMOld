@@ -1,0 +1,57 @@
+﻿@using tcs.bo
+@using tcs.lib
+@model List<SeminarPlaceBo>
+@if (Model != null)
+{
+    var index = 1;
+    <table class="table table-striped table-bordered dTableR popuptbl" id="dt_SeminarPlacelist">
+        <thead>
+            <tr>
+                <th class="center w40"><input class="cball" data-type="cbseminarplace" type="checkbox" onchange="CheckAll(this, this.checked);" /></th>
+                <th class="center w80">STT</th>
+                <th class="center">Địa điểm</th>
+                <th class="center">Tỉnh thành</th>
+                <th class="center">Ngày</th>
+                <th class="center">Đăng ký</th>
+                <th class="center">Tham dự</th>
+                <th class="center">Ngày tạo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var item in Model)
+                {
+                    <tr id="seminarplace_@item.Id">
+                        <td style="text-align: center;">
+                            <input data-id="@item.Id" data-type="cbseminarplace" type="checkbox" class="cbdelete cbseminarplace" onchange="ToogleCheck();" />
+                        </td>
+                        <td class="center">@(index++)</td>
+                        <td class="rel">
+                            <a href="javascript:;" onclick="return editSeminarPlace(@item.Id)" title="Click để cập nhật">@item.Place</a>
+                        </td>
+                        <td class="center">@item.ProvinceName</td>
+                        <td class="center">
+                            @item.SeminarDate.ToDateString()
+                        </td>
+                        <td>
+                            @item.Register.ToNumberString()
+                        </td>
+                        <td>
+                            @item.Attend.ToNumberString()
+                        </td>
+                        <td class="center">
+                            @Html.Raw(item.CreateDate.Value.ToDateTimeString(wrap: true))
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="8" class="center">Chưa có dữ liệu</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

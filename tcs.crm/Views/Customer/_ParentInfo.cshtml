@@ -1,0 +1,94 @@
+﻿@model tcs.crm.Models.CustomerParentModel
+@using (Html.BeginForm("CustomerParent", "Customer", FormMethod.Post, new { id = "frmCustomerParent" }))
+{
+    @Html.HiddenFor(m => m.CustomerId)
+    <input type="hidden" id="Id" name="Id" value="@Model.Id" />
+    @Html.Partial("_ListParent", Model.ListParent)
+    <div class="divaction">
+        <button onclick="return initInsertUpdate('CustomerParent')" class="btn btn-success">Thêm</button>
+        <button class="btn btn-danger" onclick="return deleteParent();">Xóa</button>
+    </div>
+    <div id="IUCustomerParent" style="display: none">
+        <div class="line"></div>
+        <div class="tdrow">
+            <div class="field">
+                <label>Họ và tên</label>
+                <div class="control">
+                    @Html.TextBoxFor(m => m.Name, new { maxlength = "128" })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+            <div class="field">
+                <label>Email</label>
+                <div class="control">
+                    @Html.TextBoxFor(m => m.Email, new { maxlength = "50" })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+            <div class="field">
+                <label>Điện thoại</label>
+                <div class="control">
+                    @Html.TextBoxFor(m => m.Phone, new { maxlength = "20", @class = "phone" })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+        </div>
+        <div class="tdrow">
+            <div class="field">
+                <label>Nghề nghiệp</label>
+                <div class="control">
+                    @Html.TextBoxFor(m => m.JobName, new { maxlength = "128" })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+            <div class="field">
+                <label>Chức vụ</label>
+                <div class="control">
+                    @Html.TextBoxFor(m => m.PositionName, new { maxlength = "128" })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+            <div class="field">
+                <label>Thu nhập</label>
+                <div class="control">
+                    @Html.TextBoxFor(m => m.Income, new { maxlength = "128" })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+        </div>
+        <div class="tdrow">
+            <div class="field two">
+                <label>Cơ quan</label>
+                <div class="control">
+                    @Html.TextBoxFor(m => m.CompanyName, new { maxlength = "128" })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+            <div class="field">
+                <label>Mong muốn DH</label>
+                <div class="control">
+                    @Html.DropDownListFor(m => Model.Desire, new SelectList(Model.ListDesire, "Key", "Value"))
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+        </div>
+        <div class="tdrow">
+            <div class="field full">
+                <label>Thu nhập khác</label>
+                <div class="control">
+                    @Html.TextAreaFor(m => m.OtherIncome, new { maxlength = "500", rows = "4" })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+        </div>
+        <div class="tdrow">
+            <div class="divbtn">
+                <button onclick="return submitParent()" class="btn btn-info" type="button">Lưu thông tin</button>
+                <button class="btn btn-danger" type="reset">Nhập mới</button>
+                <button class="btn btn-success" onclick="return finishInsertUpdate('CustomerParent');" type="button">Hoàn tất</button>
+                <div class="frmerr"></div>
+            </div>
+        </div>
+    </div>
+    <div class="clr"></div>
+}

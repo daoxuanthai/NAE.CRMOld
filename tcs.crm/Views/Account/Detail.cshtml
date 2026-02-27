@@ -1,0 +1,111 @@
+﻿@model tcs.crm.Models.AccountInsertModel
+@if (Model != null)
+{
+    <div class="popup">
+        <a href="#" onclick="return closePopup();" class="close">✖</a>
+        <div id="tabs">
+            <ul>
+                <li class="active"><a href="javascript:;">Thông tin tài khoản</a></li>
+            </ul>
+            <div id="tabs-info" class="tabs-ct active">
+                @using (Html.BeginForm("Detail", "Account", FormMethod.Post, new { id = "frmAccount" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" id="Id" name="Id" value="@Model.Id" />
+                    <div class="tdrow">
+                        <div class="field">
+                            <label>Tên tài khoản</label>
+                            <div class="control">
+                                @if (Model.Id > 0)
+                                {
+                                    @Html.TextBoxFor(m => m.UserName, new { maxlength = "128", @readonly = "readonly" })
+                                }
+                                else
+                                {
+                                    @Html.TextBoxFor(m => m.UserName, new { maxlength = "128" })
+                                }
+                                <i class="ierror">!</i>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Họ và tên</label>
+                            <div class="control">
+                                @Html.TextBoxFor(m => m.FullName, new { maxlength = "128" })
+                                <i class="ierror">!</i>
+                            </div>
+                        </div>
+                        @*<div class="field">
+                            <label>Avatar</label>
+                            <div class="control">
+                                <i class="ierror">!</i>
+                            </div>
+                        </div>*@
+                    </div>
+                    <div class="tdrow">
+                        <div class="field">
+                            <label>Điện thoại</label>
+                            <div class="control">
+                                @Html.TextBoxFor(m => m.Phone, new { maxlength = "50", @class = "phone" })
+                                <i class="ierror">!</i>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Email</label>
+                            <div class="control">
+                                @Html.TextBoxFor(m => m.Email, new { maxlength = "50" })
+                                <i class="ierror">!</i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tdrow">
+                        @if (Model.Id <= 0)
+                        {
+                            <div class="field">
+                                <label>Mật khẩu</label>
+                                <div class="control">
+                                    @Html.TextBoxFor(m => m.Password, new { maxlength = "50" })
+                                    <i class="ierror">!</i>
+                                </div>
+                            </div>
+                        }
+                        <div class="field">
+                            <label>Tạm khóa</label>
+                            <div class="control checkbox">
+                                @Html.CheckBoxFor(m => m.IsLock)
+                                <label for="IsLock">Đang tạm khóa</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tdrow">
+                        <div class="field full">
+                            <label>Địa chỉ</label>
+                            <div class="control">
+                                @Html.TextAreaFor(m => m.Address, new { maxlength = "255", @rows = 2 })
+                                <i class="ierror">!</i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tdrow">
+                        <div class="field full">
+                            <label>Ghi chú</label>
+                            <div class="control">
+                                @Html.TextAreaFor(m => m.Note, new { maxlength = "1000", @rows = 3 })
+                                <i class="ierror">!</i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tdrow">
+                        <div class="divbtn">
+                            <button onclick="return submitUser('frmAccount'); return false;" class="btn btn-info" type="button">Lưu thông tin</button>
+                            <button class="btn btn-danger" type="reset">Nhập mới</button>
+                            <button class="btn btn-success" onclick="return closePopup();">Đóng</button>
+                            <div class="frmerr"></div>
+                        </div>
+                    </div>
+                    <div class="clr"></div>
+                }
+            </div>
+            <div class="clr"></div>
+        </div>
+    </div>
+}

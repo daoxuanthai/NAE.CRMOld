@@ -1,0 +1,23 @@
+﻿@using tcs.lib
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    @Html.AddCss("~/Content/min/global.css")
+    @Html.AddCss("~/Content/dev/dashboard.css")
+}
+@section JS_INC
+{
+    @Html.IncludeVersionedJs("/Scripts/min/dashboard.js")
+}
+<div class="dashboard" data-from="@DateTime.Today.AddDays(-ConfigMgr.DashboardDayLeft).ToDateString()" data-to="@DateTime.Today.ToDateString()">
+    <div id="block7day" class="col" >
+        <div id="status7day" class="block"><i class="throbber"></i></div>
+        <div id="country7day" class="block right"><i class="throbber"></i></div>
+        <div id="daily7day" class="lineblock"><i class="throbber"></i></div>
+    </div>
+    <div class="col1">
+        <div id="contractstatus7day" class="block"><i class="throbber"></i></div>
+        <div id="contractcountry7day" class="block right"><i class="throbber"></i></div>
+        <div id="contractdaily7day" class="lineblock"><i class="throbber"></i></div>
+    </div>
+</div>

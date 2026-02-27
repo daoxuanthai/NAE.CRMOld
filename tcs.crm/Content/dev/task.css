@@ -1,0 +1,180 @@
+﻿/* Task */
+.pe90 {
+    width: 90% !important
+}
+
+.pe64 {
+    width: 64% !important;
+}
+
+.pe83 {
+    width: 83% !important;
+}
+
+.clr {
+    clear: both;
+}
+
+.crname {
+    float: left;
+    padding-left: 10px;
+    font-size: 15px;
+    color: #b22222;
+    line-height: 25px;
+}
+
+.completerate {
+    float: left;
+    width: 168px;
+    height: 20px;
+    border: solid 1px #ddd;
+    background: #f1f1f1;
+}
+
+.crname-s {
+    display: block;
+    font-size: 11px;
+    color: #b22222;
+    line-height: 15px;
+}
+
+.completerate-s {
+    display: block;
+    width: 100px;
+    height: 15px;
+    margin: 0 auto;
+    border: solid 1px #ddd;
+    background: #f1f1f1;
+}
+
+    .completerate span, .completerate-s span {
+        display: block;
+        height: 100%;
+        background: #b22222;
+    }
+
+.cr0 {
+    width: 0;
+}
+
+.cr10 {
+    width: 10%;
+}
+
+.cr20 {
+    width: 20%;
+}
+
+.cr30 {
+    width: 30%;
+}
+
+.cr40 {
+    width: 40%;
+}
+
+.cr50 {
+    width: 50%;
+}
+
+.cr60 {
+    width: 60%;
+}
+
+.cr70 {
+    width: 70%;
+}
+
+.cr80 {
+    width: 80%;
+}
+
+.cr90 {
+    width: 90%;
+}
+
+.completerate .cr100, .completerate-s .cr100 {
+    width: 100%;
+    background: #5bb75b
+}
+
+.spstatus0 {
+    background: #5bb75b;
+    border-radius: 4px;
+    padding: 2px 5px;
+    color: #fff;
+    display: block;
+    width: 80px;
+    margin: 0 auto;
+}
+
+.spstatus1 {
+    background: #bd362f;
+    border-radius: 4px;
+    padding: 2px 5px;
+    color: #fff;
+    display: block;
+    width: 80px;
+    margin: 0 auto;
+}
+
+.taskname {
+    width: 90%;
+}
+
+.taskcontent {
+    display: block;
+    max-width: 400px;
+}
+
+.taskleft {
+    float: left;
+    width: 30%;
+}
+
+.taskright {
+    float: right;
+    width: 67%;
+}
+
+.tblUpdateInfo {
+    width: 600px;
+    margin: 100px auto;
+}
+
+    .tblUpdateInfo h2 {
+        display: block;
+        text-align: center;
+        padding-bottom: 20px
+    }
+
+    .tblUpdateInfo .avatar {
+        display: block;
+        width: 160px;
+        height: auto;
+        margin: 0 auto;
+        border: solid 1px #ddd;
+    }
+
+    .tblUpdateInfo .avatarlink {
+        display: block;
+        clear: both;
+        padding: 10px 0;
+        text-align: center;
+    }
+
+    .tblUpdateInfo .avatarfilename {
+        display: block;
+        max-width: 160px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+.frmerror {
+    display: block;
+    clear: both;
+    color: red;
+    padding: 5px 0;
+}
+/* Task */

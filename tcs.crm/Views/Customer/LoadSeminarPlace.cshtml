@@ -1,0 +1,11 @@
+﻿@using tcs.bo
+@model List<SeminarPlaceBo>
+@if (Model != null && Model.Any())
+{
+    <select id="SeminarPlaceId" name="SeminarPlaceId">
+        @foreach (var place in Model)
+        {
+            <option value="@place.Id">@place.Place</option>
+        }
+    </select>
+}

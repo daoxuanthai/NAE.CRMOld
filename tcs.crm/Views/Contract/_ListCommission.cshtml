@@ -1,0 +1,56 @@
+﻿@using tcs.lib
+@model List<tcs.bo.CommissionBo>
+@if (Model != null)
+{
+    var index = 1;
+    <table class="table table-striped table-bordered dTableR popuptbl" id="dt_commissionlist">
+        <thead>
+            <tr>
+                <th class="center w40"><input class="cball" data-type="cbcommission" type="checkbox" onchange="CheckAll(this, this.checked);" /></th>
+                <th class="center w80">STT</th>
+                <th class="center">Nội dung thu</th>
+                <th class="center">Số tiền</th>
+                <th class="center">Ngày nhận</th>
+                <th class="center">Đã thu tiền</th>
+                <th class="center">Ghi chú</th>
+                <th class="center">Ngày tạo</th>
+            </tr>
+        </thead>
+        <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr id="commission_@item.Id">
+                    <td style="text-align: center;">
+                        <input data-id="@item.Id" data-type="cbcommission" type="checkbox" class="cbdelete cbcommission" onchange="ToogleCheck();"/>
+                    </td>
+                    <td class="center">@(index++)</td>
+                    <td class="rel">
+                        <a href="javascript:;" onclick="return editCommission(@item.Id)" title="Click để cập nhật">@item.Name</a>
+                    </td>
+                    <td class="center">@item.Commission.ToNumberString()</td>
+                    <td class="center">
+                        @(item.CommissionDate.Value != DateTime.MinValue ? item.CommissionDate.Value.ToDateString() : "")
+                    </td>
+                    <td class="center">
+                        <input id="iscollect_@item.Id" type="checkbox" @(item.IsCollect ? "checked" : "") onchange="return checkCollect(@item.Id)" />
+                    </td>
+                    <td>
+                        <p>@item.Note</p>
+                    </td>
+                    <td class="center">
+                        @Html.Raw(item.CreateDate.Value.ToDateTimeString(wrap:true))
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="7" class="center">Chưa có dữ liệu</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

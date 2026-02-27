@@ -1,0 +1,80 @@
+﻿@model tcs.crm.Models.StudyAbroadModel
+@using (Html.BeginForm("StudyAbroad", "Customer", FormMethod.Post, new { id = "frmStudyAbroad" }))
+{
+    @Html.HiddenFor(m => m.CustomerId)
+    <input type="hidden" id="Id" name="Id" value="@Model.Id" />
+    @Html.Partial("_ListStudyAbroad", Model.ListStudyAbroad)
+    <div class="divaction">
+        <button onclick="return initInsertUpdate('StudyAbroad')" class="btn btn-success">Thêm</button>
+        <button class="btn btn-danger" onclick="return deleteStudyAbroad();">Xóa</button>
+    </div>
+    <div id="IUStudyAbroad" style="display: none">
+        <div class="line"></div>
+        <div class="tdrow">
+            <div class="field full">
+                <label>Tên trường</label>
+                <div class="control">
+                    @Html.TextBoxFor(m => m.School, new { maxlength = "128" })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+        </div>
+        <div class="tdrow">
+            <div class="field">
+                <label>Quốc gia</label>
+                <div class="control">
+                    @Html.DropDownListFor(m => Model.CountryId, new SelectList(Model.ListCountryCompany, "Id", "CountryName"))
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+            <div class="field">
+                <label>Ngành học</label>
+                <div class="control">
+                    @Html.TextBoxFor(m => m.Major, new { maxlength = "128" })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+            <div class="field">
+                <label>Bậc học</label>
+                <div class="control">
+                    @Html.DropDownListFor(m => Model.Level, new SelectList(Model.ListStudyLevel, "Key", "Value"))
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+        </div>
+        <div class="tdrow">
+            <div class="field">
+                <label>Thời gian</label>
+                <div class="control">
+                    @Html.TextBoxFor(m => m.Time, new { maxlength = "128" })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+            <div class="field">
+                <label>Năm du học</label>
+                <div class="control">
+                    @Html.TextBoxFor(m => m.Year, new {maxlength = "128", @class = "number"})
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+        </div>
+        <div class="tdrow">
+            <div class="field full">
+                <label>Ghi chú</label>
+                <div class="control">
+                    @Html.TextAreaFor(m => m.Note, new { maxlength = "1000", @rows = 3 })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+        </div>
+        <div class="tdrow">
+            <div class="divbtn">
+                <button onclick="return submitStudyAbroad()" class="btn btn-info" type="button">Lưu thông tin</button>
+                <button class="btn btn-danger" type="reset">Nhập mới</button>
+                <button onclick="return finishInsertUpdate('StudyAbroad');" class="btn btn-success" type="button">Hoàn tất</button>
+                <div class="frmerr"></div>
+            </div>
+        </div>
+    </div>
+    <div class="clr"></div>
+}

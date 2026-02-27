@@ -1,0 +1,78 @@
+﻿@model tcs.crm.Models.CustomerRelativesModel
+@using (Html.BeginForm("CustomerRelatives", "Customer", FormMethod.Post, new { id = "frmCustomerRelatives" }))
+{
+    @Html.HiddenFor(m => m.CustomerId)
+    <input type="hidden" id="Id" name="Id" value="@Model.Id" />
+    @Html.Partial("_ListRelatives", Model.ListRelatives)
+    <div class="divaction">
+        <button onclick="return initInsertUpdate('CustomerRelatives')" class="btn btn-success">Thêm</button>
+        <button class="btn btn-danger" onclick="return deleteRelatives();">Xóa</button>
+    </div>
+    <div id="IUCustomerRelatives" style="display: none">
+        <div class="line"></div>
+        <div class="tdrow">
+            <div class="field">
+                <label>Họ và tên</label>
+                <div class="control">
+                    @Html.TextBoxFor(m => m.Name, new { maxlength = "128" })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+            <div class="field">
+                <label>Quan hệ với HS</label>
+                <div class="control">
+                    @Html.TextBoxFor(m => m.Relationship, new { maxlength = "50" })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+            <div class="field">
+                <label>Quốc gia</label>
+                <div class="control">
+                    @Html.TextBoxFor(m => m.CountryName, new { maxlength = "128" })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+        </div>
+        <div class="tdrow">
+            <div class="field">
+                <label>Nghề nghiệp</label>
+                <div class="control">
+                    @Html.TextBoxFor(m => m.JobName, new { maxlength = "128" })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+            <div class="field">
+                <label>Nơi làm việc</label>
+                <div class="control">
+                    @Html.TextBoxFor(m => m.CompanyName, new { maxlength = "128" })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+            <div class="field">
+                <label>Thu nhập</label>
+                <div class="control">
+                    @Html.TextBoxFor(m => m.Income, new { maxlength = "128" })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+        </div>
+        <div class="tdrow">
+            <div class="field full">
+                <label>Nơi ở</label>
+                <div class="control">
+                    @Html.TextBoxFor(m => m.Address, new { maxlength = "255" })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+        </div>
+        <div class="tdrow">
+            <div class="divbtn">
+                <button onclick="return submitRelatives()" class="btn btn-info" type="button">Lưu thông tin</button>
+                <button class="btn btn-danger" type="reset">Nhập mới</button>
+                <button class="btn btn-success" onclick="return finishInsertUpdate('CustomerRelatives');" type="button">Hoàn tất</button>
+                <div class="frmerr"></div>
+            </div>
+        </div>
+    </div>
+    <div class="clr"></div>
+}

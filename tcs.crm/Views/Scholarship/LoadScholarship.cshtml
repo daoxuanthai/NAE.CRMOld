@@ -1,0 +1,17 @@
+﻿@using tcs.bo
+@model List<ScholarshipBo>
+@if (Model != null && Model.Any())
+{
+    <select id="ScholarshipId" name="ScholarshipId">
+        @foreach (var item in Model)
+        {
+            <option value="@item.Id">@item.ScholarshipName</option>
+        }
+    </select>
+}
+else
+{
+    <select id="ScholarshipId" name="ScholarshipId">
+        <option value="0">Chọn học bổng</option>
+    </select>
+}

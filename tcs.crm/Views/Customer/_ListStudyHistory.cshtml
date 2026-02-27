@@ -1,0 +1,48 @@
+﻿@using tcs.lib
+@model List<tcs.bo.StudyHistoryBo>
+@if (Model != null)
+{
+    <table class="table table-striped table-bordered dTableR popuptbl listdata" id="dt_studyhistorylist">
+        <thead>
+            <tr>
+                <th class="center w40"><input class="cball" data-type="cbhistory" type="checkbox" onchange="CheckAll(this, this.checked);" /></th>
+                <th class="center w80">STT</th>
+                <th class="center w250">Trường</th>
+                <th class="center">Lớp</th>
+                <th class="center">Ngành học</th>
+                <th class="center">Điểm (GPA)</th>
+                <th class="center">Ghi chú</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                var index = 1;
+                foreach (var item in Model)
+                {
+                    <tr id="history_@item.Id">
+                        <td style="text-align: center;">
+                            <input data-id="@item.Id" data-type="cbhistory" type="checkbox" class="cbdelete cbhistory" onchange="ToogleCheck();" />
+                        </td>
+                        <td class="center">@(index++)</td>
+                        <td class="rel">
+                            <a href="javascript:;" onclick="return editStudyHistory(@item.Id)" title="Click để cập nhật">@item.School</a>
+                        </td>
+                        <td>@item.Class</td>
+                        <td>@item.Major</td>
+                        <td class="center">@item.Score</td>
+                        <td>
+                            <p>@item.Note</p>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="7" class="center">Chưa có dữ liệu</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

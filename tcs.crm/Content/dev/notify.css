@@ -1,0 +1,71 @@
+﻿.navbar .nav > li > a.notify {
+    background: white !important;
+    color: red;
+    padding: 5px;
+    margin: 8px 8px 0 0;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    line-height: 15px;
+    position: relative;
+    text-align: center;
+}
+
+    .navbar .nav > li > a.notify label {
+        background: red;
+        border-radius: 2px;
+        color: #fff;
+        font-size: 11px;
+        position: absolute;
+        top: -6px;
+        left: 19px;
+        padding: 0 4px
+    }
+
+.dropdown-menu.notifylist li {
+    padding: 0;
+}
+
+.dropdown-menu li.notify-head {
+    display: block;
+    color: #333;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+.dropdown-menu.notifylist{
+    width: 420px;
+    right: -100px !important;
+    top: 40px;
+}
+
+    .dropdown-menu.notifylist li a {
+        margin: 0;
+        padding: 6px 10px;
+        white-space: normal;
+        border-top: solid 1px #ededed;
+    }
+
+    .dropdown-menu.notifylist li a:hover{
+        background:#f3f3f3 !important;
+        color:#000 !important;
+    }
+
+    .dropdown-menu.notifylist li a label {
+        font-size: 12px;
+        margin: 0;
+    }
+
+    .dropdown-menu.notifylist li a label i {
+        margin-right: 5px;
+    }
+
+.notifylist:before, .notifylist:after{
+    right: 114px !important;
+}
+
+.iconred {
+    color: red !important;
+}

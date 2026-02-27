@@ -1,0 +1,48 @@
+﻿@model tcs.crm.Models.CustomerCareModel
+@using (Html.BeginForm("CustomerCare", "Customer", FormMethod.Post, new { id = "frmCustomerCare" }))
+{
+    @Html.HiddenFor(m => m.CustomerId)
+    <input type="hidden" id="Id" name="Id" value="@Model.Id" />
+    @Html.Partial("_ListCustomerCare", Model.ListCustomerCare)
+    <div class="divaction">
+        <button onclick="return initInsertUpdate('CustomerCare')" class="btn btn-success">Thêm</button>
+        <button class="btn btn-danger" onclick="return deleteCustomerCare();">Xóa</button>
+    </div>
+    <div id="IUCustomerCare" style="display: none">
+        <div class="line"></div>
+        <div class="tdrow">
+            <div class="field full advisory">
+                <label>Nội dung chăm sóc</label>
+                <div class="control">
+                    @Html.TextAreaFor(m => m.Advisory, new { maxlength = "1000", @rows = 5 })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+        </div>
+        <div class="tdrow alarm">
+            <div class="field">
+                <label>Đặt lịch hẹn</label>
+                <div class="control">
+                    @Html.CheckBoxFor(m => m.IsAlarm, new { maxlength = "50" })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+            <div class="field">
+                <label>Ngày chăm sóc tiếp theo</label>
+                <div class="control">
+                    @Html.TextBoxFor(m => m.AlarmTimeString, new { maxlength = "10", @class = "date", placeholder="dd/MM/yyyy" })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+        </div>
+        <div class="tdrow">
+            <div class="divbtn">
+                <button onclick="return submitCustomerCare();" class="btn btn-info" type="button">Lưu thông tin</button>
+                <button class="btn btn-danger" type="reset">Nhập mới</button>
+                <button class="btn btn-success" type="button" onclick="return finishInsertUpdate('CustomerCare');">Hoàn tất</button>
+                <div class="frmerr"></div>
+            </div>
+        </div>
+    </div>
+    <div class="clr"></div>
+}

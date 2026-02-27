@@ -1,0 +1,55 @@
+﻿@model tcs.crm.Models.LanguageModel
+@using (Html.BeginForm("Language", "Customer", FormMethod.Post, new { id = "frmLanguage" }))
+{
+    @Html.HiddenFor(m => m.CustomerId)
+    <input type="hidden" id="Id" name="Id" value="@Model.Id" />
+    @Html.Partial("_ListLanguage", Model.ListLanguage)
+    <div class="divaction">
+        <button onclick="return initInsertUpdate('Language')" class="btn btn-success">Thêm</button>
+        <button class="btn btn-danger" onclick="return deleteLanguage();">Xóa</button>
+    </div>
+    <div id="IULanguage" style="display: none">
+        <div class="line"></div>
+        <div class="tdrow">
+            <div class="field">
+                <label>Ngoại ngữ</label>
+                <div class="control">
+                    @Html.TextBoxFor(m => m.Language, new { maxlength = "128" })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+            <div class="field">
+                <label>Chứng chỉ</label>
+                <div class="control">
+                    @Html.DropDownListFor(m => Model.Certificate, new SelectList(Model.ListCertificate, "Key", "Value"))
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+            <div class="field">
+                <label>Điểm số</label>
+                <div class="control">
+                    @Html.TextBoxFor(m => m.Score, new { maxlength = "50" })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+        </div>
+        <div class="tdrow">
+            <div class="field full">
+                <label>Ghi chú</label>
+                <div class="control">
+                    @Html.TextAreaFor(m => m.Note, new { maxlength = "500", @rows = 3 })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+        </div>
+        <div class="tdrow">
+            <div class="divbtn">
+                <button onclick="return submitLanguage()" class="btn btn-info" type="button">Lưu thông tin</button>
+                <button class="btn btn-danger" type="reset">Nhập mới</button>
+                <button class="btn btn-success" onclick="return finishInsertUpdate('Language');" type="button">Hoàn tất</button>
+                <div class="frmerr"></div>
+            </div>
+        </div>
+    </div>
+    <div class="clr"></div>
+}

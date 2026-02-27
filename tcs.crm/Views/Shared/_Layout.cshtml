@@ -1,0 +1,84 @@
+﻿@using tcs.lib
+@using tcs.bo
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+    <title>@ViewBag.Title</title>
+
+    <link href="https://fonts.googleapis.com//css?family=PT+Sans" rel="stylesheet" type="text/css">
+    <script async defer src="https://use.fontawesome.com/54c1543fe2.js"></script>
+    <script src="~/Scripts/ext/jquery-2.2.4.min.js"></script>
+    <script src="~/Scripts/ext/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Scripts/ext/datatables/jquery.dataTables.min.js"></script>
+    <style id="maincss">@Html.RenderCss()</style>
+
+    @if (IsSectionDefined("JS_INC"))
+    {
+        @RenderSection("JS_INC")
+    }
+
+</head>
+<body>
+    <div id="loading_layer" style="display:none"><img src="~/Content/img/loading.gif" alt="" /></div>
+    <div id="maincontainer" class="clearfix">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="brand" href="/"><i class="icon-home icon-white"></i> CRM</a>
+                    <ul class="nav user_menu pull-right">
+                        @Html.Action("Notify","Home")
+                        @*@{
+                            var acc = Session["AccountInfo"] as AccountInfo;
+                            if (acc != null && acc.ListCompany != null && acc.ListCompany.Count > 1)
+                            {
+                                <li class="hidden-phone hidden-tablet">
+                                    <div class="nb_boxes clearfix">
+                                        <select id="company" onchange="return setCompany(this.value);">
+                                            @foreach (var com in acc.ListCompany)
+                                            {
+                                                <option value="@com.Id" @(com.Id == acc.CompanyId ? "selected" : "")>@com.CompanyName</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </li>
+                            }
+                        }*@
+                        <li class="divider-vertical hidden-phone hidden-tablet"></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Xin chào: <b>@WebSecurity.CurrentUserName</b> <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/Account/UpdateInfo">Cập nhật thông tin</a></li>
+                                <li><a href="/Account/ChangePassword">Đổi mật khẩu</a></li>
+                                <li><a href="/Account/Logoff">Log Out</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <a data-target=".nav-collapse" data-toggle="collapse" class="btn_menu">
+                        <span class="icon-align-justify icon-white"></span>
+                    </a>
+                    <nav>
+                        <div class="nav-collapse">
+                            @Html.Action("MainMenu", "Home", new { area = "" })
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="content-container">
+            @RenderBody()
+            <div class="footer">
+                <p>Copyright © TCS Global</p>
+            </div>
+        </div>
+    </div>
+<div id="loading">
+    <div class="overlay"></div>
+    <div class="wrap-spin">
+        <div id="fountainTextG"><div id="fountainTextG_1" class="fountainTextG">L</div><div id="fountainTextG_2" class="fountainTextG">o</div><div id="fountainTextG_3" class="fountainTextG">a</div><div id="fountainTextG_4" class="fountainTextG">d</div><div id="fountainTextG_5" class="fountainTextG">i</div><div id="fountainTextG_6" class="fountainTextG">n</div><div id="fountainTextG_7" class="fountainTextG">g</div></div>
+    </div>
+</div>
+</body>
+</html>

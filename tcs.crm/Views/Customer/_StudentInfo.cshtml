@@ -1,0 +1,169 @@
+﻿@using tcs.bo
+@model tcs.crm.Models.CustomerInfoModel
+@using (Html.BeginForm("Detail", "Customer", FormMethod.Post, new { id = "frmCustomer" }))
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" id="Id" name="Id" value="@Model.Id" />
+    <input type="hidden" id="EmployeeName" name="EmployeeName" value="@Model.EmployeeName" />
+    <div class="tdrow">
+        <div class="field">
+            <label>Họ và tên</label>
+            <div class="control">
+                @Html.TextBoxFor(m => m.Fullname, new { maxlength = "128" })
+                <i class="ierror">!</i>
+            </div>
+        </div>
+        <div class="field">
+            <label>Email</label>
+            <div class="control">
+                @Html.TextBoxFor(m => m.Email, new { maxlength = "50" })
+                <i class="ierror">!</i>
+            </div>
+        </div>
+        <div class="field">
+            <label>Điện thoại</label>
+            <div class="control">
+                @Html.TextBoxFor(m => m.Phone, new { maxlength = "50", @class = "phone" })
+                <i class="ierror">!</i>
+            </div>
+        </div>
+    </div>
+    <div class="tdrow">
+        <div class="field">
+            <label>Tỉnh/TP</label>
+            <div class="control">
+                @Html.DropDownListFor(m => Model.ProvinceId, new SelectList(Model.ListProvince, "Value", "Text"))
+                <i class="ierror">!</i>
+            </div>
+        </div>
+        <div class="field">
+            <label>Giới tính</label>
+            <div class="control">
+                <label class="gender">
+                    <input type="radio" id="gender_male" value="0" name="gender" @(Model.Gender == 0 ? "checked" : "") />
+                    Nam
+                </label>
+                <label class="gender">
+                    <input type="radio" id="gender_female" value="1" name="gender" @(Model.Gender == 1 ? "checked" : "") />
+                    Nữ
+                </label>
+            </div>
+        </div>
+        <div class="field">
+            <label>Ngày sinh</label>
+            <div class="control">
+                @Html.TextBoxFor(m => m.BirthdayString, new { maxlength = "10", @class = "date", placeholder = "dd/MM/yyyy" })
+                <i class="ierror">!</i>
+            </div>
+        </div>
+    </div>
+    <div class="tdrow">
+        <div class="field full">
+            <label>Địa chỉ</label>
+            <div class="control">
+                @Html.TextBoxFor(m => m.Address, new { maxlength = "255" })
+                <i class="ierror">!</i>
+            </div>
+        </div>
+    </div>
+    <div class="tdrow">
+        <div class="field">
+            <label>Nguồn</label>
+            <div class="control">
+                @Html.DropDownListFor(m => Model.Source, new SelectList(Model.ListSource, "Key", "Value"))
+                <i class="ierror">!</i>
+            </div>
+        </div>
+        <div class="field two">
+            <label>Link bài tin</label>
+            <div class="control">
+                @Html.TextBoxFor(m => m.NewsUrlRef, new { maxlength = "255", @readonly = "readonly" })
+                <i class="ierror">!</i>
+            </div>
+        </div>
+    </div>
+    <div class="tdrow">
+        <div class="field">
+            <label>Mong muốn DH</label>
+            <div class="control">
+                @Html.DropDownListFor(m => Model.Desire, new SelectList(Model.ListDesire, "Key", "Value"))
+                <i class="ierror">!</i>
+            </div>
+        </div>
+        <div class="field">
+            <label>Tiềm năng</label>
+            <div class="control">
+                @Html.DropDownListFor(m => Model.Status, new SelectList(Model.ListStatus, "Key", "Value"))
+                <i class="ierror">!</i>
+            </div>
+        </div>
+        @if (Model.AccountInfo.TitleType == CompanyTitleType.Agency.Key && Model.Id > 0)
+        {
+            <div class="field">
+                <label>NV tư vấn</label>
+                <div class="control checkbox">
+                    <b>@Model.EmployeeName</b>
+                </div>
+            </div>
+        }
+    </div>
+    if (Model.AccountInfo.TitleType != CompanyTitleType.Counselor.Key && Model.AccountInfo.TitleType != CompanyTitleType.Agency.Key)
+    {
+        <div class="tdrow">
+            <div class="field two">
+                <label>Phân quyền</label>
+                <div class="control">
+                    @Html.DropDownListFor(m => Model.EmployeeId, new SelectList(Model.ListEmployee, "Value", "Text"))
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        @Html.HiddenFor(m => Model.EmployeeId)
+    }
+    if (Model.AccountInfo.TitleType != CompanyTitleType.Agency.Key && Model.ListAgency != null)
+    {
+        <div class="tdrow" style="@(Model.AccountInfo.TitleType == CompanyTitleType.Agency.Key ? "display:none;" : "")">
+            <div class="field two">
+                <label>Đại lý</label>
+                <div class="control">
+                    @Html.DropDownListFor(m => Model.AgencyId, new SelectList(Model.ListAgency, "Value", "Text"))
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        @Html.HiddenFor(m => m.AgencyId)
+    }
+    @*<div class="tdrow">
+        <div class="field full">
+            <label>Tư vấn</label>
+            <div class="control">
+                @Html.TextAreaFor(m => m.CustomerNote, new { maxlength = "2000", rows = "4" })
+                <i class="ierror">!</i>
+            </div>
+        </div>
+    </div>*@
+    <div class="tdrow">
+        <div class="field full">
+            <label>Ghi chú</label>
+            <div class="control">
+                @Html.TextAreaFor(m => m.EmployeeNote, new { maxlength = "2000", rows = "4" })
+                <i class="ierror">!</i>
+            </div>
+        </div>
+    </div>
+    <div class="tdrow">
+        <div class="divbtn">
+            <button onclick="return submitCustomer('frmCustomer')" class="btn btn-info" type="button">Lưu thông tin</button>
+            <button class="btn btn-danger" type="reset">Nhập mới</button>
+            <button class="btn btn-success" onclick="$.fancybox.close(); return false;">Đóng</button>
+            <div class="frmerr"></div>
+        </div>
+    </div>
+    <div class="clr"></div>
+}

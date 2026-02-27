@@ -1,0 +1,85 @@
+﻿@model VietFuture.CRM.Models.UpdateInfoModel
+@{
+    ViewBag.Title = "Cập nhật thông tin nhân viên";
+    Layout = "~/Views/Shared/_CMS.Mobile.cshtml";
+}
+
+<script type="text/javascript">
+    $(function() {
+        $("#AvatarFile").change(function () {
+            var fileName = $('#AvatarFile')[0].files[0].name;
+            if (fileName === "" || fileName === undefined) {
+                $("#inputfilename").hide();
+                $("#inputfilename").html("");
+            } else {
+                $("#inputfilename").show();
+                $("#inputfilename").html(fileName);
+            }
+        });
+        $("#updateForm").submit(function() {
+            if ($("#FullName").val() === "") {
+                $(".frmerror").html("Vui lòng nhập họ tên");
+                $("#FullName").focus();
+                return false;
+            }
+            if ($("#Phone").val() === "") {
+                $(".frmerror").html("Vui lòng nhập số điện thoại");
+                $("#Phone").focus();
+                return false;
+            }
+            if ($("#Email").val() === "") {
+                $(".frmerror").html("Vui lòng nhập địa chỉ email");
+                $("#Email").focus();
+                return false;
+            }
+            return true;
+        });
+    });
+</script>
+
+@using (Html.BeginForm("UpdateInfo", "Account", FormMethod.Post, new { id = "updateForm", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.UserName)
+    <table border="0" cellspacing="0" cellpadding="4" class="tblUpdateInfo">
+        <tr>
+            <td>
+                <h2>Cập nhật thông tin nhân viên</h2>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img src="@Model.Avatar" width="150" height="150" class="avatar"/>
+                <input type="file" id="AvatarFile" name="AvatarFile" style="display: none"/>
+                <a href="javascript:;" class="avatarlink" onclick="$('#AvatarFile').trigger('click')">Cập nhật hình đại diện</a>
+                <label id="inputfilename" class="avatarfilename"></label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Họ và tên</label>
+                @Html.TextBoxFor(m => m.FullName, new {maxlength = "128", tabindex = "0"})
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Số điện thoại</label>
+                @Html.TextBoxFor(m => m.Phone, new {maxlength = "50", tabindex = "1"})
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Email</label>
+                @Html.TextBoxFor(m => m.Email, new {maxlength = "50", tabindex = "2"})
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" class="btn btn-info" value="Lưu thông tin" />
+                <span class="frmerror">@Model.Message</span>
+            </td>
+        </tr>
+    </table>
+}
+
+@Scripts.Render("~/bundles/jqueryval")

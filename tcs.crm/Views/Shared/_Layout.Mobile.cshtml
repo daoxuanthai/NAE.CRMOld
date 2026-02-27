@@ -1,0 +1,64 @@
+﻿@using Common.Util
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="ROBOTS" content="NOINDEX, FOLLOW">
+    <title>@ViewBag.Title</title>
+
+    <link rel="stylesheet" href="/Content/CMS/CMS.Mobile.min.css" />
+    <link href="https://fonts.googleapis.com//css?family=PT+Sans" rel="stylesheet" type="text/css">
+    <script src="https://use.fontawesome.com/54c1543fe2.js"></script>
+    <script src="/Scripts/CMS/CMS.min.js"></script>
+    @if (IsSectionDefined("JS_INC"))
+    {
+        @RenderSection("JS_INC")
+    }
+    <script type="text/javascript">
+    $(function () {
+        LoadCMSSite('@(ViewHelper.CMSSite())');
+        var mobile = true;
+    });
+    </script>
+
+</head>
+<body>
+    <div id="loading_layer" style="display:none"><img src="~/Content/img/loading.gif" alt="" /></div>
+    <div id="maincontainer" class="clearfix">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="brand" href="/"><i class="icon-home icon-white"></i> Quản lý hồ sơ KH</a>
+                    <ul class="nav user_menu pull-right">
+                        @Html.Action("Notify", "CMSMain")
+                        <li class="divider-vertical hidden-phone hidden-tablet"></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>@WebSecurity.CurrentUserName</b> <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/Account/UpdateInfo">Cập nhật thông tin</a></li>
+                                <li><a href="/Account/ChangePassword">Đổi mật khẩu</a></li>
+                                <li><a href="/Account/Logoff">Log Out</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <a data-target=".nav-collapse" data-toggle="collapse" class="btn_menu">
+                        <span class="icon-align-justify icon-white"></span>
+                    </a>
+                    <nav>
+                        <div class="nav-collapse">
+                            @Html.Action("MainMenu", "CMSMain")
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="content-container">
+            @RenderBody()
+        </div>
+    </div>
+    <div id="dlding">
+        Bạn vui lòng chờ trong giây lát...
+    </div>
+</body>
+</html>

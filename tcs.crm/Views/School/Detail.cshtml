@@ -1,0 +1,118 @@
+﻿@model tcs.crm.Models.SchoolInsertModel
+@if (Model != null)
+{
+    <div class="popup">
+        <a href="#" onclick="$.fancybox.close(); return false;" class="close">✖</a>
+        <div id="tabs">
+            <ul>
+                <li class="active"><a href="javascript:;">Thông tin trường</a></li>
+            </ul>
+            <div id="tabs-info" class="tabs-ct active">
+                @using (Html.BeginForm("Detail", "School", FormMethod.Post, new { id = "frmSchool" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" id="Id" name="Id" value="@Model.Id" />
+                    <div class="tdrow">
+                        <div class="field two">
+                            <label>Tên trường</label>
+                            <div class="control">
+                                @Html.TextBoxFor(m => m.SchoolName, new { maxlength = "128" })
+                                <i class="ierror">!</i>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Tên ngắn</label>
+                            <div class="control">
+                                @Html.TextBoxFor(m => m.ShortName, new { maxlength = "128" })
+                                <i class="ierror">!</i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tdrow">
+                        <div class="field">
+                            <label>Loại trường</label>
+                            <div class="control">
+                                @Html.DropDownListFor(m => Model.SchoolType, new SelectList(Model.ListSchoolType, "Key", "Value"))
+                                <i class="ierror">!</i>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Quốc gia</label>
+                            <div class="control">
+                                @Html.DropDownListFor(m => Model.Country, new SelectList(Model.ListCountry, "Value", "Text"))
+                                <i class="ierror">!</i>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Thành phố</label>
+                            <div class="control">
+                                @Html.TextBoxFor(m => m.City, new { maxlength = "128" })
+                                <i class="ierror">!</i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tdrow">
+                        <div class="field full">
+                            <label>Địa chỉ</label>
+                            <div class="control">
+                                @Html.TextBoxFor(m => m.Address, new { maxlength = "128" })
+                                <i class="ierror">!</i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tdrow">
+                        <div class="field">
+                            <label>Tên người LH</label>
+                            <div class="control">
+                                @Html.TextBoxFor(m => m.ContactName, new { maxlength = "128" })
+                                <i class="ierror">!</i>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Điện thoại LH</label>
+                            <div class="control">
+                                @Html.TextBoxFor(m => m.ContactPhone, new { maxlength = "128" })
+                                <i class="ierror">!</i>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Email LH</label>
+                            <div class="control">
+                                @Html.TextBoxFor(m => m.ContactEmail, new { maxlength = "128" })
+                                <i class="ierror">!</i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tdrow">
+                        <div class="field full">
+                            <label>CT nổi bật</label>
+                            <div class="control">
+                                @Html.TextAreaFor(m => m.HotProgram, new { maxlength = "3000", @rows = 7 })
+                                <i class="ierror">!</i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tdrow">
+                        <div class="field full">
+                            <label>Ghi chú</label>
+                            <div class="control">
+                                @Html.TextAreaFor(m => m.Note, new { maxlength = "1000", @rows = 5 })
+                                <i class="ierror">!</i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tdrow">
+                        <div class="divbtn">
+                            <button class="btn btn-info" type="button">Lưu thông tin</button>
+                            <button class="btn btn-danger" type="reset">Nhập mới</button>
+                            <button class="btn btn-success" onclick="$.fancybox.close(); return false;">Đóng</button>
+                            <div class="frmerr"></div>
+                        </div>
+                    </div>
+                    <div class="clr"></div>
+                }
+            </div>
+            <div class="clr"></div>
+        </div>
+    </div>
+}

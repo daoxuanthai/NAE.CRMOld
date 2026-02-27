@@ -1,0 +1,64 @@
+﻿@model tcs.crm.Models.StudyHistoryModel
+@using (Html.BeginForm("StudyHistory", "Customer", FormMethod.Post, new { id = "frmStudyHistory" }))
+{
+    @Html.HiddenFor(m => m.CustomerId)
+    <input type="hidden" id="Id" name="Id" value="@Model.Id" />
+    @Html.Partial("_ListStudyHistory", Model.ListStudyHistory)
+    <div class="divaction">
+        <button onclick="return initInsertUpdate('StudyHistory')" class="btn btn-success">Thêm</button>
+        <button class="btn btn-danger" onclick="return deleteStudyHistory();">Xóa</button>
+    </div>
+    <div id="IUStudyHistory" style="display: none">
+        <div class="line"></div>
+        <div class="tdrow">
+            <div class="field two">
+                <label>Tên trường</label>
+                <div class="control">
+                    @Html.TextBoxFor(m => m.School, new { maxlength = "128" })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+            <div class="field">
+                <label>Lớp</label>
+                <div class="control">
+                    @Html.TextBoxFor(m => m.Class, new { maxlength = "128" })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+        </div>
+        <div class="tdrow">
+            <div class="field">
+                <label>Ngành học</label>
+                <div class="control">
+                    @Html.TextBoxFor(m => m.Major, new { maxlength = "128" })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+            <div class="field">
+                <label>Điểm (GPA)</label>
+                <div class="control">
+                    @Html.TextBoxFor(m => m.Score, new { maxlength = "50" })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+        </div>
+        <div class="tdrow">
+            <div class="field full">
+                <label>Ghi chú</label>
+                <div class="control">
+                    @Html.TextAreaFor(m => m.Note, new { maxlength = "1000", @rows = 3 })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+        </div>
+        <div class="tdrow">
+            <div class="divbtn">
+                <button onclick="return submitStudyHistory()" class="btn btn-info" type="button">Lưu thông tin</button>
+                <button class="btn btn-danger" type="reset">Nhập mới</button>
+                <button onclick="return finishInsertUpdate('StudyHistory');" class="btn btn-success" type="button">Hoàn tất</button>
+                <div class="frmerr"></div>
+            </div>
+        </div>
+    </div>
+    <div class="clr"></div>
+}

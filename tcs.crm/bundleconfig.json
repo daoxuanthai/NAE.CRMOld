@@ -1,0 +1,263 @@
+[
+  {
+    "outputFileName": "Content/css/home.min.css",
+    "inputFiles": [
+      "Content/css/home.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/css/dashboard.min.css",
+    "inputFiles": [
+      "Content/css/dashboard.css"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/min/global.js",
+    "inputFiles": [
+      "Scripts/ext/micro-query.js",
+      "Scripts/ext/jquery.mask.js",
+      "Scripts/ext/jquery.fancybox.min.js",
+      "Scripts/ext/bootstrap.js",
+      "Scripts/ext/bootstrap-datepicker.js",
+      "Scripts/ext/select2-403/js/select2.js",
+      "Scripts/dev/global.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/min/customer.js",
+    "inputFiles": [
+      "Scripts/min/global.js",
+      "Scripts/ext/perfect-scrollbar.js",
+      "Scripts/dev/customer.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/min/import.js",
+    "inputFiles": [
+      "Scripts/min/global.js",
+      "Scripts/dev/import.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/min/account.js",
+    "inputFiles": [
+      "Scripts/min/global.js",
+      "Scripts/dev/account.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/min/contract.js",
+    "inputFiles": [
+      "Scripts/min/global.js",
+      "Scripts/ext/perfect-scrollbar.js",
+      "Scripts/dev/contract.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/min/seminar.js",
+    "inputFiles": [
+      "Scripts/min/global.js",
+      "Scripts/ext/perfect-scrollbar.js",
+      "Scripts/dev/seminar.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/min/seminarregister.js",
+    "inputFiles": [
+      "Scripts/min/global.js",
+      "Scripts/ext/perfect-scrollbar.js",
+      "Scripts/dev/seminarregister.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/min/company-title.js",
+    "inputFiles": [
+      "Scripts/min/global.js",
+      "Scripts/dev/company-title.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/min/company-office.js",
+    "inputFiles": [
+      "Scripts/min/global.js",
+      "Scripts/dev/company-office.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/min/company-country.js",
+    "inputFiles": [
+      "Scripts/min/global.js",
+      "Scripts/dev/company-country.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/min/company-province.js",
+    "inputFiles": [
+      "Scripts/min/global.js",
+      "Scripts/dev/company-province.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/min/school.js",
+    "inputFiles": [
+      "Scripts/min/global.js",
+      "Scripts/dev/school.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/min/scholarship.js",
+    "inputFiles": [
+      "Scripts/min/global.js",
+      "Scripts/dev/scholarship.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/min/profiletype.js",
+    "inputFiles": [
+      "Scripts/min/global.js",
+      "Scripts/dev/profiletype.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/ext/blue.min.css",
+    "inputFiles": [
+      "Content/ext/blue.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/ext/bootstrap-responsive.min.css",
+    "inputFiles": [
+      "Content/ext/bootstrap-responsive.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/ext/bootstrap.min.css",
+    "inputFiles": [
+      "Content/ext/bootstrap.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/ext/gebo.min.css",
+    "inputFiles": [
+      "Content/ext/gebo.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/ext/jquery.fancybox.min.css",
+    "inputFiles": [
+      "Content/ext/jquery.fancybox.css"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/min/login.js",
+    "inputFiles": [
+      "Scripts/ext/jquery-1.10.2.js",
+      "Scripts/ext/jquery.actual.min.js",
+      "Scripts/ext/jquery.validate.min.js",
+      "Scripts/ext/bootstrap.js",
+      "Scripts/dev/login.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/min/dashboard.js",
+    "inputFiles": [
+      "Scripts/min/global.js",
+      "Scripts/ext/Highcharts/highcharts.js",
+      "Scripts/dev/dashboard.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/min/global.css",
+    "inputFiles": [
+      "Content/ext/bootstrap.css",
+      "Content/ext/bootstrap-responsive.css",
+      "Content/ext/datepicker.css",
+      "Content/ext/blue.css",
+      "Content/ext/gebo.css",
+      "Content/dev/global.css",
+      "Content/dev/loading.css",
+      "Content/dev/popup.css",
+      "Content/dev/tab.css",
+      "Content/dev/notify.css",
+      "Content/dev/form.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/min/global.min.css",
+    "inputFiles": [
+      "Content/min/global.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/dev/tab.min.css",
+    "inputFiles": [
+      "Content/dev/tab.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/dev/customer.min.css",
+    "inputFiles": [
+      "Content/dev/customer.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/ext/jquery.scrollbar.min.css",
+    "inputFiles": [
+      "Content/ext/jquery.scrollbar.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/ext/perfect-scrollbar.min.css",
+    "inputFiles": [
+      "Content/ext/perfect-scrollbar.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/ext/datepicker.min.css",
+    "inputFiles": [
+      "Content/ext/datepicker.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/dev/company.min.css",
+    "inputFiles": [
+      "Content/dev/company.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/dev/dashboard.min.css",
+    "inputFiles": [
+      "Content/dev/dashboard.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/dev/contract.min.css",
+    "inputFiles": [
+      "Content/dev/contract.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/dev/profiletype.min.css",
+    "inputFiles": [
+      "Content/dev/profiletype.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/dev/school.min.css",
+    "inputFiles": [
+      "Content/dev/school.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/dev/seminar.min.css",
+    "inputFiles": [
+      "Content/dev/seminar.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/dev/account.min.css",
+    "inputFiles": [
+      "Content/dev/account.css"
+    ]
+  }
+]

@@ -1,0 +1,30 @@
+﻿.provincelist{margin: 0;}
+
+.breadCrumb table tr td {padding: 0 5px;}
+
+.lock{width: 130px;}
+
+.lock input {
+    margin: 3px 5px !important;
+    float: left;
+}
+
+.popup{width: 900px;}
+
+#tabs .tabs-ct {
+    min-height: 230px;
+}
+
+.permission {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+    .permission select {
+        width: 190px;
+    }
+
+    .permission input {
+        margin-top: -10px;
+    }

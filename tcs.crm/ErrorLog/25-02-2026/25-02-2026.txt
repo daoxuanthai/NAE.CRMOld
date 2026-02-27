@@ -1,0 +1,9 @@
+﻿25/02/2026 23:05:06 -- ----Object[Method] : ResetPassword-----Message : No account exists for "duhoc.namanhhcm@gmail.com".-----Source :    at WebMatrix.WebData.SimpleMembershipProvider.VerifyUserNameHasConfirmedAccount(IDatabase db, String username, Boolean throwException)
+   at WebMatrix.WebData.SimpleMembershipProvider.GeneratePasswordResetToken(String userName, Int32 tokenExpirationInMinutesFromNow)
+   at tcs.crm.Controllers.AccountController.ResetPassword(String userName) in D:\MyProject\NamAnh\NAE.Crm\tcs.crm\Controllers\AccountController.cs:line 241
+25/02/2026 23:06:55 -- ----Object[Method] : ResetPassword-----Message : No account exists for "duhoc.namanhhcm@gmail.com".-----Source :    at WebMatrix.WebData.SimpleMembershipProvider.VerifyUserNameHasConfirmedAccount(IDatabase db, String username, Boolean throwException)
+   at WebMatrix.WebData.SimpleMembershipProvider.GeneratePasswordResetToken(String userName, Int32 tokenExpirationInMinutesFromNow)
+   at tcs.crm.Controllers.AccountController.ResetPassword(String userName) in D:\MyProject\NamAnh\NAE.Crm\tcs.crm\Controllers\AccountController.cs:line 241
+25/02/2026 23:07:45 -- ----Object[Method] : ResetPassword-----Message : No account exists for "duhoc.namanhhcm@gmail.com".-----Source :    at WebMatrix.WebData.SimpleMembershipProvider.VerifyUserNameHasConfirmedAccount(IDatabase db, String username, Boolean throwException)
+   at WebMatrix.WebData.SimpleMembershipProvider.GeneratePasswordResetToken(String userName, Int32 tokenExpirationInMinutesFromNow)
+   at tcs.crm.Controllers.AccountController.ResetPassword(String userName) in D:\MyProject\NamAnh\NAE.Crm\tcs.crm\Controllers\AccountController.cs:line 244

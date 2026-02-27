@@ -1,0 +1,73 @@
+﻿@model tcs.crm.Models.SeminarPlaceInsertModel
+@using (Html.BeginForm("SeminarPlace", "Seminar", FormMethod.Post, new { id = "frmSeminarPlace" }))
+{
+    @Html.HiddenFor(m => m.SeminarId)
+    <input type="hidden" id="Id" name="Id" value="@Model.Id" />
+    @Html.Partial("_ListSeminarPlace", Model.ListSeminarPlace)
+    <div class="divaction">
+        <button onclick="return initInsertUpdate('SeminarPlace')" class="btn btn-success">Thêm</button>
+        <button class="btn btn-danger" onclick="return deleteSeminarPlace();">Xóa</button>
+    </div>
+    <div id="IUSeminarPlace" style="display: none">
+        <div class="line"></div>
+        <div class="tdrow">
+            <div class="field full">
+                <label>Địa điểm</label>
+                <div class="control">
+                    @Html.TextBoxFor(m => m.Place, new { maxlength = "128" })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+        </div>
+        <div class="tdrow">
+            <div class="field full">
+                <label>Địa chỉ</label>
+                <div class="control">
+                    @Html.TextBoxFor(m => m.Address, new { maxlength = "128" })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+        </div>
+        <div class="tdrow">
+            <div class="field">
+                <label>Tỉnh thành</label>
+                <div class="control">
+                    @Html.DropDownListFor(m => Model.ProvinceId, new SelectList(Model.ListProvince, "Value", "Text"))
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+            <div class="field">
+                <label>Ngày bắt đầu</label>
+                <div class="control">
+                    @Html.TextBoxFor(m => m.SeminarDateString, new { maxlength = "10", @class = "date", placeholder = "dd/MM/yyyy" })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+            <div class="field">
+                <label>Trạng thái</label>
+                <div class="control">
+                    @Html.DropDownListFor(m => Model.Status, new SelectList(Model.ListStatus, "Key", "Value"))
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+        </div>
+        <div class="tdrow">
+            <div class="field full">
+                <label>Ghi chú</label>
+                <div class="control">
+                    @Html.TextAreaFor(m => m.Note, new { maxlength = "1000", @rows = 3 })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+        </div>
+        <div class="tdrow">
+            <div class="divbtn">
+                <button onclick="return submitSeminarPlace('frmSeminarPlace')" class="btn btn-info" type="button">Lưu thông tin</button>
+                <button class="btn btn-danger" type="reset">Nhập mới</button>
+                <button onclick="return finishInsertUpdate('SeminarPlace');" class="btn btn-success" type="button">Hoàn tất</button>
+                <div class="frmerr"></div>
+            </div>
+        </div>
+    </div>
+    <div class="clr"></div>
+}

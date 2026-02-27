@@ -1,0 +1,16 @@
+﻿{
+  "messages": [
+    {
+      "id": "issue",
+      "msg": { "en": "{object_attributes.state:choose(opened|updated|closed|reopened):0x100075||0x100033|0x1000AD} Issue \"{object_attributes.title}\"\r\n{object_attributes.state.ToString.ToUpper} by @{user.name}{assignee: and assigned to @{name}|}\r\n{object_attributes.url}" }
+    },
+    {
+      "id": "note",
+      "msg": { "en": "@{user.name} has just 0x100041 \"{object_attributes.note}\"\r\nIssue \"{issue.title}\"\r\n{object_attributes.url}" }
+    },
+    {
+      "id": "merge_request",
+      "msg": { "en": "0x1000B5 The merge request #{object_attributes.id} has just been created by @{user.name}\r\n{object_attributes.url}" }
+    }
+  ]
+}

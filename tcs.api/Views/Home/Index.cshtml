@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script type="text/javascript">
+    $(function () {
+        
+    });
+
+    function testApi() {
+        var customer = { name: "abc", phone: "0909251202", question: "nội dung test nội dung test", country: 1, province: 1, PartnerId: 1000 };
+        jQuery.support.cors = true;
+        $.ajax({
+            url: 'http://localapi.tcsglobal.vn/api/Customer',
+            type: 'POST',
+            data: JSON.stringify(customer),
+            contentType: "application/json;charset=utf-8",
+            cache: false,
+            beforeSend: function () {
+                loading = true;
+                $("#dlding").show();
+            },
+            success: function (e) {
+                debugger;
+                loading = false;
+                $("#dlding").hide();
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                loading = false;
+                $("#dlding").hide();
+            }
+        });
+    }
+</script>
+
+<h2>Index</h2>
+

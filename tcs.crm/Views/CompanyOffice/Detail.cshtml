@@ -1,0 +1,95 @@
+﻿@model tcs.crm.Models.CompanyOfficeInsertModel
+@if (Model != null)
+{
+    <div class="popup">
+        <a href="#" onclick="$.fancybox.close(); return false;" class="close">✖</a>
+        <div id="tabs">
+            <ul>
+                <li class="active"><a href="javascript:;">Thông tin văn phòng</a></li>
+            </ul>
+            <div id="tabs-info" class="tabs-ct active">
+                @using (Html.BeginForm("Detail", "CompanyOffice", FormMethod.Post, new { id = "frmCompanyOffice" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" id="Id" name="Id" value="@Model.Id" />
+                    <div class="tdrow">
+                        <div class="field">
+                            <label>Tên văn phòng</label>
+                            <div class="control">
+                                @Html.TextBoxFor(m => m.OfficeName, new { maxlength = "128" })
+                                <i class="ierror">!</i>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Điện thoại</label>
+                            <div class="control">
+                                @Html.TextBoxFor(m => m.OfficePhone, new { maxlength = "50", @class = "phone" })
+                                <i class="ierror">!</i>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Email</label>
+                            <div class="control">
+                                @Html.TextBoxFor(m => m.OfficeEmail, new { maxlength = "50" })
+                                <i class="ierror">!</i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tdrow">
+                        <div class="field full">
+                            <label>Địa chỉ</label>
+                            <div class="control">
+                                @Html.TextAreaFor(m => m.OfficeAddress, new { maxlength = "255", @rows = 2 })
+                                <i class="ierror">!</i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tdrow">
+                        <div class="field two">
+                            <label>Phân quyền cho</label>
+                            <div class="control">
+                                @Html.DropDownListFor(m => Model.DirectorUserId, new SelectList(Model.ListCompanyTitle, "Value", "Text"))
+                                <i class="ierror">!</i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tdrow">
+                        <div class="field full">
+                            <label>Ghi chú</label>
+                            <div class="control">
+                                @Html.TextAreaFor(m => m.Note, new { maxlength = "1000", @rows = 3 })
+                                <i class="ierror">!</i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tdrow">
+                        <div class="field">
+                            <label>Tỉnh/TP</label>
+                            <div class="control">
+                                @Html.DropDownListFor(m => Model.ProvinceId, new SelectList(Model.ListProvince, "Id", "ProvinceName"))
+                                <i class="ierror">!</i>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Trạng thái</label>
+                            <div class="control">
+                                @Html.DropDownListFor(m => Model.Status, new SelectList(Model.ListStatus, "Key", "Value"))
+                                <i class="ierror">!</i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tdrow">
+                        <div class="divbtn">
+                            <button class="btn btn-info" type="button">Lưu thông tin</button>
+                            <button class="btn btn-danger" type="reset">Nhập mới</button>
+                            <button class="btn btn-success" onclick="$.fancybox.close(); return false;">Đóng</button>
+                            <div class="frmerr"></div>
+                        </div>
+                    </div>
+                    <div class="clr"></div>
+                }
+            </div>
+            <div class="clr"></div>
+        </div>
+    </div>
+}

@@ -1,0 +1,56 @@
+﻿@using tcs.bo;
+@model List<GuaranteeBo>
+@if (Model != null)
+{
+    <table class="table table-striped table-bordered dTableR popuptbl listdata" id="dt_guaranteelist">
+        <thead>
+            <tr>
+                <th class="center w40"><input class="cball" data-type="cbguarantee" type="checkbox" onchange="CheckAll(this, this.checked);" /></th>
+                <th class="center w80">STT</th>
+                <th class="center">Người bảo lãnh</th>
+                <th class="center">Người được bảo lãnh</th>
+                <th class="center">Loại bảo lãnh</th>
+                <th class="center">Năm bảo lãnh</th>
+                <th class="center">Cập nhật</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                var index = 1;
+                foreach (var item in Model)
+                {
+                    <tr id="guarantee_@item.Id">
+                        <td style="text-align: center;">
+                            <input data-id="@item.Id" data-type="cbguarantee" type="checkbox" class="cbdelete cbguarantee" onchange="ToogleCheck();" />
+                        </td>
+                        <td class="center">@(index++)</td>
+                        <td class="rel">
+                            <a href="javascript:;" onclick="return editGuarantee(@item.Id)" title="Click để cập nhật">@item.RelativesName</a>
+                            <a href="javascript:;" class="updatelink" onclick="return editGuarantee(@item.Id)" title="Click để cập nhật">Cập nhật</a>
+                        </td>
+                        <td class="center">@item.Person</td>
+                        <td class="center">@item.GuaranteeName</td>
+                        <td class="center">@item.GuaranteeYear</td>
+                        <td class="center">
+                            @if (item.UpdateDate.HasValue && item.UpdateDate.Value != DateTime.MinValue)
+                            {
+                                @item.UpdateDate.Value.ToString("dd/MM/yyyy HH:mm:ss")
+                            }
+                            else
+                            {
+                                @item.CreateDate.Value.ToString("dd/MM/yyyy HH:mm:ss")
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="7" class="center">Chưa có dữ liệu</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

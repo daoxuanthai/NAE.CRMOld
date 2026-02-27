@@ -1,0 +1,182 @@
+﻿.control .gender {
+    float: left;
+    width: 50%;
+    margin: 0;
+    cursor: pointer;
+    padding: 5px 0;
+}
+
+    .control .gender input {
+        float: left;
+        width: 20px;
+        margin-right: 5px;
+    }
+
+    .control .gender label {
+        float: left;
+        padding: 5px;
+    }
+
+.updatelink {
+    float: right;
+    padding: 8px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.tdrow .field.advisory label {
+    width: 135px;
+}
+
+.tdrow .field.advisory .control {
+    width: calc(100% - 160px);
+}
+
+.tdrow.alarm .field:nth-child(1) {
+    width: 150px;
+}
+
+    .tdrow.alarm .field:nth-child(1) label {
+        width: 135px;
+    }
+
+    .tdrow.alarm .field:nth-child(1) .control {
+        width: 14px;
+        padding-top: 5px;
+    }
+
+.tdrow.alarm .field:nth-child(2) {
+    width: 350px;
+}
+
+    .tdrow.alarm .field:nth-child(2) label {
+        width: 170px;
+    }
+
+    .tdrow.alarm .field:nth-child(2) .control {
+        width: 150px;
+    }
+
+    .tdrow.alarm .field:nth-child(2) input {
+        width: 150px;
+    }
+
+.noemployee {
+    background: #5bb75b;
+    text-align: center;
+    padding: 3px 10px;
+    font-size: 12px;
+    color: #fff;
+    display: block;
+    margin: 0 auto;
+    width: 100px;
+    border-radius: 4px;
+}
+
+.rightpanel {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.sort {
+    float: right;
+    border-radius: 5px;
+    padding: 0 5px;
+    cursor:pointer;
+    margin-left: 5px;
+}
+
+    .sort b {
+        float: left; padding: 5px 10px;
+    }
+
+.permission {
+    float: right;
+}
+
+    .permission select {
+        width: 320px;
+    }
+
+    .permission input {
+        vertical-align: top;
+    }
+
+.name {
+    width: 300px !important;
+}
+
+.care {
+    width: 300px !important;
+}
+
+.lastcare {
+    display: block;
+    max-width: 300px;
+    margin: 0 auto 5px;
+}
+
+.pbar {
+    overflow: hidden;
+    width: 100%;
+    height: 12px;
+    border: solid 1px #B6B6B6;
+    border-radius: 3px;
+    margin-top: 8px;
+}
+
+.ui-progressbar-value {
+    background: #bd362f;
+    text-align: right;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 13px;
+    margin-top: -1px;
+    color: #fff;
+}
+
+/* hợp đồng */
+.root {
+    text-transform: uppercase;
+}
+
+.child {
+    padding-left: 25px;
+}
+
+.sub {
+    padding-left: 50px;
+}
+
+.doc-child {
+    padding-left: 50px !important;
+}
+
+.doc-sub {
+    padding-left: 70px !important;
+}
+
+.done {
+    background: #5bb75b !important;
+}
+
+.skip {
+    background: #ee5f5b !important;
+}
+/* hợp đồng */
+
+.guarantee, .language {
+    clear: both;
+    padding-top: 15px;
+}
+
+.col-action span, .col-action a, .col-action label {
+    line-height: 22px;
+}
+
+.comment{position:absolute; top: 6px; right:8px;}
+.cmt{display:block; clear: both; background:#feffed; border:solid 1px #eee; border-radius: 4px; padding: 3px 5px; font-size: 12px; color:red; font-style: italic; margin-bottom: 4px;}
+.cmt a{float: right;}
+.ccare{ padding-right: 20px;}

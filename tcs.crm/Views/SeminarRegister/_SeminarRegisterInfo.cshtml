@@ -1,0 +1,130 @@
+﻿@using tcs.lib;
+@model tcs.crm.Models.SeminarRegisterInsertModel
+@using (Html.BeginForm("Detail", "SeminarRegister", FormMethod.Post, new { id = "frmSeminarRegister", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" id="Id" name="Id" value="@Model.Id" />
+    @Html.HiddenFor(m => m.CustomerId)
+    <div class="tdrow">
+        <div class="field two">
+            <label>Tên hội thảo</label>
+            <div class="control">
+                @Html.TextBoxFor(m => m.SeminarName, new { maxlength = "128", @readonly = "readonly" })
+                <i class="ierror">!</i>
+            </div>
+        </div>
+        <div class="field">
+            <label>Mã ID</label>
+            <div class="control">
+                @Html.TextBoxFor(m => m.TicketId)
+            </div>
+        </div>
+    </div>
+    <div class="tdrow">
+        <div class="field two">
+            <label>Địa điểm</label>
+            <div class="control">
+                @Html.DropDownListFor(m => Model.SeminarPlaceId, new SelectList(Model.ListSeminarPlace, "Value", "Text"), new { tabindex = "4", @class = "in9" })
+                <i class="ierror">!</i>
+            </div>
+        </div>
+        <div class="field">
+            <label>Tham dự</label>
+            <div class="control checkbox">
+                <label>@Html.CheckBoxFor(m => m.IsAttend) Đã tham dự</label>
+            </div>
+        </div>
+    </div>
+    <div class="tdrow">
+        <div class="field">
+            <label>Tên khách hàng</label>
+            <div class="control">
+                @Html.TextBoxFor(m => m.CustomerName, new { maxlength = "128", @readonly = "readonly" })
+            </div>
+        </div>
+        <div class="field">
+            <label>Điện thoại</label>
+            <div class="control">
+                @Html.TextBoxFor(m => m.CustomerPhone, new { maxlength = "128", @readonly = "readonly", @class = "phone" })
+            </div>
+        </div>
+        <div class="field">
+            <label>Email</label>
+            <div class="control">
+                @Html.TextBoxFor(m => m.CustomerEmail, new { maxlength = "128", @readonly = "readonly" })
+            </div>
+        </div>
+    </div>
+    <div class="tdrow">
+        <div class="field two">
+            <label>Trường PV 1</label>
+            <div class="control">
+                @Html.TextBoxFor(m => m.School1, new { maxlength = "256" })
+                <i class="ierror">!</i>
+            </div>
+        </div>
+        <div class="field">
+            <label>Thời gian</label>
+            <div class="control">
+                @Html.TextBoxFor(m => m.School1Time, new { maxlength = "128" })
+            </div>
+        </div>
+    </div>
+    <div class="tdrow">
+        <div class="field two">
+            <label>Trường PV 2</label>
+            <div class="control">
+                @Html.TextBoxFor(m => m.School2, new { maxlength = "256" })
+                <i class="ierror">!</i>
+            </div>
+        </div>
+        <div class="field">
+            <label>Thời gian</label>
+            <div class="control">
+                @Html.TextBoxFor(m => m.School2Time, new { maxlength = "128" })
+            </div>
+        </div>
+    </div>
+    <div class="tdrow">
+        <div class="field two">
+            <label>Trường PV 3</label>
+            <div class="control">
+                @Html.TextBoxFor(m => m.School3, new { maxlength = "256" })
+                <i class="ierror">!</i>
+            </div>
+        </div>
+        <div class="field">
+            <label>Thời gian</label>
+            <div class="control">
+                @Html.TextBoxFor(m => m.School3Time, new { maxlength = "128" })
+            </div>
+        </div>
+    </div>
+    <div class="tdrow">
+        <div class="field full">
+            <label>Ghi chú KH</label>
+            <div class="control">
+                @Html.TextAreaFor(m => m.CustomerNote, new { maxlength = "500", rows = "3" })
+                <i class="ierror">!</i>
+            </div>
+        </div>
+    </div>
+    <div class="tdrow">
+        <div class="field full">
+            <label>Ghi chú</label>
+            <div class="control">
+                @Html.TextAreaFor(m => m.Note, new { maxlength = "500", rows = "3" })
+                <i class="ierror">!</i>
+            </div>
+        </div>
+    </div>
+    <div class="tdrow">
+        <div class="divbtn">
+            <button id="btnSaveSeminarRegister" data-frm="frmSeminarRegister" class="btn btn-info" type="button">Lưu thông tin</button>
+            <button class="btn btn-danger" type="reset">Nhập mới</button>
+            <button class="btn btn-success" onclick="$.fancybox.close(); return false;">Đóng</button>
+            <div class="frmerr"></div>
+        </div>
+    </div>
+    <div class="clr"></div>
+}

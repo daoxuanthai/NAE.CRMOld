@@ -1,0 +1,61 @@
+﻿@using tcs.lib;
+@model tcs.crm.Models.SeminarInsertModel
+@using (Html.BeginForm("Detail", "Seminar", FormMethod.Post, new { id = "frmSeminar", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" id="Id" name="Id" value="@Model.Id" />
+    <div class="tdrow">
+        <div class="field full">
+            <label>Tên hội thảo</label>
+            <div class="control">
+                @Html.TextBoxFor(m => m.Name, new { maxlength = "128" })
+                <i class="ierror">!</i>
+            </div>
+        </div>
+    </div>
+    <div class="tdrow">
+        <div class="field full">
+            <label>Mô tả ngắn</label>
+            <div class="control">
+                @Html.TextAreaFor(m => m.Description, new { maxlength = "500", rows = "3" })
+                <i class="ierror">!</i>
+            </div>
+        </div>
+    </div>
+    <div class="tdrow">
+        <div class="field full">
+            <label>Ghi chú</label>
+            <div class="control">
+                @Html.TextAreaFor(m => m.Note, new { maxlength = "500", rows = "3" })
+                <i class="ierror">!</i>
+            </div>
+        </div>
+    </div>
+    <div class="tdrow">
+        <div class="field full">
+            <label>Link bài tin</label>
+            <div class="control">
+                @Html.TextBoxFor(m => m.Link, new { maxlength = "255" })
+                <i class="ierror">!</i>
+            </div>
+        </div>
+    </div>
+    <div class="tdrow">
+        <div class="field">
+            <label>Trạng thái</label>
+            <div class="control">
+                @Html.DropDownListFor(m => Model.Status, new SelectList(Model.ListStatus, "Key", "Value"))
+                <i class="ierror">!</i>
+            </div>
+        </div>
+    </div>
+    <div class="tdrow">
+        <div class="divbtn">
+            <button id="btnSaveSeminar" data-frm="frmSeminar" class="btn btn-info" type="button">Lưu thông tin</button>
+            <button class="btn btn-danger" type="reset">Nhập mới</button>
+            <button class="btn btn-success" onclick="$.fancybox.close(); return false;">Đóng</button>
+            <div class="frmerr"></div>
+        </div>
+    </div>
+    <div class="clr"></div>
+}

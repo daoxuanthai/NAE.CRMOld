@@ -1,0 +1,77 @@
+﻿@using tcs.bo
+@model tcs.crm.Models.CustomerInsertModel
+@if (Model != null)
+{
+    var showOverview = false;
+    <div class="popup">
+        <a href="#" onclick="$.fancybox.close(); return false;" class="close">✖</a>
+        <div id="tabs">
+            <ul>
+                @if (Model.Id > 0 && showOverview)
+                {
+                    <li class="@(Model.Id > 0 ? "active" : "")"><a href="javascript:;" data-tab="tabs-overview">Tổng quan</a></li>
+                }
+                <li class="@(Model.Id > 0 && showOverview ? "" : "active")"><a href="javascript:;" data-tab="tabs-info">Thông tin học sinh</a></li>
+                @if (Model.Id > 0)
+                {
+                    <li><a href="javascript:;" data-tab="tabs-parent">Phụ huynh</a></li>
+                    <li><a href="javascript:;" data-tab="tabs-relatives">Thân nhân</a></li>
+                    <li><a href="javascript:;" data-tab="tabs-studyhistory">Năng lực học tập</a></li>
+                    <li><a href="javascript:;" data-tab="tabs-stydyabroad">Dự định du học</a></li>
+                    <li><a href="javascript:;" data-tab="tabs-seminar">Đăng ký hội thảo</a></li>
+                    <li><a href="javascript:;" data-tab="tabs-customercare">Nội dung tư vấn</a></li>
+                    <li><a href="javascript:;" data-tab="tabs-contract" data-id="@Model.Id">Hợp đồng</a></li>
+                    if (Model.CustomerInfo.Status == CustomerStatus.Contracted.Key)
+                    {
+                        <li><a href="javascript:;" data-tab="tabs-document" data-id="@Model.Id">Hồ sơ</a></li>
+                    }
+                    @*<li><a href="javascript:;" data-tab="tabs-registerhistory">Lịch sử tài khoản</a></li>*@
+                }
+            </ul>
+            <div id="tabs-overview" class="tabs-ct @(Model.Id > 0 && showOverview ? "active" : "")">
+                @Html.Partial("_OverView", Model.CustomerInfo)
+            </div>
+            <div id="tabs-info" class="tabs-ct @(Model.Id > 0 && showOverview ? "" : "active")">
+                @Html.Partial("_StudentInfo", Model.CustomerInfo)
+            </div>
+            @if (Model.Id > 0)
+            {
+                <div id="tabs-parent" class="tabs-ct">
+                    @Html.Partial("_ParentInfo", Model.CustomerParent)
+                </div>
+                <div id="tabs-relatives" class="tabs-ct">
+                    @Html.Partial("_RelativesInfo", Model.Relatives)
+                    <div class="guarantee">
+                        @Html.Partial("_GuaranteeInfo", Model.Guarantee)
+                    </div>
+                </div>
+                <div id="tabs-customercare" class="tabs-ct">
+                    @Html.Partial("_CustomerCareInfo", Model.CustomerCare)
+                    @Html.Partial("_InsertComment")
+                </div>
+                <div id="tabs-contract" class="tabs-ct">
+                    <div id="contractinfo"></div>
+                </div>
+                <div id="tabs-document" class="tabs-ct">
+                    <div id="documentinfo"></div>
+                </div>
+                <div id="tabs-studyhistory" class="tabs-ct">
+                    @Html.Partial("_StudyHistoryInfo", Model.StudyHistory)
+                    <div class="language">
+                        @Html.Partial("_LanguageInfo", Model.Language)
+                    </div>
+                </div>
+                <div id="tabs-stydyabroad" class="tabs-ct">
+                    @Html.Partial("_StudyAbroadInfo", Model.StudyAbroad)
+                </div>
+                <div id="tabs-seminar" class="tabs-ct">
+                    @Html.Partial("_SeminarRegisterInfo", Model.SeminarRegister)
+                </div>
+                <div id="tabs-registerhistory" class="tabs-ct">
+                    @Html.Partial("_ListRegisterHistoryInfo", Model.ListRegisterHistory)
+                </div>
+            }
+            <div class="clr"></div>
+        </div>
+    </div>
+}

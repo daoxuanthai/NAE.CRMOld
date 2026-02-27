@@ -1,0 +1,36 @@
+﻿@using tcs.lib
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LoginPage.cshtml";
+}
+
+@section JS_INC
+{
+    @Html.IncludeVersionedJs("/Scripts/min/login.js")
+}
+
+<div class="login_box">
+    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { id = "login_form" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="top_b">Đăng nhập</div>
+        <div class="cnt_b">
+            <div class="formRow">
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-user"></i></span><input type="text" id="username" name="username" placeholder="Username" value="" />
+                </div>
+            </div>
+            <div class="formRow">
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-lock"></i></span><input type="password" id="password" name="password" placeholder="Password" value="" />
+                </div>
+            </div>
+            <div class="formRow clearfix">
+                <label class="checkbox"><input type="checkbox" id="rememberme" name="rememberme" value="true" /> Ghi nhớ thông tin</label>
+            </div>
+        </div>
+        <div class="btm_b clearfix">
+            <button class="btn btn-inverse pull-right" type="submit">Đăng nhập</button>
+        </div>
+    }
+</div>

@@ -1,0 +1,149 @@
+﻿.tdrow {
+    display: block;
+    clear: both;
+    width: 100%;
+}
+
+    .tdrow .field {
+        width: calc((100% - 40px) / 3);
+        box-sizing: border-box;
+        margin-right: 20px;
+        float: left;
+    }
+
+        .tdrow .field:last-child {
+            margin: 0;
+        }
+
+        .tdrow .field > label {
+            float: left;
+            width: 110px;
+            box-sizing: border-box;
+            line-height: 30px;
+            margin: 0;
+        }
+
+    .tdrow .control {
+        float: left;
+        width: calc(100% - 110px);
+        box-sizing: border-box;
+        position: relative;
+    }
+
+        .tdrow .control input[type='text'], .tdrow .control textarea, .tdrow .control select {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 5px;
+        }
+
+        .tdrow .control input[type=text] {
+            height: 28px;
+        }
+
+        .tdrow .control input[type=checkbox] {
+            float: left;
+            margin-right: 4px;
+        }
+
+        .tdrow .control.checkbox {
+            padding-top: 5px;
+        }
+
+            .tdrow .control.checkbox label {
+                cursor: pointer;
+            }
+
+    .tdrow .full {
+        width: 100%;
+    }
+
+    .tdrow .two {
+        width: 65.9%;
+    }
+
+    .tdrow .ierror {
+        display: none;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        font-weight: bold;
+        font-style: normal;
+        position: absolute;
+        top: 6px;
+        left: -18px;
+        text-align: center;
+        background: #f33232;
+        color: #fff;
+        line-height: 16px;
+        font-size: 10px;
+        text-align: center;
+        -webkit-animation: flickerAnimation .5s 5;
+        -moz-animation: flickerAnimation .5s 5;
+        -o-animation: flickerAnimation .5s 5;
+        animation: flickerAnimation .5s 5;
+    }
+
+.frmerr {
+    display: none;
+    clear: both;
+    padding-top: 10px;
+    color: red;
+    font-size: 13px;
+    text-align: center;
+}
+
+@keyframes flickerAnimation {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes flickerAnimation {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes flickerAnimation {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes flickerAnimation {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,193 @@
+﻿@using tcs.lib;
+@model tcs.crm.Models.ContractInsertModel
+@using (Html.BeginForm("ContractInfo", "Contract", FormMethod.Post, new { id = "frmContract", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" id="Id" name="Id" value="@Model.Id" />
+    <input type="hidden" id="CustomerId" name="CustomerId" value="@Model.CustomerId" />
+    <div class="tdrow">
+        <div class="field">
+            <label>Ngày ký HĐ</label>
+            <div class="control">
+                @Html.TextBoxFor(m => m.ContractDateString, new { maxlength = "10", @class = "date", placeholder = "dd/MM/yyyy" })
+                <i class="ierror">!</i>
+            </div>
+        </div>
+        <div class="field">
+            <label>Ngày làm visa</label>
+            <div class="control">
+                @Html.TextBoxFor(m => m.VisaDateString, new { maxlength = "10", @class = "date", placeholder = "dd/MM/yyyy" })
+                <i class="ierror">!</i>
+            </div>
+        </div>
+        <div class="field">
+            <label>Visa</label>
+            <div class="control checkbox">
+                @Html.CheckBoxFor(m => m.IsVisa)
+                <label for="IsVisa">Đã có visa</label>
+                <i class="ierror">!</i>
+            </div>
+        </div>
+    </div>
+    <div class="tdrow">
+        <div class="field">
+            <label>Phí dịch vụ</label>
+            <div class="control">
+                @Html.TextBoxFor(m => m.ServiceFee, new { maxlength = "15", @class = "money" })
+                <i class="ierror">!</i>
+            </div>
+        </div>
+        <div class="field">
+            <label>Đặt cọc</label>
+            <div class="control">
+                @Html.TextBoxFor(m => m.Deposit, new { maxlength = "15", @class = "money" })
+                <i class="ierror">!</i>
+            </div>
+        </div>
+        <div class="field">
+            <label>Hoàn tiền</label>
+            <div class="control checkbox">
+                @Html.CheckBoxFor(m => m.IsRefund)
+                <label for="IsRefund">Đã hoàn tiền cọc</label>
+                <i class="ierror">!</i>
+            </div>
+        </div>
+    </div>
+    <div class="tdrow">
+        <div class="field">
+            <label>Tổng commission</label>
+            <div class="control">
+                @Html.TextBoxFor(m => m.TotalCommission, new { maxlength = "15", @class = "money" })
+                <i class="ierror">!</i>
+            </div>
+        </div>
+        <div class="field">
+            <label>Thu tiền lần 1</label>
+            <div class="control">
+                @Html.TextBoxFor(m => m.CollectOne, new { maxlength = "15", @class = "money" })
+                <i class="ierror">!</i>
+            </div>
+        </div>
+        <div class="field">
+            <label>Thu tiền lần 2</label>
+            <div class="control">
+                @Html.TextBoxFor(m => m.CollectTwo, new { maxlength = "15", @class = "money" })
+                <i class="ierror">!</i>
+            </div>
+        </div>
+    </div>
+    <div class="tdrow">
+        <div class="field">
+            <label>Loại hồ sơ</label>
+            <div class="control">
+                @Html.DropDownListFor(m => Model.ProfileTypeId, new SelectList(Model.ListProfileType, "ID", "TypeName"))
+                <i class="ierror">!</i>
+            </div>
+        </div>
+        <div class="field two">
+            <label>Tiến độ xử lý</label>
+            <div class="control">
+                <div class="pbar ui-progressbar ui-widget ui-widget-content ui-corner-all" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                    <div class="ui-progressbar-value ui-widget-header ui-corner-left" style="width: @(Model.Percent)%;">@(Model.Percent)%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tdrow">
+        <div class="field">
+            <label>Trạng thái</label>
+            <div class="control">
+                @Html.DropDownListFor(m => Model.Status, new SelectList(Model.ListStatus, "Key", "Value"))
+                <i class="ierror">!</i>
+            </div>
+        </div>
+        @if (Model.ListEmployeeWithName == null)
+        {
+            <div class="field two">
+                <label>NV xử lý</label>
+                <div class="control checkbox">
+                    Không tìm thấy NV Admission nào
+                </div>
+            </div>
+        }
+        else if (Model.AccountInfo.Permission.ContractAdmission)
+        {
+            <div class="field two">
+                <label>NV xử lý</label>
+                <div class="control">
+                    @Html.DropDownListFor(m => Model.EmployeeId, new SelectList(Model.ListEmployeeWithName, "Value", "Text"))
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="field">
+                @Html.HiddenFor(m => m.EmployeeId)
+            </div>
+        }
+    </div>
+    <div class="tdrow">
+        <div class="field full">
+            <label>File đính kèm</label>
+            <div class="control">
+                <input type="file" id="AttachFile" name="AttachFile" />
+                <button class="btn btn-success btnupload" type="button" onclick="return uploadFile(@Model.Id);">Tải lên</button>
+                <div id="filelink" class="filelink @(string.IsNullOrEmpty(Model.AttachFilePath) ? "hide" : "")">
+                    <a href="@Model.AttachFilePath" target="_blank">@Model.AttachFilePath.GetFileName()</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    if (Model.ListSchool != null)
+    {
+        <div class="tdrow">
+            <div class="field two">
+                <label>Trường</label>
+                <div class="control">
+                    @Html.DropDownListFor(m => Model.SchoolId, new SelectList(Model.ListSchool, "Value", "Text"))
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+        </div>
+    }
+    if (Model.ListScholarship != null)
+    {
+        <div class="tdrow">
+            <div class="field two">
+                <label>Học bổng</label>
+                <div class="control">
+                    @Html.DropDownListFor(m => Model.ScholarshipId, new SelectList(Model.ListScholarship, "Value", "Text"))
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+        </div>
+    }
+    <div class="tdrow">
+        <div class="field full">
+            <label>Khuyến mãi</label>
+            <div class="control">
+                @Html.TextAreaFor(m => m.Promotion, new { maxlength = "500", rows = 3 })
+                <i class="ierror">!</i>
+            </div>
+        </div>
+    </div>
+    <div class="tdrow">
+        <div class="field full">
+            <label>Ghi chú</label>
+            <div class="control">
+                @Html.TextAreaFor(m => m.Note, new { maxlength = "500", rows = "4" })
+                <i class="ierror">!</i>
+            </div>
+        </div>
+    </div>
+    <div class="tdrow">
+        <div class="divbtn">
+            <button id="btnSaveContract" data-frm="frmContract" class="btn btn-info" type="button">Lưu thông tin</button>
+            <button class="btn btn-danger" type="reset">Nhập mới</button>
+            <button class="btn btn-success" onclick="$.fancybox.close(); return false;">Đóng</button>
+            <div class="frmerr"></div>
+        </div>
+    </div>
+    <div class="clr"></div>
+}

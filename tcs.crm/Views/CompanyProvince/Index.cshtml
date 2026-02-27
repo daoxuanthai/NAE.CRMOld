@@ -1,0 +1,120 @@
+﻿@using tcs.bo
+@using tcs.lib
+@using tcs.adapter.Helper
+@model tcs.crm.Models.CompanyProvinceModel
+@{
+    ViewBag.Title = "Quản lý thông tin tỉnh thành";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    @Html.AddCss("~/Content/ext/jquery.fancybox.css")
+    @Html.AddCss("~/Content/min/global.css")
+    @Html.AddCss("~/Content/dev/company.css")
+}
+@section JS_INC
+{
+    @Html.IncludeVersionedJs("/Scripts/min/company-province.js")
+}
+@using (Html.BeginForm("Index", "CompanyProvince", FormMethod.Post, new { id = "searchForm" }))
+{
+    @Html.HiddenFor(m => m.PageIndex, new { id = "hdfCurrentPage" })
+    @Html.HiddenFor(m => m.PageSize)
+    <div id="jCrumbs" class="breadCrumb module frmsearch">
+        <table border="0" cellspacing="0" cellpadding="2">
+            <tr>
+                <td>
+                    <label>Từ khóa</label>
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.Keyword, new { tabindex = "0", @class = "in4", placeholder = "-- Từ khóa --" })
+                </td>
+                <td>
+                    <label>Từ ngày</label>
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.FromDate, new { tabindex = "2", @class = "datepicker numeric in1" })
+                </td>
+                <td>
+                    <label>Đến ngày</label>
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.ToDate, new { tabindex = "3", @class = "datepicker numeric in1" })
+                </td>
+                <td>
+                    <label>Văn phòng</label>
+                </td>
+                <td>
+                    @Html.DropDownListFor(m => Model.OfficeId, new SelectList(Model.OfficeSelectList, "Value", "Text"), new { tabindex = "4", @class = "in8" })
+                </td>
+                <td>
+                    <input type="button" class="btn btn-info" value="Tìm" onclick="return doSearch();" />
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span12 rel">
+            @if (AccountHelper.CheckPermission(Model.AccountInfo, "CompanyProvince.Index"))
+            {
+                <div class="permission">
+                    <select id="ddlPermission">
+                        <option value="-1">Phân quyền về văn phòng</option>
+                        @foreach (var office in Model.ListOffice)
+                        {
+                            <option value="@office.Id">@office.OfficeName</option>
+                        }
+                    </select>
+                    <input type="button" class="btn btn-success" onclick="return provincePermission();" value="Phân quyền">
+                </div>
+            }
+            <h3 class="heading">
+                Quản lý danh sách tỉnh thành- <span>@Html.Raw(Model.TotalString)</span>
+            </h3>
+            <table class="table table-striped table-bordered dTableR" id="dt_a">
+                <thead>
+                    <tr>
+                        <th class="center"><input data-type="cbOffice" type="checkbox" onchange="CheckAll(this, this.checked);" /></th>
+                        <th class="center">STT</th>
+                        <th class="center">Tên tỉnh thành</th>
+                        <th class="center">Phân quyền về VP</th>
+                        <th class="center">Ngày tạo</th>
+                        <th class="center">Cập nhật</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.ListCompanyProvince != null)
+                    {
+                        var index = Model.PageIndex * Model.PageSize;
+                        for (int i = 0; i < Model.ListCompanyProvince.Count; i++)
+                        {
+                            var item = Model.ListCompanyProvince[i];
+                            <tr id="Country_@item.Id">
+                                <td class="center">
+                                    <input data-id="@item.Id" type="checkbox" class="cbdelete cbOffice" onchange="ToogleCheck();" />
+                                </td>
+                                <td class="center">@(++index)</td>
+                                <td class="rel">@item.ProvinceName</td>
+                                <td class="center">
+                                    @Html.DropDownListFor(m => item.OfficeId, new SelectList(Model.ListOffice, "Id", "OfficeName", item.OfficeId), new { @class = "provincelist", data_id = item.Id, data_val = item.OfficeId })
+                                </td>
+                                <td class="center">
+                                    @item.CreateDate.Value.ToDateTimeString()
+                                </td>
+                                <td class="center">
+                                    @(item.UpdateDate.HasValue && item.UpdateDate.Value != DateTime.MinValue ? item.UpdateDate.Value.ToDateTimeString() : "-")
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+            <div class="paging">
+                <div class="span6">
+                    <div class="dataTables_info" id="dt_a_info">@Html.Raw(Model.TotalString)</div>
+                </div>
+                <div class="span6">
+                    @Html.Raw(Model.PagerString)
+                </div>
+            </div>
+        </div>
+    </div>
+}

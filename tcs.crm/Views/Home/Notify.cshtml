@@ -1,0 +1,38 @@
+﻿@using tcs.adapter.Helper
+@using tcs.bo
+@model List<NotifyBo>
+@if (Model != null && Model.Any())
+{
+    var isNew = ViewBag.NotRead;
+    var lstNotify = string.Join(",", Model.Select(n => n.Id).ToArray());
+    if (isNew <= 0)
+    {
+        lstNotify = string.Empty;
+    }
+    <li class="dropdown">
+        <a id="notifyicon" href="#" class="dropdown-toggle nav_condensed notify" data-toggle="dropdown" aria-expanded="true" onclick="return updateNotify('@lstNotify')">
+            @if (isNew > 0)
+            {
+                <label>@isNew</label>
+            }
+            <i class="fa fa-bell"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-right notifylist">
+            <li class="notify-head">Thông báo</li>
+            @foreach (var notify in Model)
+            {
+                var url = "javascript:void(0)";
+                if(notify.ObjectType > 0 && notify.ObjectId > 0)
+                {
+                    url = NotifyUrl.Instant().GetValueByKey(notify.ObjectType) + "?view=" + notify.ObjectId;
+                }
+                <li>
+                    <a href="@url">
+                        @Html.Raw(notify.Message)
+                        <label class="@(notify.IsRead ? "" : "iconred")"><i class="fa fa-flag-o"></i> @ViewHelper.GetPostTime(notify.CreateDate.Value, 0)</label>
+                    </a>
+                </li>
+            }
+        </ul>
+    </li>
+}

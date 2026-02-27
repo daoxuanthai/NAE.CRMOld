@@ -1,0 +1,37 @@
+﻿@model tcs.crm.Models.ContractDetailModel
+@if (Model != null)
+{
+    <div class="popup">
+        <a href="#" onclick="$.fancybox.close(); return false;" class="close">✖</a>
+        <div id="tabs">
+            <ul>
+                <li class="active"><a href="javascript:;" data-tab="tabs-info">Thông tin hợp đồng</a></li>
+                @if (Model.Id > 0)
+                {
+                    <li><a href="javascript:;" data-tab="tabs-profile" data-id="@Model.ContractInfo.Id">Giấy tờ hồ sơ</a></li>
+                    <li><a href="javascript:;" data-tab="tabs-comm">Commission</a></li>
+                    <li><a href="javascript:;" data-tab="tabs-history">Lịch sử cập nhật</a></li>
+                }
+            </ul>
+            <div id="tabs-info" class="tabs-ct active">
+                @Html.Partial("_ContractInfo", Model.ContractInfo)
+            </div>
+            @if (Model.Id > 0)
+            {
+                <div id="tabs-profile" class="tabs-ct">
+                    <div id="documentinfo"></div>
+                </div>
+                <div id="tabs-comm" class="tabs-ct">
+                    @Html.Partial("_CommissionInfo", Model.CommissionInfo)
+                </div>
+                if (Model.ContractProcessInfo != null)
+                {
+                    <div id="tabs-history" class="tabs-ct">
+                        @Html.Partial("_ContractProcessInfo", Model.ContractProcessInfo)
+                    </div>
+                }
+            }
+            <div class="clr"></div>
+        </div>
+    </div>
+}

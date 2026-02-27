@@ -1,0 +1,23 @@
+﻿@using tcs.lib
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - TCS Global</title>
+
+    <link href='https://fonts.googleapis.com//css?family=PT+Sans' rel='stylesheet' type='text/css'>
+    @Html.AddCss("~/Content/ext/bootstrap.css")
+    @Html.AddCss("~/Content/ext/bootstrap-responsive.css")
+    @Html.AddCss("~/Content/ext/blue.css")
+    @Html.AddCss("~/Content/ext/gebo.css")
+    <style id="maincss">@Html.RenderCss()</style>
+    @if (IsSectionDefined("JS_INC"))
+    {
+        @RenderSection("JS_INC")
+    }
+</head>
+<body class="login_page" style="height: auto;">
+    @RenderBody()
+</body>
+</html>

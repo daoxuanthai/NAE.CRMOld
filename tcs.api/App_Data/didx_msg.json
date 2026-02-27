@@ -1,0 +1,12 @@
+﻿{
+  "messages": [
+    {
+      "id": "nearly-sold-out",
+      "msg": { "vi": "0x100035\r\nWeb ID: {product.id}{product.code:\r\nERP Code: {}|}\r\n{product.name}\r\nhttps://www.vuivui.com/sp-{product.id}\r\n{stock_quantity:cond:>0?chỉ CÒN TỒN {} sản phẩm|đã HẾT TỒN KHO}" }
+    },
+    {
+      "id": "fruit-base-code",
+      "msg": { "vi": "0x100035\r\nWeb ID: {product.id}\r\n{product.name}\r\nhttps://www.vuivui.com/sp-{product.id}\r\nlỗi code cơ sở" }
+    }
+  ]
+}

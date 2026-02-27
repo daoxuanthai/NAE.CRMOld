@@ -1,0 +1,64 @@
+﻿@model tcs.crm.Models.CommissionInsertModel
+@using (Html.BeginForm("CommissionInfo", "Contract", FormMethod.Post, new { id = "frmCommissionInfo" }))
+{
+    @Html.HiddenFor(m => m.ContractId)
+    <input type="hidden" id="Id" name="Id" value="@Model.Id" />
+    @Html.Partial("_ListCommission", Model.ListCommission)
+    <div class="divaction">
+        <button onclick="return initInsertUpdate('CommissionInfo')" class="btn btn-success">Thêm</button>
+        <button class="btn btn-danger" onclick="return deleteCommissionInfo();">Xóa</button>
+    </div>
+    <div id="IUCommissionInfo" style="display: none">
+        <div class="line"></div>
+        <div class="tdrow">
+            <div class="field">
+                <label>Nội dung thu</label>
+                <div class="control">
+                    @Html.TextBoxFor(m => m.Name, new { maxlength = "128" })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+            <div class="field">
+                <label>Ngày thu</label>
+                <div class="control">
+                    @Html.TextBoxFor(m => m.CommissionDateString, new { maxlength = "10", @class = "date" })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+        </div>
+        <div class="tdrow">
+            <div class="field">
+                <label>Số tiền</label>
+                <div class="control">
+                    @Html.TextBoxFor(m => m.Commission, new { maxlength = "50", @class = "money" })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+            <div class="field">
+                <label>Thu tiền</label>
+                <div class="control checkbox">
+                    @Html.CheckBoxFor(m => m.IsCollect)
+                    <label for="IsCollect">Đã thu tiền</label>
+                </div>
+            </div>
+        </div>
+        <div class="tdrow">
+            <div class="field full">
+                <label>Ghi chú</label>
+                <div class="control">
+                    @Html.TextAreaFor(m => m.Note, new { maxlength = "1000", @rows = 3 })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+        </div>
+        <div class="tdrow">
+            <div class="divbtn">
+                <button id="btnSaveCommission" data-frm="frmCommissionInfo" class="btn btn-info" type="button">Lưu thông tin</button>
+                <button class="btn btn-danger" type="reset">Nhập mới</button>
+                <button onclick="return finishInsertUpdate('CommissionInfo');" class="btn btn-success" type="button">Hoàn tất</button>
+                <div class="frmerr"></div>
+            </div>
+        </div>
+    </div>
+    <div class="clr"></div>
+}

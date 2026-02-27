@@ -1,0 +1,77 @@
+﻿@using tcs.bo
+@using tcs.adapter.Helper
+@model tcs.bo.AccountInfo
+@if (Model != null)
+{
+    if (Model.TitleType == CompanyTitleType.Agency.Key)
+    {
+        <ul class="nav">
+            <li class="dropdown">
+                <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-user icon-white"></i> Khách hàng <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/Customer">Quản lý khách hàng</a></li>
+                    <li><a href="/Customer/ImportCustomer">Import danh sách khách hàng</a></li>
+                </ul>
+            </li>
+        </ul>
+    }
+    else
+    {
+        <ul class="nav">
+            @if (Model.TitleType == CompanyTitleType.Admin.Key || Model.TitleType == CompanyTitleType.Director.Key)
+            {
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-briefcase icon-white"></i> Công ty <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/CompanyOffice">Danh sách văn phòng</a></li>
+                        <li><a href="/CompanyTitle">Danh sách nhân viên</a></li>
+                        <li><a href="/CompanyCountry">Danh sách quốc gia</a></li>
+                        <li><a href="/CompanyProvince">Danh sách tỉnh thành</a></li>
+                        <li><a href="/Account">Quản lý tài khoản</a></li>
+                    </ul>
+                </li>
+            }
+            <li class="dropdown">
+                <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-user icon-white"></i> Khách hàng <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/Customer">Quản lý khách hàng</a></li>
+                    @if (AccountHelper.AllowContractManager(Model))
+                    {
+                        <li><a href="/Contract/Index">Quản lý hợp đồng</a></li>
+                    }
+                    <li><a href="/Customer/ImportCustomer">Import danh sách khách hàng</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-file icon-white"></i> Hội thảo <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/Seminar">Danh sách hội thảo</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-th icon-white"></i> Đối tác <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/School">Danh sách trường</a></li>
+                    <li><a href="/Scholarship">Danh sách học bổng</a></li>
+                </ul>
+            </li>
+            @*<li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-tasks icon-white"></i> Công việc <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Danh sách công việc</a></li>
+                        <li><a href="#">Thống kê công việc</a></li>
+                    </ul>
+                </li>*@
+            @*<li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-signal icon-white"></i> Thống kê <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Thống kê khách hàng</a></li>
+                        <li><a href="#">Thống kê hợp đồng</a></li>
+                        <li><a href="#">Thống kê hội thảo</a></li>
+                        <li><a href="#">Thống kê doanh thu</a></li>
+                        <li><a href="#">Thống kê công việc</a></li>
+                    </ul>
+                </li>*@
+        </ul>
+    }
+}

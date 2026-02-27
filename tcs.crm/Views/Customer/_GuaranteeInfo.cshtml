@@ -1,0 +1,55 @@
+﻿@model tcs.crm.Models.CustomerGuaranteeModel
+@using (Html.BeginForm("CustomerGuarantee", "Customer", FormMethod.Post, new { id = "frmCustomerGuarantee" }))
+{
+    @Html.HiddenFor(m => m.CustomerId)
+    <input type="hidden" id="Id" name="Id" value="@Model.Id" />
+    @Html.Partial("_ListGuarantee", Model.ListGuarantee)
+    <div class="divaction">
+        <button onclick="return initInsertUpdate('CustomerGuarantee')" class="btn btn-success">Thêm</button>
+        <button class="btn btn-danger" onclick="return deleteGuarantee();">Xóa</button>
+    </div>
+    <div id="IUCustomerGuarantee" style="display: none">
+        <div class="line"></div>
+        <div class="tdrow">
+            <div class="field two">
+                <label>Người bảo lãnh</label>
+                <div class="control">
+                    @Html.DropDownListFor(m => Model.RelativesId, new SelectList(Model.ListRelatives, "ID", "Name"))
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+        </div>
+        <div class="tdrow">
+            <div class="field">
+                <label>Người được BL</label>
+                <div class="control">
+                    @Html.TextBoxFor(m => m.Person, new { maxlength = "128" })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+            <div class="field">
+                <label>Loại bảo lãnh</label>
+                <div class="control">
+                    @Html.TextBoxFor(m => m.GuaranteeName, new { maxlength = "128" })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+            <div class="field">
+                <label>Năm bảo lãnh</label>
+                <div class="control">
+                    @Html.TextBoxFor(m => m.GuaranteeYear, new { maxlength = "128" })
+                    <i class="ierror">!</i>
+                </div>
+            </div>
+        </div>
+        <div class="tdrow">
+            <div class="divbtn">
+                <button onclick="return submitGuarantee()" class="btn btn-info" type="button">Lưu thông tin</button>
+                <button class="btn btn-danger" type="reset">Nhập mới</button>
+                <button class="btn btn-success" onclick="return finishInsertUpdate('CustomerGuarantee');" type="button">Hoàn tất</button>
+                <div class="frmerr"></div>
+            </div>
+        </div>
+    </div>
+    <div class="clr"></div>
+}

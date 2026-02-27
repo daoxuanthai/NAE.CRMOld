@@ -1,0 +1,54 @@
+﻿@using tcs.lib
+@model List<tcs.bo.CustomerCareBo>
+@if (Model != null)
+{
+    <table class="table table-striped table-bordered dTableR popuptbl listdata" id="dt_customerCarelist">
+        <thead>
+            <tr>
+                <th class="center w40"><input class="cball" data-type="cbcare" type="checkbox" onchange="CheckAll(this, this.checked);" /></th>
+                <th class="center w40">STT</th>
+                <th class="center w500">Nội dung chăm sóc</th>
+                <th class="center">Cập nhật</th>
+                <th class="center">Chăm sóc tiếp</th>
+                <th class="center">Ngày tạo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                var index = 1;
+                foreach (var item in Model)
+                {
+                    <tr id="customercare_@item.Id">
+                        <td style="text-align: center;">
+                            <input data-id="@item.Id" data-type="cbcare" type="checkbox" class="cbdelete cbcare" onchange="ToogleCheck();" />
+                        </td>
+                        <td class="center">@(index++)</td>
+                        <td class="rel">
+                            <p class="ccare">@Html.Raw(item.Advisory)</p>
+                            <a class="comment" data-id="@item.Id" title="Click để thêm bình luận"><i class="fa fa-comment"></i></a>
+                        </td>
+                        <td class="center">
+                            <a href="javascript:;" class="customername" onclick="return editCustomerCare(@item.Id)">Cập nhật</a>
+                        </td>
+                        <td class="center">
+                            @if (item.IsAlarm && item.AlarmTime > ConfigMgr.DefaultDate)
+                            {
+                                @item.AlarmTime.ToDateString()
+                            }
+                        </td>
+                        <td class="center">
+                            @Html.Raw(item.CreateDate.Value.ToDateTimeString("dd/MM/yyyy<br>HH:mm:ss"))
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="6" class="center">Chưa có dữ liệu</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,16 @@
+﻿@model tcs.crm.Models.SeminarRegisterInsertModel
+@if (Model != null)
+{
+    <div class="popup">
+        <a href="#" onclick="$.fancybox.close(); return false;" class="close">✖</a>
+        <div id="tabs">
+            <ul>
+                <li class="active"><a href="javascript:;" data-tab="tabs-info">Thông tin đăng ký</a></li>
+            </ul>
+            <div id="tabs-info" class="tabs-ct active">
+                @Html.Partial("_SeminarRegisterInfo", Model)
+            </div>
+            <div class="clr"></div>
+        </div>
+    </div>
+}

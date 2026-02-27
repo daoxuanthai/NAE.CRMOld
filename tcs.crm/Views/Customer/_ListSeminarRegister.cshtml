@@ -1,0 +1,65 @@
+﻿@using tcs.bo
+@model List<SeminarRegisterBo>
+@if (Model != null)
+{
+    <table class="table table-striped table-bordered dTableR popuptbl listdata" id="dt_SeminarRegisterList">
+        <thead>
+            <tr>
+                <th class="center w40"><input class="cball" data-type="cblanguage" type="checkbox" onchange="CheckAll(this, this.checked);" /></th>
+                <th class="center w80">STT</th>
+                <th class="center w350">Tên hội thảo</th>
+                <th class="center">Mã ID</th>
+                <th class="center">Trường PV1</th>
+                <th class="center">Trường PV2</th>
+                <th class="center">Trường PV3</th>
+                <th class="center">Nhân viên</th>
+                <th class="center">Ngày tạo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                var index = 1;
+                foreach (var item in Model)
+                {
+                    <tr id="seminarregister_@item.Id">
+                        <td style="text-align: center;">
+                            <input data-id="@item.Id" data-type="cbseminarregister" type="checkbox" class="cbdelete cbseminarregister" onchange="ToogleCheck();" />
+                        </td>
+                        <td class="center">@(index++)</td>
+                        <td class="rel">
+                            <a href="javascript:;" onclick="return editSeminarRegister(@item.Id)" title="Click để cập nhật">@item.SeminarName</a>
+                            <a href="javascript:;" class="updatelink" onclick="return editSeminarRegister(@item.Id)" title="Click để cập nhật">Cập nhật</a>
+                        </td>
+                        <td class="center">@item.TicketId</td>
+                        <td class="center">
+                            @item.School1<br />
+                            @item.School1Time
+                        </td>
+                        <td class="center">
+                            @item.School2<br />
+                            @item.School2Time
+                        </td>
+                        <td class="center">
+                            @item.School3<br />
+                            @item.School3Time
+                        </td>
+                        <td class="center">
+                            <p>@item.EmployeeName</p>
+                        </td>
+                        <td class="center">
+                            @Html.Raw(item.CreateDate.Value.ToString("dd/MM/yyyy<br>HH:mm:ss"))
+                        </td>
+
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="7" class="center">Chưa có dữ liệu</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,91 @@
+﻿@model tcs.crm.Models.CompanyTitleInsertModel
+@if (Model != null)
+{
+    <div class="popup">
+        <a href="#" onclick="$.fancybox.close(); return false;" class="close">✖</a>
+        <div id="tabs">
+            <ul>
+                <li class="active"><a href="javascript:;">Thông tin vị trí</a></li>
+            </ul>
+            <div id="tabs-info" class="tabs-ct active">
+                @using (Html.BeginForm("Detail", "CompanyTitle", FormMethod.Post, new { id = "frmCompanyTitle" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" id="Id" name="Id" value="@Model.Id" />
+                    <div class="tdrow">
+                        <div class="field">
+                            <label>Tên vị trí</label>
+                            <div class="control">
+                                @Html.TextBoxFor(m => m.Title, new { maxlength = "128" })
+                                <i class="ierror">!</i>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Văn phòng</label>
+                            <div class="control">
+                                @Html.DropDownListFor(m => Model.OfficeId, new SelectList(Model.ListOffice, "Id", "OfficeName"))
+                                <i class="ierror">!</i>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Tên ngắn</label>
+                            <div class="control">
+                                @Html.TextBoxFor(m => m.Code, new { maxlength = "50", placeholder = "VD: TVP-HCM" })
+                                <i class="ierror">!</i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tdrow">
+                        <div class="field two">
+                            <label>Tài khoản</label>
+                            <div class="control">
+                                @Html.DropDownListFor(m => Model.UserId, new SelectList(Model.ListUser, "Value", "Text"))
+                                <i class="ierror">!</i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tdrow">
+                        <div class="field full">
+                            <label>Ghi chú</label>
+                            <div class="control">
+                                @Html.TextAreaFor(m => m.Note, new { maxlength = "1000", @rows = 3 })
+                                <i class="ierror">!</i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tdrow">
+                        <div class="field">
+                            <label>Loại tài khoản</label>
+                            <div class="control">
+                                @Html.DropDownListFor(m => Model.UserType, new SelectList(Model.ListUserType, "Key", "Value"))
+                                <i class="ierror">!</i>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Tạm khóa</label>
+                            <div class="control checkbox">
+                                <label>@Html.CheckBoxFor(m => m.IsLock) Đang tạm khóa</label>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Xem all VP</label>
+                            <div class="control checkbox">
+                                <label>@Html.CheckBoxFor(m => m.IsViewAll) Xem data all VP</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tdrow">
+                        <div class="divbtn">
+                            <button class="btn btn-info" type="button">Lưu thông tin</button>
+                            <button class="btn btn-danger" type="reset">Nhập mới</button>
+                            <button class="btn btn-success" onclick="$.fancybox.close(); return false;">Đóng</button>
+                            <div class="frmerr"></div>
+                        </div>
+                    </div>
+                    <div class="clr"></div>
+                }
+            </div>
+            <div class="clr"></div>
+        </div>
+    </div>
+}

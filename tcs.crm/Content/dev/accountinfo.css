@@ -1,0 +1,51 @@
+﻿.tblUpdateInfo {
+    display: block;
+    margin: 100px auto;
+    width: 500px;
+}
+
+    .tblUpdateInfo h2, .tblChangePassword h2 {
+        display: block;
+        text-align: center;
+        padding: 15px 0;
+    }
+
+.avatarlink {
+    display: block;
+    clear: both;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.frmerror {
+    display: block;
+    clear: both;
+    color: red;
+    padding: 10px 0;
+}
+
+.tblChangePassword {
+    display: block;
+    margin: 100px auto;
+    width: 400px;
+}
+
+    .tblChangePassword td {
+        vertical-align: top;
+    }
+
+    .tblChangePassword tr td:first-child {
+        padding-top: 13px;
+    }
+
+    .tblChangePassword td input {
+        margin: 0;
+    }
+
+.field-validation-error {
+    display: block;
+    clear: both;
+    padding: 5px 0;
+    color: red;
+    font-size: 12px;
+}

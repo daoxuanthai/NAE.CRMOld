@@ -1,0 +1,11 @@
+﻿@using tcs.bo
+@model List<RelativesBo>
+@if (Model != null && Model.Any())
+{
+    <select id="RelativesId" name="RelativesId">
+        @foreach (var item in Model)
+        {
+            <option value="@item.Id">@item.Name</option>
+        }
+    </select>
+}

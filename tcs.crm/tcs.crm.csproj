@@ -1,0 +1,1052 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E310B74E-F450-4083-A234-B1CDA1705DDE}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>tcs.crm</RootNamespace>
+    <AssemblyName>tcs.crm</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EPPlus, Version=4.5.2.1, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.5.2.1\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebHelpers.3.2.6\lib\net45\Microsoft.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI">
+      <HintPath>..\dlls\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.6\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.6\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.Data, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.3.2.6\lib\net45\WebMatrix.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.3.2.6\lib\net45\WebMatrix.WebData.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CompanyProvinceController.cs" />
+    <Compile Include="Controllers\CompanyOfficeController.cs" />
+    <Compile Include="Controllers\CompanyCountryController.cs" />
+    <Compile Include="Controllers\CompanyTitleController.cs" />
+    <Compile Include="Controllers\ContractController.cs" />
+    <Compile Include="Controllers\ProfileTypeController.cs" />
+    <Compile Include="Controllers\ScholarshipController.cs" />
+    <Compile Include="Controllers\SchoolController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SeminarRegisterController.cs" />
+    <Compile Include="Controllers\SeminarController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CompanyCountryModels.cs" />
+    <Compile Include="Models\CompanyOfficeModels.cs" />
+    <Compile Include="Models\CompanyProvinceModels.cs" />
+    <Compile Include="Models\ProfileModels.cs" />
+    <Compile Include="Models\ScholarshipModels.cs" />
+    <Compile Include="Models\SchoolModels.cs" />
+    <Compile Include="Models\CompanyTitleModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\dev\account.css" />
+    <Content Include="Content\dev\account.min.css">
+      <DependentUpon>account.css</DependentUpon>
+    </Content>
+    <Content Include="Content\dev\accountinfo.css" />
+    <Content Include="Content\dev\company.css" />
+    <Content Include="Content\dev\company.min.css">
+      <DependentUpon>company.css</DependentUpon>
+    </Content>
+    <Content Include="Content\dev\contract.css" />
+    <Content Include="Content\dev\contract.min.css">
+      <DependentUpon>contract.css</DependentUpon>
+    </Content>
+    <Content Include="Content\dev\customer.css" />
+    <Content Include="Content\dev\customer.min.css">
+      <DependentUpon>customer.css</DependentUpon>
+    </Content>
+    <Content Include="Content\dev\form.css" />
+    <Content Include="Content\dev\loading.css" />
+    <Content Include="Content\dev\notify.css" />
+    <Content Include="Content\dev\popup.css" />
+    <Content Include="Content\dev\profiletype.css" />
+    <Content Include="Content\dev\profiletype.min.css">
+      <DependentUpon>profiletype.css</DependentUpon>
+    </Content>
+    <Content Include="Content\dev\school.css" />
+    <Content Include="Content\dev\school.min.css">
+      <DependentUpon>school.css</DependentUpon>
+    </Content>
+    <Content Include="Content\dev\seminar.css" />
+    <Content Include="Content\dev\seminar.min.css">
+      <DependentUpon>seminar.css</DependentUpon>
+    </Content>
+    <Content Include="Content\dev\tab.css" />
+    <Content Include="Content\dev\tab.min.css">
+      <DependentUpon>tab.css</DependentUpon>
+    </Content>
+    <Content Include="Content\dev\task.css" />
+    <Content Include="Content\ext\blue.css" />
+    <Content Include="Content\ext\blue.min.css">
+      <DependentUpon>blue.css</DependentUpon>
+    </Content>
+    <Content Include="Content\ext\bootstrap.css" />
+    <Content Include="Content\dev\dashboard.css" />
+    <Content Include="Content\dev\dashboard.min.css">
+      <DependentUpon>dashboard.css</DependentUpon>
+    </Content>
+    <Content Include="Content\dev\global.css" />
+    <Content Include="Content\dev\home.css" />
+    <Content Include="Content\dev\home.min.css">
+      <DependentUpon>home.css</DependentUpon>
+    </Content>
+    <Content Include="Content\ext\bootstrap.min.css">
+      <DependentUpon>bootstrap.css</DependentUpon>
+    </Content>
+    <Content Include="Content\ext\datepicker.css" />
+    <Content Include="Content\ext\datepicker.min.css">
+      <DependentUpon>datepicker.css</DependentUpon>
+    </Content>
+    <Content Include="Content\ext\gebo.css" />
+    <Content Include="Content\ext\gebo.min.css">
+      <DependentUpon>gebo.css</DependentUpon>
+    </Content>
+    <Content Include="Content\ext\jquery.fancybox.css" />
+    <Content Include="Content\ext\jquery.fancybox.min.css">
+      <DependentUpon>jquery.fancybox.css</DependentUpon>
+    </Content>
+    <Content Include="Content\ext\perfect-scrollbar.css" />
+    <Content Include="Content\ext\perfect-scrollbar.min.css">
+      <DependentUpon>perfect-scrollbar.css</DependentUpon>
+    </Content>
+    <Content Include="Content\img\acc_icons.png" />
+    <Content Include="Content\img\adt-icons.png" />
+    <Content Include="Content\img\ajax_loader.gif" />
+    <Content Include="Content\img\attach.png" />
+    <Content Include="Content\img\bg_a.png" />
+    <Content Include="Content\img\bg_b.png" />
+    <Content Include="Content\img\bg_c.png" />
+    <Content Include="Content\img\bg_d.png" />
+    <Content Include="Content\img\bg_e.png" />
+    <Content Include="Content\img\blank.gif" />
+    <Content Include="Content\img\bullet_blue.png" />
+    <Content Include="Content\img\bullet_green.png" />
+    <Content Include="Content\img\bullet_orange.png" />
+    <Content Include="Content\img\bullet_red.png" />
+    <Content Include="Content\img\details_close.png" />
+    <Content Include="Content\img\details_open.png" />
+    <Content Include="Content\img\error_big.png" />
+    <Content Include="Content\img\external_link.png" />
+    <Content Include="Content\img\flags\flags.css" />
+    <Content Include="Content\img\flags\flags.png" />
+    <Content Include="Content\img\gCons\add-item.png" />
+    <Content Include="Content\img\gCons\addressbook.png" />
+    <Content Include="Content\img\gCons\agent.png" />
+    <Content Include="Content\img\gCons\apple.png" />
+    <Content Include="Content\img\gCons\arrow-round.png" />
+    <Content Include="Content\img\gCons\badge.png" />
+    <Content Include="Content\img\gCons\bar-chart-02.png" />
+    <Content Include="Content\img\gCons\bar-chart.png" />
+    <Content Include="Content\img\gCons\battery-full.png" />
+    <Content Include="Content\img\gCons\bird.png" />
+    <Content Include="Content\img\gCons\boat.png" />
+    <Content Include="Content\img\gCons\bookmark.png" />
+    <Content Include="Content\img\gCons\briefcase.png" />
+    <Content Include="Content\img\gCons\calculator.png" />
+    <Content Include="Content\img\gCons\calendar.png" />
+    <Content Include="Content\img\gCons\cassette.png" />
+    <Content Include="Content\img\gCons\chain.png" />
+    <Content Include="Content\img\gCons\chat-.png" />
+    <Content Include="Content\img\gCons\chat-02.png" />
+    <Content Include="Content\img\gCons\cloud-filled.png" />
+    <Content Include="Content\img\gCons\cloud-outline.png" />
+    <Content Include="Content\img\gCons\computer.png" />
+    <Content Include="Content\img\gCons\configuration.png" />
+    <Content Include="Content\img\gCons\configuration02.png" />
+    <Content Include="Content\img\gCons\connected.png" />
+    <Content Include="Content\img\gCons\connections.png" />
+    <Content Include="Content\img\gCons\container.png" />
+    <Content Include="Content\img\gCons\copy-item.png" />
+    <Content Include="Content\img\gCons\database.png" />
+    <Content Include="Content\img\gCons\delete-item.png" />
+    <Content Include="Content\img\gCons\disc.png" />
+    <Content Include="Content\img\gCons\dollar.png" />
+    <Content Include="Content\img\gCons\download.png" />
+    <Content Include="Content\img\gCons\edit.png" />
+    <Content Include="Content\img\gCons\email.png" />
+    <Content Include="Content\img\gCons\fan.png" />
+    <Content Include="Content\img\gCons\fancy-globe.png" />
+    <Content Include="Content\img\gCons\female-user.png" />
+    <Content Include="Content\img\gCons\fire.png" />
+    <Content Include="Content\img\gCons\first-aid.png" />
+    <Content Include="Content\img\gCons\flag.png" />
+    <Content Include="Content\img\gCons\flower.png" />
+    <Content Include="Content\img\gCons\full-screen.png" />
+    <Content Include="Content\img\gCons\glasses.png" />
+    <Content Include="Content\img\gCons\globe.png" />
+    <Content Include="Content\img\gCons\happy-face.png" />
+    <Content Include="Content\img\gCons\headphone.png" />
+    <Content Include="Content\img\gCons\heart.png" />
+    <Content Include="Content\img\gCons\home.png" />
+    <Content Include="Content\img\gCons\ID.png" />
+    <Content Include="Content\img\gCons\ipod.png" />
+    <Content Include="Content\img\gCons\lab.png" />
+    <Content Include="Content\img\gCons\lady.png" />
+    <Content Include="Content\img\gCons\lamp.png" />
+    <Content Include="Content\img\gCons\leaves.png" />
+    <Content Include="Content\img\gCons\light.png" />
+    <Content Include="Content\img\gCons\line-globe.png" />
+    <Content Include="Content\img\gCons\lock.png" />
+    <Content Include="Content\img\gCons\lookup.png" />
+    <Content Include="Content\img\gCons\male-user.png" />
+    <Content Include="Content\img\gCons\microphone.png" />
+    <Content Include="Content\img\gCons\mobile.png" />
+    <Content Include="Content\img\gCons\mobile2.png" />
+    <Content Include="Content\img\gCons\mouse.png" />
+    <Content Include="Content\img\gCons\multi-agents.png" />
+    <Content Include="Content\img\gCons\music-node.png" />
+    <Content Include="Content\img\gCons\network-pc.png" />
+    <Content Include="Content\img\gCons\network.png" />
+    <Content Include="Content\img\gCons\next-item.png" />
+    <Content Include="Content\img\gCons\phone.png" />
+    <Content Include="Content\img\gCons\pie-chart.png" />
+    <Content Include="Content\img\gCons\pin.png" />
+    <Content Include="Content\img\gCons\plane.png" />
+    <Content Include="Content\img\gCons\print.png" />
+    <Content Include="Content\img\gCons\processing-02.png" />
+    <Content Include="Content\img\gCons\processing.png" />
+    <Content Include="Content\img\gCons\push-pin.png" />
+    <Content Include="Content\img\gCons\recycle-empty.png" />
+    <Content Include="Content\img\gCons\recycle-full.png" />
+    <Content Include="Content\img\gCons\reload.png" />
+    <Content Include="Content\img\gCons\rss.png" />
+    <Content Include="Content\img\gCons\satellite.png" />
+    <Content Include="Content\img\gCons\save.png" />
+    <Content Include="Content\img\gCons\scale.png" />
+    <Content Include="Content\img\gCons\Scissors.png" />
+    <Content Include="Content\img\gCons\screen.png" />
+    <Content Include="Content\img\gCons\search.png" />
+    <Content Include="Content\img\gCons\server.png" />
+    <Content Include="Content\img\gCons\shield.png" />
+    <Content Include="Content\img\gCons\shut-down.png" />
+    <Content Include="Content\img\gCons\star.png" />
+    <Content Include="Content\img\gCons\tag.png" />
+    <Content Include="Content\img\gCons\tap.png" />
+    <Content Include="Content\img\gCons\tree.png" />
+    <Content Include="Content\img\gCons\umbrella.png" />
+    <Content Include="Content\img\gCons\unlock.png" />
+    <Content Include="Content\img\gCons\usb.png" />
+    <Content Include="Content\img\gCons\van.png" />
+    <Content Include="Content\img\gCons\wifi.png" />
+    <Content Include="Content\img\gCons\world.png" />
+    <Content Include="Content\img\glyphicons-halflings-white.png" />
+    <Content Include="Content\img\glyphicons-halflings.png" />
+    <Content Include="Content\img\loading.gif" />
+    <Content Include="Content\img\main_bg.gif" />
+    <Content Include="Content\img\main_bg_right.gif" />
+    <Content Include="Content\img\multiple-select.png" />
+    <Content Include="Content\img\noavatar.png" />
+    <Content Include="Content\img\poster.jpg" />
+    <Content Include="Content\img\sidebar_switch.png" />
+    <Content Include="Content\img\spinner_arrows.gif" />
+    <Content Include="Content\img\splashy\splashy.css" />
+    <Content Include="Content\img\splashy\splashy.png" />
+    <Content Include="Content\img\vid_local.png" />
+    <Content Include="Content\img\vid_vimeo.png" />
+    <Content Include="Content\img\vid_yt.png" />
+    <Content Include="Content\img\vimeo.png" />
+    <Content Include="Content\min\global.css" />
+    <Content Include="Content\min\global.min.css">
+      <DependentUpon>global.css</DependentUpon>
+    </Content>
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\dev\account.js" />
+    <Content Include="Scripts\dev\company-province.js" />
+    <Content Include="Scripts\dev\company-country.js" />
+    <Content Include="Scripts\dev\company-office.js" />
+    <Content Include="Scripts\dev\scholarship.js" />
+    <Content Include="Scripts\dev\seminarregister.js" />
+    <Content Include="Scripts\dev\seminar.js" />
+    <Content Include="Scripts\dev\profiletype.js" />
+    <Content Include="Scripts\dev\school.js" />
+    <Content Include="Scripts\dev\company-title.js" />
+    <Content Include="Scripts\dev\customer.js" />
+    <Content Include="Scripts\dev\dashboard.js" />
+    <Content Include="Scripts\dev\import.js" />
+    <Content Include="Scripts\dev\login.js" />
+    <Content Include="Scripts\ext\bootstrap-datepicker.js" />
+    <Content Include="Scripts\ext\bootstrap-timepicker.js" />
+    <Content Include="Scripts\ext\bootstrap.js" />
+    <Content Include="Scripts\ext\datatables\css\demo_page.css" />
+    <Content Include="Scripts\ext\datatables\css\demo_table.css" />
+    <Content Include="Scripts\ext\datatables\css\demo_table_jui.css" />
+    <Content Include="Scripts\ext\datatables\css\jquery.dataTables.css" />
+    <Content Include="Scripts\ext\datatables\css\jquery.dataTables_themeroller.css" />
+    <Content Include="Scripts\ext\datatables\extras\AutoFill\callbacks.html" />
+    <Content Include="Scripts\ext\datatables\extras\AutoFill\columns.html" />
+    <Content Include="Scripts\ext\datatables\extras\AutoFill\index.html" />
+    <Content Include="Scripts\ext\datatables\extras\AutoFill\inputs.html" />
+    <Content Include="Scripts\ext\datatables\extras\AutoFill\media\css\AutoFill.css" />
+    <Content Include="Scripts\ext\datatables\extras\AutoFill\media\docs\02ff627f40.html" />
+    <Content Include="Scripts\ext\datatables\extras\AutoFill\media\docs\36456bf45f.html" />
+    <Content Include="Scripts\ext\datatables\extras\AutoFill\media\docs\47cac4f141.html" />
+    <Content Include="Scripts\ext\datatables\extras\AutoFill\media\docs\5a72546831.html" />
+    <Content Include="Scripts\ext\datatables\extras\AutoFill\media\docs\8ee4007a12.html" />
+    <Content Include="Scripts\ext\datatables\extras\AutoFill\media\docs\a69b02bcf2.html" />
+    <Content Include="Scripts\ext\datatables\extras\AutoFill\media\docs\AutoFill.html" />
+    <Content Include="Scripts\ext\datatables\extras\AutoFill\media\docs\b44bd4821a.html" />
+    <Content Include="Scripts\ext\datatables\extras\AutoFill\media\docs\c6945fdb4a.html" />
+    <Content Include="Scripts\ext\datatables\extras\AutoFill\media\docs\global.html" />
+    <Content Include="Scripts\ext\datatables\extras\AutoFill\media\docs\index.html" />
+    <Content Include="Scripts\ext\datatables\extras\AutoFill\media\docs\media\css\doc.css" />
+    <Content Include="Scripts\ext\datatables\extras\AutoFill\media\docs\media\css\shCore.css" />
+    <Content Include="Scripts\ext\datatables\extras\AutoFill\media\docs\media\css\shThemeDataTables.css" />
+    <Content Include="Scripts\ext\datatables\extras\AutoFill\media\docs\media\images\arrow.jpg" />
+    <Content Include="Scripts\ext\datatables\extras\AutoFill\media\docs\media\images\extended.png" />
+    <Content Include="Scripts\ext\datatables\extras\AutoFill\media\docs\media\js\doc.js" />
+    <Content Include="Scripts\ext\datatables\extras\AutoFill\media\docs\media\js\jquery.js" />
+    <Content Include="Scripts\ext\datatables\extras\AutoFill\media\docs\media\js\shBrushJScript.js" />
+    <Content Include="Scripts\ext\datatables\extras\AutoFill\media\docs\media\js\shCore.js" />
+    <Content Include="Scripts\ext\datatables\extras\AutoFill\media\images\filler.png" />
+    <Content Include="Scripts\ext\datatables\extras\AutoFill\media\js\AutoFill.js" />
+    <Content Include="Scripts\ext\datatables\extras\AutoFill\media\js\AutoFill.min.js" />
+    <Content Include="Scripts\ext\datatables\extras\AutoFill\scrolling.html" />
+    <Content Include="Scripts\ext\datatables\extras\ColReorder\alt_insert.html" />
+    <Content Include="Scripts\ext\datatables\extras\ColReorder\colvis.html" />
+    <Content Include="Scripts\ext\datatables\extras\ColReorder\col_filter.html" />
+    <Content Include="Scripts\ext\datatables\extras\ColReorder\fixedcolumns.html" />
+    <Content Include="Scripts\ext\datatables\extras\ColReorder\fixedheader.html" />
+    <Content Include="Scripts\ext\datatables\extras\ColReorder\index.html" />
+    <Content Include="Scripts\ext\datatables\extras\ColReorder\media\css\ColReorder.css" />
+    <Content Include="Scripts\ext\datatables\extras\ColReorder\media\docs\46848f6f3b.html" />
+    <Content Include="Scripts\ext\datatables\extras\ColReorder\media\docs\4f1246032c.html" />
+    <Content Include="Scripts\ext\datatables\extras\ColReorder\media\docs\a69b02bcf2.html" />
+    <Content Include="Scripts\ext\datatables\extras\ColReorder\media\docs\ColReorder.html" />
+    <Content Include="Scripts\ext\datatables\extras\ColReorder\media\docs\global.html" />
+    <Content Include="Scripts\ext\datatables\extras\ColReorder\media\docs\index.html" />
+    <Content Include="Scripts\ext\datatables\extras\ColReorder\media\docs\media\css\doc.css" />
+    <Content Include="Scripts\ext\datatables\extras\ColReorder\media\docs\media\css\shCore.css" />
+    <Content Include="Scripts\ext\datatables\extras\ColReorder\media\docs\media\css\shThemeDataTables.css" />
+    <Content Include="Scripts\ext\datatables\extras\ColReorder\media\docs\media\images\arrow.jpg" />
+    <Content Include="Scripts\ext\datatables\extras\ColReorder\media\docs\media\images\extended.png" />
+    <Content Include="Scripts\ext\datatables\extras\ColReorder\media\docs\media\js\doc.js" />
+    <Content Include="Scripts\ext\datatables\extras\ColReorder\media\docs\media\js\jquery.js" />
+    <Content Include="Scripts\ext\datatables\extras\ColReorder\media\docs\media\js\shBrushJScript.js" />
+    <Content Include="Scripts\ext\datatables\extras\ColReorder\media\docs\media\js\shCore.js" />
+    <Content Include="Scripts\ext\datatables\extras\ColReorder\media\images\insert.png" />
+    <Content Include="Scripts\ext\datatables\extras\ColReorder\media\js\ColReorder.js" />
+    <Content Include="Scripts\ext\datatables\extras\ColReorder\media\js\ColReorder.min.js" />
+    <Content Include="Scripts\ext\datatables\extras\ColReorder\predefined.html" />
+    <Content Include="Scripts\ext\datatables\extras\ColReorder\reset.html" />
+    <Content Include="Scripts\ext\datatables\extras\ColReorder\scrolling.html" />
+    <Content Include="Scripts\ext\datatables\extras\ColReorder\server_side.html" />
+    <Content Include="Scripts\ext\datatables\extras\ColReorder\state_save.html" />
+    <Content Include="Scripts\ext\datatables\extras\ColReorder\theme.html" />
+    <Content Include="Scripts\ext\datatables\extras\ColVis\exclude_columns.html" />
+    <Content Include="Scripts\ext\datatables\extras\ColVis\index.html" />
+    <Content Include="Scripts\ext\datatables\extras\ColVis\media\css\ColVis.css" />
+    <Content Include="Scripts\ext\datatables\extras\ColVis\media\css\ColVisAlt.css" />
+    <Content Include="Scripts\ext\datatables\extras\ColVis\media\docs\a69b02bcf2.html" />
+    <Content Include="Scripts\ext\datatables\extras\ColVis\media\docs\ccb5a49865.html" />
+    <Content Include="Scripts\ext\datatables\extras\ColVis\media\docs\ColVis.html" />
+    <Content Include="Scripts\ext\datatables\extras\ColVis\media\docs\global.html" />
+    <Content Include="Scripts\ext\datatables\extras\ColVis\media\docs\index.html" />
+    <Content Include="Scripts\ext\datatables\extras\ColVis\media\docs\media\css\doc.css" />
+    <Content Include="Scripts\ext\datatables\extras\ColVis\media\docs\media\css\shCore.css" />
+    <Content Include="Scripts\ext\datatables\extras\ColVis\media\docs\media\css\shThemeDataTables.css" />
+    <Content Include="Scripts\ext\datatables\extras\ColVis\media\docs\media\images\arrow.jpg" />
+    <Content Include="Scripts\ext\datatables\extras\ColVis\media\docs\media\images\extended.png" />
+    <Content Include="Scripts\ext\datatables\extras\ColVis\media\docs\media\js\doc.js" />
+    <Content Include="Scripts\ext\datatables\extras\ColVis\media\docs\media\js\jquery.js" />
+    <Content Include="Scripts\ext\datatables\extras\ColVis\media\docs\media\js\shBrushJScript.js" />
+    <Content Include="Scripts\ext\datatables\extras\ColVis\media\docs\media\js\shCore.js" />
+    <Content Include="Scripts\ext\datatables\extras\ColVis\media\images\button.png" />
+    <Content Include="Scripts\ext\datatables\extras\ColVis\media\js\ColVis.js" />
+    <Content Include="Scripts\ext\datatables\extras\ColVis\media\js\ColVis.min.js" />
+    <Content Include="Scripts\ext\datatables\extras\ColVis\mouseover.html" />
+    <Content Include="Scripts\ext\datatables\extras\ColVis\style.html" />
+    <Content Include="Scripts\ext\datatables\extras\ColVis\text.html" />
+    <Content Include="Scripts\ext\datatables\extras\ColVis\theme.html" />
+    <Content Include="Scripts\ext\datatables\extras\ColVis\title_callback.html" />
+    <Content Include="Scripts\ext\datatables\extras\ColVis\two_tables.html" />
+    <Content Include="Scripts\ext\datatables\extras\ColVis\two_tables_identical.html" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\col_filter.html" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\css_size.html" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\docs\070023b890.html" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\docs\526f872207.html" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\docs\73098af57c.html" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\docs\889588ec06.html" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\docs\91bce7c4ad.html" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\docs\a6bd52f587.html" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\docs\d3890ba7c4.html" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\docs\e20106c59a.html" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\docs\FixedColumns.defaults.html" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\docs\FixedColumns.html" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\docs\global.html" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\docs\index.html" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\docs\media\css\doc.css" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\docs\media\css\shCore.css" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\docs\media\css\shThemeDataTables.css" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\docs\media\images\arrow.jpg" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\docs\media\images\extended.png" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\docs\media\js\doc.js" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\docs\media\js\jquery.js" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\docs\media\js\shBrushJScript.js" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\docs\media\js\shCore.js" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\index.html" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\index_column.html" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\left_right_columns.html" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\media\js\FixedColumns.js" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\media\js\FixedColumns.min.js" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\right_column.html" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\rowspan.html" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\row_grouping.html" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\row_grouping_height.html" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\scale_fixed.html" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\scale_relative.html" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\server-side-processing.html" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\themed.html" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\two_columns.html" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\x_y_scrolling.html" />
+    <Content Include="Scripts\ext\datatables\extras\FixedHeader\html_table.html" />
+    <Content Include="Scripts\ext\datatables\extras\FixedHeader\index.html" />
+    <Content Include="Scripts\ext\datatables\extras\FixedHeader\js\FixedHeader.js" />
+    <Content Include="Scripts\ext\datatables\extras\FixedHeader\js\FixedHeader.min.js" />
+    <Content Include="Scripts\ext\datatables\extras\FixedHeader\top_bottom_left_right.html" />
+    <Content Include="Scripts\ext\datatables\extras\FixedHeader\top_left.html" />
+    <Content Include="Scripts\ext\datatables\extras\FixedHeader\two_tables.html" />
+    <Content Include="Scripts\ext\datatables\extras\FixedHeader\zIndexes.html" />
+    <Content Include="Scripts\ext\datatables\extras\KeyTable\datatable.html" />
+    <Content Include="Scripts\ext\datatables\extras\KeyTable\datatable_scrolling.html" />
+    <Content Include="Scripts\ext\datatables\extras\KeyTable\editing.html" />
+    <Content Include="Scripts\ext\datatables\extras\KeyTable\form.html" />
+    <Content Include="Scripts\ext\datatables\extras\KeyTable\index.html" />
+    <Content Include="Scripts\ext\datatables\extras\KeyTable\js\KeyTable.js" />
+    <Content Include="Scripts\ext\datatables\extras\KeyTable\js\KeyTable.min.js" />
+    <Content Include="Scripts\ext\datatables\extras\Scroller\api_scrolling.html" />
+    <Content Include="Scripts\ext\datatables\extras\Scroller\index.html" />
+    <Content Include="Scripts\ext\datatables\extras\Scroller\large_js_source.html" />
+    <Content Include="Scripts\ext\datatables\extras\Scroller\media\data\2500.txt" />
+    <Content Include="Scripts\ext\datatables\extras\Scroller\media\data\server_processing.php" />
+    <Content Include="Scripts\ext\datatables\extras\Scroller\media\docs\140369713c.html" />
+    <Content Include="Scripts\ext\datatables\extras\Scroller\media\docs\28e3b9ac00.html" />
+    <Content Include="Scripts\ext\datatables\extras\Scroller\media\docs\fd374c06d9.html" />
+    <Content Include="Scripts\ext\datatables\extras\Scroller\media\docs\global.html" />
+    <Content Include="Scripts\ext\datatables\extras\Scroller\media\docs\media\css\doc.css" />
+    <Content Include="Scripts\ext\datatables\extras\Scroller\media\docs\media\css\shCore.css" />
+    <Content Include="Scripts\ext\datatables\extras\Scroller\media\docs\media\css\shThemeDataTables.css" />
+    <Content Include="Scripts\ext\datatables\extras\Scroller\media\docs\media\images\arrow.jpg" />
+    <Content Include="Scripts\ext\datatables\extras\Scroller\media\docs\media\images\extended.png" />
+    <Content Include="Scripts\ext\datatables\extras\Scroller\media\docs\media\js\doc.js" />
+    <Content Include="Scripts\ext\datatables\extras\Scroller\media\docs\media\js\jquery.js" />
+    <Content Include="Scripts\ext\datatables\extras\Scroller\media\docs\media\js\shBrushJScript.js" />
+    <Content Include="Scripts\ext\datatables\extras\Scroller\media\docs\media\js\shCore.js" />
+    <Content Include="Scripts\ext\datatables\extras\Scroller\media\js\Scroller.js" />
+    <Content Include="Scripts\ext\datatables\extras\Scroller\media\js\Scroller.min.js" />
+    <Content Include="Scripts\ext\datatables\extras\Scroller\server-side_processing.html" />
+    <Content Include="Scripts\ext\datatables\extras\Scroller\state_saving.html" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\alter_buttons.html" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\alt_init.html" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\button_text.html" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\collection.html" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\defaults.html" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\index.html" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\media\css\TableTools.css" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\media\css\TableTools_JUI.css" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\media\images\background.png" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\media\images\collection.png" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\media\images\collection_hover.png" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\media\images\copy.png" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\media\images\copy_hover.png" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\media\images\csv.png" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\media\images\csv_hover.png" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\media\images\pdf.png" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\media\images\pdf_hover.png" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\media\images\print.png" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\media\images\print_hover.png" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\media\images\xls.png" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\media\images\xls_hover.png" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\media\js\TableTools.js" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\media\js\TableTools.min.js" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\media\js\ZeroClipboard.js" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\media\swf\copy_csv_xls.swf" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\media\swf\copy_csv_xls_pdf.swf" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\multiple_tables.html" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\multi_instance.html" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\pdf_message.html" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\plug-in.html" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\select_multi.html" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\select_single.html" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\swf_path.html" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\tabs.html" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\theme.html" />
+    <Content Include="Scripts\ext\datatables\images\back_disabled.png" />
+    <Content Include="Scripts\ext\datatables\images\back_enabled.png" />
+    <Content Include="Scripts\ext\datatables\images\back_enabled_hover.png" />
+    <Content Include="Scripts\ext\datatables\images\favicon.ico" />
+    <Content Include="Scripts\ext\datatables\images\forward_disabled.png" />
+    <Content Include="Scripts\ext\datatables\images\forward_enabled.png" />
+    <Content Include="Scripts\ext\datatables\images\forward_enabled_hover.png" />
+    <Content Include="Scripts\ext\datatables\images\sort_asc.png" />
+    <Content Include="Scripts\ext\datatables\images\sort_asc_disabled.png" />
+    <Content Include="Scripts\ext\datatables\images\sort_both.png" />
+    <Content Include="Scripts\ext\datatables\images\sort_desc.png" />
+    <Content Include="Scripts\ext\datatables\images\sort_desc_disabled.png" />
+    <Content Include="Scripts\ext\datatables\jquery.dataTables.js" />
+    <Content Include="Scripts\ext\datatables\jquery.dataTables.min.js" />
+    <Content Include="Scripts\ext\datatables\jquery.dataTables.sorting.js" />
+    <Content Include="Scripts\ext\datatables\license-bsd.txt" />
+    <Content Include="Scripts\ext\datatables\license-gpl2.txt" />
+    <Content Include="Scripts\ext\datatables\Readme.txt" />
+    <Content Include="Scripts\ext\datatables\server_side.php" />
+    <Content Include="Scripts\ext\gebo_datatables.js" />
+    <Content Include="Scripts\dev\global.js" />
+    <Content Include="Scripts\ext\Highcharts\adapters\mootools-adapter.js" />
+    <Content Include="Scripts\ext\Highcharts\adapters\mootools-adapter.src.js" />
+    <Content Include="Scripts\ext\Highcharts\adapters\prototype-adapter.js" />
+    <Content Include="Scripts\ext\Highcharts\adapters\prototype-adapter.src.js" />
+    <Content Include="Scripts\ext\Highcharts\adapters\standalone-framework.js" />
+    <Content Include="Scripts\ext\Highcharts\adapters\standalone-framework.src.js" />
+    <Content Include="Scripts\ext\Highcharts\highcharts-3d.js" />
+    <Content Include="Scripts\ext\Highcharts\highcharts-3d.src.js" />
+    <Content Include="Scripts\ext\Highcharts\highcharts-more.js" />
+    <Content Include="Scripts\ext\Highcharts\highcharts-more.src.js" />
+    <Content Include="Scripts\ext\Highcharts\highcharts.js" />
+    <Content Include="Scripts\ext\Highcharts\highcharts.src.js" />
+    <Content Include="Scripts\ext\Highcharts\HighchartsTheme.js" />
+    <Content Include="Scripts\ext\Highcharts\modules\boost.js" />
+    <Content Include="Scripts\ext\Highcharts\modules\boost.src.js" />
+    <Content Include="Scripts\ext\Highcharts\modules\broken-axis.js" />
+    <Content Include="Scripts\ext\Highcharts\modules\broken-axis.src.js" />
+    <Content Include="Scripts\ext\Highcharts\modules\canvas-tools.js" />
+    <Content Include="Scripts\ext\Highcharts\modules\canvas-tools.src.js" />
+    <Content Include="Scripts\ext\Highcharts\modules\data.js" />
+    <Content Include="Scripts\ext\Highcharts\modules\data.src.js" />
+    <Content Include="Scripts\ext\Highcharts\modules\drilldown.js" />
+    <Content Include="Scripts\ext\Highcharts\modules\drilldown.src.js" />
+    <Content Include="Scripts\ext\Highcharts\modules\exporting.js" />
+    <Content Include="Scripts\ext\Highcharts\modules\exporting.src.js" />
+    <Content Include="Scripts\ext\Highcharts\modules\funnel.js" />
+    <Content Include="Scripts\ext\Highcharts\modules\funnel.src.js" />
+    <Content Include="Scripts\ext\Highcharts\modules\heatmap.js" />
+    <Content Include="Scripts\ext\Highcharts\modules\heatmap.src.js" />
+    <Content Include="Scripts\ext\Highcharts\modules\no-data-to-display.js" />
+    <Content Include="Scripts\ext\Highcharts\modules\no-data-to-display.src.js" />
+    <Content Include="Scripts\ext\Highcharts\modules\offline-exporting.js" />
+    <Content Include="Scripts\ext\Highcharts\modules\offline-exporting.src.js" />
+    <Content Include="Scripts\ext\Highcharts\modules\solid-gauge.js" />
+    <Content Include="Scripts\ext\Highcharts\modules\solid-gauge.src.js" />
+    <Content Include="Scripts\ext\Highcharts\modules\treemap.js" />
+    <Content Include="Scripts\ext\Highcharts\modules\treemap.src.js" />
+    <Content Include="Scripts\ext\Highcharts\themes\dark-blue.js" />
+    <Content Include="Scripts\ext\Highcharts\themes\dark-green.js" />
+    <Content Include="Scripts\ext\Highcharts\themes\dark-unica.js" />
+    <Content Include="Scripts\ext\Highcharts\themes\gray.js" />
+    <Content Include="Scripts\ext\Highcharts\themes\grid-light.js" />
+    <Content Include="Scripts\ext\Highcharts\themes\grid.js" />
+    <Content Include="Scripts\ext\Highcharts\themes\sand-signika.js" />
+    <Content Include="Scripts\ext\Highcharts\themes\skies.js" />
+    <Content Include="Scripts\ext\jquery-1.10.2.js" />
+    <Content Include="Scripts\ext\jquery-2.2.4.min.js" />
+    <Content Include="Scripts\ext\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\ext\jquery-ui-1.12.1.min.js" />
+    <Content Include="Scripts\ext\jquery-ui-1.8.16.custom.min.js" />
+    <Content Include="Scripts\ext\jquery.actual.min.js" />
+    <Content Include="Scripts\ext\jquery.fancybox.min.js" />
+    <Content Include="Scripts\ext\jquery.mask.js" />
+    <Content Include="Scripts\ext\jquery.multi-select.min.js" />
+    <Content Include="Scripts\ext\jquery.timepicker.js" />
+    <Content Include="Scripts\ext\jquery.validate.min.js" />
+    <Content Include="Scripts\ext\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\ext\jtable\extensions\jquery.jtable.aspnetpagemethods.js" />
+    <Content Include="Scripts\ext\jtable\extensions\jquery.jtable.aspnetpagemethods.min.js" />
+    <Content Include="Scripts\ext\jtable\external\json2.js" />
+    <Content Include="Scripts\ext\jtable\external\json2.min.js" />
+    <Content Include="Scripts\ext\jtable\jquery.jtable.js" />
+    <Content Include="Scripts\ext\jtable\jquery.jtable.min.js" />
+    <Content Include="Scripts\ext\jtable\localization\jquery.jtable.tr.js" />
+    <Content Include="Scripts\ext\jtable\themes\basic\close.png" />
+    <Content Include="Scripts\ext\jtable\themes\basic\column-asc.png" />
+    <Content Include="Scripts\ext\jtable\themes\basic\column-desc.png" />
+    <Content Include="Scripts\ext\jtable\themes\basic\column-sortable.png" />
+    <Content Include="Scripts\ext\jtable\themes\basic\delete.png" />
+    <Content Include="Scripts\ext\jtable\themes\basic\edit.png" />
+    <Content Include="Scripts\ext\jtable\themes\basic\jtable_basic.css" />
+    <Content Include="Scripts\ext\jtable\themes\basic\jtable_basic.min.css" />
+    <Content Include="Scripts\ext\jtable\themes\lightcolor\bg-thead.png" />
+    <Content Include="Scripts\ext\jtable\themes\lightcolor\blue\jtable.css" />
+    <Content Include="Scripts\ext\jtable\themes\lightcolor\blue\jtable.min.css" />
+    <Content Include="Scripts\ext\jtable\themes\lightcolor\blue\loading.gif" />
+    <Content Include="Scripts\ext\jtable\themes\lightcolor\close.png" />
+    <Content Include="Scripts\ext\jtable\themes\lightcolor\column-asc.png" />
+    <Content Include="Scripts\ext\jtable\themes\lightcolor\column-desc.png" />
+    <Content Include="Scripts\ext\jtable\themes\lightcolor\column-sortable.png" />
+    <Content Include="Scripts\ext\jtable\themes\lightcolor\delete.png" />
+    <Content Include="Scripts\ext\jtable\themes\lightcolor\edit.png" />
+    <Content Include="Scripts\ext\jtable\themes\lightcolor\gray\jtable.css" />
+    <Content Include="Scripts\ext\jtable\themes\lightcolor\gray\jtable.min.css" />
+    <Content Include="Scripts\ext\jtable\themes\lightcolor\gray\loading.gif" />
+    <Content Include="Scripts\ext\jtable\themes\lightcolor\green\jtable.css" />
+    <Content Include="Scripts\ext\jtable\themes\lightcolor\green\jtable.min.css" />
+    <Content Include="Scripts\ext\jtable\themes\lightcolor\green\loading.gif" />
+    <Content Include="Scripts\ext\jtable\themes\lightcolor\orange\jtable.css" />
+    <Content Include="Scripts\ext\jtable\themes\lightcolor\orange\jtable.min.css" />
+    <Content Include="Scripts\ext\jtable\themes\lightcolor\orange\loading.gif" />
+    <Content Include="Scripts\ext\jtable\themes\lightcolor\red\jtable.css" />
+    <Content Include="Scripts\ext\jtable\themes\lightcolor\red\jtable.min.css" />
+    <Content Include="Scripts\ext\jtable\themes\lightcolor\red\loading.gif" />
+    <Content Include="Scripts\ext\jtable\themes\metro\blue\jtable.css" />
+    <Content Include="Scripts\ext\jtable\themes\metro\blue\jtable.min.css" />
+    <Content Include="Scripts\ext\jtable\themes\metro\blue\loading.gif" />
+    <Content Include="Scripts\ext\jtable\themes\metro\brown\jtable.css" />
+    <Content Include="Scripts\ext\jtable\themes\metro\brown\jtable.min.css" />
+    <Content Include="Scripts\ext\jtable\themes\metro\brown\loading.gif" />
+    <Content Include="Scripts\ext\jtable\themes\metro\close.png" />
+    <Content Include="Scripts\ext\jtable\themes\metro\column-asc.png" />
+    <Content Include="Scripts\ext\jtable\themes\metro\column-desc.png" />
+    <Content Include="Scripts\ext\jtable\themes\metro\column-sortable.png" />
+    <Content Include="Scripts\ext\jtable\themes\metro\crimson\jtable.css" />
+    <Content Include="Scripts\ext\jtable\themes\metro\crimson\jtable.min.css" />
+    <Content Include="Scripts\ext\jtable\themes\metro\crimson\loading.gif" />
+    <Content Include="Scripts\ext\jtable\themes\metro\darkgray\jtable.css" />
+    <Content Include="Scripts\ext\jtable\themes\metro\darkgray\jtable.min.css" />
+    <Content Include="Scripts\ext\jtable\themes\metro\darkgray\loading.gif" />
+    <Content Include="Scripts\ext\jtable\themes\metro\darkorange\jtable.css" />
+    <Content Include="Scripts\ext\jtable\themes\metro\darkorange\jtable.min.css" />
+    <Content Include="Scripts\ext\jtable\themes\metro\darkorange\loading.gif" />
+    <Content Include="Scripts\ext\jtable\themes\metro\delete.png" />
+    <Content Include="Scripts\ext\jtable\themes\metro\edit.png" />
+    <Content Include="Scripts\ext\jtable\themes\metro\green\jtable.css" />
+    <Content Include="Scripts\ext\jtable\themes\metro\green\jtable.min.css" />
+    <Content Include="Scripts\ext\jtable\themes\metro\green\loading.gif" />
+    <Content Include="Scripts\ext\jtable\themes\metro\lightgray\jtable.css" />
+    <Content Include="Scripts\ext\jtable\themes\metro\lightgray\jtable.min.css" />
+    <Content Include="Scripts\ext\jtable\themes\metro\lightgray\loading.gif" />
+    <Content Include="Scripts\ext\jtable\themes\metro\pink\jtable.css" />
+    <Content Include="Scripts\ext\jtable\themes\metro\pink\jtable.min.css" />
+    <Content Include="Scripts\ext\jtable\themes\metro\pink\loading.gif" />
+    <Content Include="Scripts\ext\jtable\themes\metro\purple\jtable.css" />
+    <Content Include="Scripts\ext\jtable\themes\metro\purple\jtable.min.css" />
+    <Content Include="Scripts\ext\jtable\themes\metro\purple\loading.gif" />
+    <Content Include="Scripts\ext\jtable\themes\metro\red\jtable.css" />
+    <Content Include="Scripts\ext\jtable\themes\metro\red\jtable.min.css" />
+    <Content Include="Scripts\ext\jtable\themes\metro\red\loading.gif" />
+    <Content Include="Scripts\dev\report.js" />
+    <Content Include="Scripts\ext\micro-query.js" />
+    <Content Include="Scripts\ext\perfect-scrollbar.js" />
+    <Content Include="Scripts\ext\select2-403\css\select2.css" />
+    <Content Include="Scripts\ext\select2-403\css\select2.min.css" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\ar.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\az.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\bg.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\ca.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\cs.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\da.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\de.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\el.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\en.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\es.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\et.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\eu.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\fa.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\fi.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\fr.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\gl.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\he.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\hi.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\hr.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\hu.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\id.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\is.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\it.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\ja.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\km.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\ko.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\lt.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\lv.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\mk.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\ms.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\nb.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\nl.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\pl.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\pt-BR.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\pt.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\ro.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\ru.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\sk.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\sr-Cyrl.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\sr.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\sv.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\th.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\tr.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\uk.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\vi.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\zh-CN.js" />
+    <Content Include="Scripts\ext\select2-403\js\i18n\zh-TW.js" />
+    <Content Include="Scripts\ext\select2-403\js\select2.full.js" />
+    <Content Include="Scripts\ext\select2-403\js\select2.full.min.js" />
+    <Content Include="Scripts\ext\select2-403\js\select2.js" />
+    <Content Include="Scripts\ext\select2-403\js\select2.min.js" />
+    <Content Include="Scripts\min\account.js" />
+    <Content Include="Scripts\min\account.min.js">
+      <DependentUpon>account.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\min\company-country.js" />
+    <Content Include="Scripts\min\company-country.min.js">
+      <DependentUpon>company-country.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\min\company-office.js" />
+    <Content Include="Scripts\min\company-office.min.js">
+      <DependentUpon>company-office.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\min\company-province.js" />
+    <Content Include="Scripts\min\company-province.min.js">
+      <DependentUpon>company-province.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\min\company-title.js" />
+    <Content Include="Scripts\min\company-title.min.js">
+      <DependentUpon>company-title.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\min\company.js" />
+    <Content Include="Scripts\min\company.min.js">
+      <DependentUpon>company.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\min\contract.js" />
+    <Content Include="Scripts\min\contract.min.js">
+      <DependentUpon>contract.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\min\customer.js" />
+    <Content Include="Scripts\min\customer.min.js">
+      <DependentUpon>customer.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\min\dashboard.js" />
+    <Content Include="Scripts\min\dashboard.min.js">
+      <DependentUpon>dashboard.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\min\global.js" />
+    <Content Include="Scripts\min\global.min.js">
+      <DependentUpon>global.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\min\import.js" />
+    <Content Include="Scripts\min\import.min.js">
+      <DependentUpon>import.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\min\login.js" />
+    <Content Include="Scripts\min\login.min.js">
+      <DependentUpon>login.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\min\profiletype.js" />
+    <Content Include="Scripts\min\profiletype.min.js">
+      <DependentUpon>profiletype.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\min\scholarship.js" />
+    <Content Include="Scripts\min\scholarship.min.js">
+      <DependentUpon>scholarship.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\min\school.js" />
+    <Content Include="Scripts\min\school.min.js">
+      <DependentUpon>school.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\min\seminar.js" />
+    <Content Include="Scripts\min\seminar.min.js">
+      <DependentUpon>seminar.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\min\seminarregister.js" />
+    <Content Include="Scripts\min\seminarregister.min.js">
+      <DependentUpon>seminarregister.js</DependentUpon>
+    </Content>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\images\" />
+    <Folder Include="Scripts\dev\customer\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="appsettings.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="bundleconfig.json" />
+    <Content Include="Files\TemplateExcel\CustomerList.xls" />
+    <Content Include="Files\import.xlsx" />
+    <None Include="packages.config" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_Layout.Mobile.cshtml" />
+    <Content Include="Views\Shared\_LoginPage.cshtml" />
+    <Content Include="Views\Shared\_LoginPage.Mobile.cshtml" />
+    <Content Include="Scripts\ext\datatables\extras\AutoFill\media\docs\media\license\Syntax Highlighter" />
+    <Content Include="Scripts\ext\datatables\extras\AutoFill\media\js\AutoFill.min.js.gz" />
+    <Content Include="Scripts\ext\datatables\extras\ColReorder\media\docs\media\license\Syntax Highlighter" />
+    <Content Include="Scripts\ext\datatables\extras\ColReorder\media\js\ColReorder.min.js.gz" />
+    <Content Include="Scripts\ext\datatables\extras\ColVis\media\docs\media\license\Syntax Highlighter" />
+    <Content Include="Scripts\ext\datatables\extras\ColVis\media\js\ColVis.min.js.gz" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\docs\media\license\Syntax Highlighter" />
+    <Content Include="Scripts\ext\datatables\extras\FixedColumns\media\js\FixedColumns.min.js.gz" />
+    <Content Include="Scripts\ext\datatables\extras\FixedHeader\js\FixedHeader.min.js.gz" />
+    <Content Include="Scripts\ext\datatables\extras\KeyTable\js\KeyTable.min.js.gz" />
+    <Content Include="Scripts\ext\datatables\extras\Scroller\media\docs\media\license\Syntax Highlighter" />
+    <Content Include="Scripts\ext\datatables\extras\Scroller\media\js\Scroller.min.js.gz" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\media\as3\lib\AlivePDF.swc" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\media\as3\ZeroClipboard.as" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\media\as3\ZeroClipboardPdf.as" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\media\images\psd\collection.psd" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\media\images\psd\copy document.psd" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\media\images\psd\file_types.psd" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\media\images\psd\printer.psd" />
+    <Content Include="Scripts\ext\datatables\extras\TableTools\media\js\TableTools.min.js.gz" />
+    <Content Include="Scripts\ext\datatables\images\Sorting icons.psd" />
+    <Content Include="Scripts\ext\jtable\themes\basic\jtable_basic.less" />
+    <Content Include="Scripts\ext\jtable\themes\jtable_theme_base.less" />
+    <Content Include="Scripts\ext\jtable\themes\lightcolor\blue\jtable.less" />
+    <Content Include="Scripts\ext\jtable\themes\lightcolor\gray\jtable.less" />
+    <Content Include="Scripts\ext\jtable\themes\lightcolor\green\jtable.less" />
+    <Content Include="Scripts\ext\jtable\themes\lightcolor\jtable_lightcolor_base.less" />
+    <Content Include="Scripts\ext\jtable\themes\lightcolor\orange\jtable.less" />
+    <Content Include="Scripts\ext\jtable\themes\lightcolor\red\jtable.less" />
+    <Content Include="Scripts\ext\jtable\themes\metro\blue\jtable.less" />
+    <Content Include="Scripts\ext\jtable\themes\metro\brown\jtable.less" />
+    <Content Include="Scripts\ext\jtable\themes\metro\crimson\jtable.less" />
+    <Content Include="Scripts\ext\jtable\themes\metro\darkgray\jtable.less" />
+    <Content Include="Scripts\ext\jtable\themes\metro\darkorange\jtable.less" />
+    <Content Include="Scripts\ext\jtable\themes\metro\green\jtable.less" />
+    <Content Include="Scripts\ext\jtable\themes\metro\jtable_metro_base.less" />
+    <Content Include="Scripts\ext\jtable\themes\metro\lightgray\jtable.less" />
+    <Content Include="Scripts\ext\jtable\themes\metro\pink\jtable.less" />
+    <Content Include="Scripts\ext\jtable\themes\metro\purple\jtable.less" />
+    <Content Include="Scripts\ext\jtable\themes\metro\red\jtable.less" />
+    <Content Include="Views\Home\MainMenu.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Customer\Detail.cshtml" />
+    <Content Include="Views\Customer\_StudentInfo.cshtml" />
+    <Content Include="Views\Customer\_ParentInfo.cshtml" />
+    <Content Include="Views\Customer\_ListParent.cshtml" />
+    <Content Include="Views\Customer\_CustomerCareInfo.cshtml" />
+    <Content Include="Views\Customer\_ListCustomerCare.cshtml" />
+    <Content Include="Views\Customer\_ListStudyHistory.cshtml" />
+    <Content Include="Views\Customer\_StudyHistoryInfo.cshtml" />
+    <Content Include="Views\Customer\_ListStudyAbroad.cshtml" />
+    <Content Include="Views\Customer\_StudyAbroadInfo.cshtml" />
+    <Content Include="Views\CompanyTitle\Index.cshtml" />
+    <Content Include="Views\CompanyTitle\Detail.cshtml" />
+    <Content Include="Views\CompanyOffice\Detail.cshtml" />
+    <Content Include="Views\CompanyOffice\Index.cshtml" />
+    <Content Include="Views\CompanyCountry\Index.cshtml" />
+    <Content Include="Views\CompanyProvince\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Scripts\dev\contract.js" />
+    <Content Include="Views\Account\UpdateInfo.cshtml" />
+    <Content Include="Views\Account\UpdateInfo.Mobile.cshtml" />
+    <Content Include="Views\Customer\ImportCustomer.cshtml" />
+    <Content Include="Views\Home\Notify.cshtml" />
+    <Content Include="Views\Customer\ExportExcel.cshtml" />
+    <Content Include="Views\School\Detail.cshtml" />
+    <Content Include="Views\School\Index.cshtml" />
+    <Content Include="Views\ProfileType\Detail.cshtml" />
+    <Content Include="Views\ProfileType\Index.cshtml" />
+    <Content Include="Views\Contract\Index.cshtml" />
+    <Content Include="Views\Contract\Detail.cshtml" />
+    <Content Include="Views\Contract\_CommissionInfo.cshtml" />
+    <Content Include="Views\Contract\_ContractDocument.cshtml" />
+    <Content Include="Views\Contract\_ContractInfo.cshtml" />
+    <Content Include="Views\Contract\_ContractProcessInfo.cshtml" />
+    <Content Include="Views\Contract\_ListCommission.cshtml" />
+    <Content Include="Views\Seminar\_SeminarInfo.cshtml" />
+    <Content Include="Views\Seminar\_ListSeminarPlace.cshtml" />
+    <Content Include="Views\Seminar\Detail.cshtml" />
+    <Content Include="Views\Seminar\Index.cshtml" />
+    <Content Include="Views\Seminar\_SeminarPlaceInfo.cshtml" />
+    <Content Include="Views\SeminarRegister\_SeminarRegisterInfo.cshtml" />
+    <Content Include="Views\SeminarRegister\Detail.cshtml" />
+    <Content Include="Views\SeminarRegister\Index.cshtml" />
+    <Content Include="Views\Customer\SeminarRegister.cshtml" />
+    <Content Include="Views\Customer\LoadSeminarPlace.cshtml" />
+    <Content Include="Views\Contract\_ContractDocumentList.cshtml" />
+    <Content Include="Views\Scholarship\Detail.cshtml" />
+    <Content Include="Views\Scholarship\Index.cshtml" />
+    <Content Include="Views\Customer\_OverView.cshtml" />
+    <Content Include="Views\Customer\_RelativesInfo.cshtml" />
+    <Content Include="Views\Customer\_ListRelatives.cshtml" />
+    <Content Include="Views\Customer\_GuaranteeInfo.cshtml" />
+    <Content Include="Views\Customer\_ListGuarantee.cshtml" />
+    <Content Include="Views\Customer\LoadRelatives.cshtml" />
+    <Content Include="Views\Scholarship\LoadScholarship.cshtml" />
+    <Content Include="Views\Customer\_LanguageInfo.cshtml" />
+    <Content Include="Views\Customer\_ListLanguage.cshtml" />
+    <Content Include="Views\Customer\_InsertComment.cshtml" />
+    <Content Include="Views\Customer\_SeminarRegisterInfo.cshtml" />
+    <Content Include="Views\Customer\_ListSeminarRegister.cshtml" />
+    <Content Include="Views\SeminarRegister\ExportExcel.cshtml" />
+    <Content Include="Views\Customer\_ListRegisterHistoryInfo.cshtml" />
+    <Content Include="Views\Account\Detail.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\tcs.adapter\tcs.adapter.csproj">
+      <Project>{67fcf03a-2677-4115-8e0a-c563a6b9d28f}</Project>
+      <Name>tcs.adapter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tcs.bo\tcs.bo.csproj">
+      <Project>{aa32e52d-5523-43d5-a232-b7d0f66abc3f}</Project>
+      <Name>tcs.bo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tcs.lib\tcs.lib.csproj">
+      <Project>{4592d248-db23-453e-bf3c-99ce917120ee}</Project>
+      <Name>tcs.lib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>18101</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:18101/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

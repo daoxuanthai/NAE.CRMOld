@@ -1,0 +1,20 @@
+﻿<div id="IUComment" style="display: none">
+    <div class="line"></div>
+    <div class="tdrow">
+        <div class="field full">
+            <label>Nhập nội dung bình luận</label>
+            <div class="control">
+                <textarea cols="20" id="CommentContent" maxlength="500" name="CommentContent" rows="4"></textarea>
+                <input type="hidden" id="CustomerCareId" value="0"/>
+            </div>
+        </div>
+    </div>
+    <div class="tdrow">
+        <div class="divbtn">
+            <button onclick="return submitComment()" class="btn btn-info" type="button">Lưu thông tin</button>
+            <button class="btn btn-success" onclick="return closeComment();" type="button">Đóng</button>
+            <div class="frmerr"></div>
+        </div>
+    </div>
+</div>
+<div class="clr"></div>

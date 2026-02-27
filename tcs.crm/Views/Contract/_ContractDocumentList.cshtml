@@ -1,0 +1,27 @@
+﻿@using tcs.adapter.Models
+@model List<ProfileDocumentDetail>
+@if (Model != null && Model.Any())
+{
+    var css = string.Empty;
+    if(ViewData["Css"] != null)
+    {
+        css = (string)ViewData["Css"];
+    }
+    foreach (var doc in Model)
+    {
+        <tr>
+            <td class="@css">
+                &nbsp;&nbsp;&nbsp;- @doc.DocumentName
+            </td>
+            <td class="center @(doc.IsSkip ? "skip" : "")">
+                <input id="isskip_@doc.Id" onchange="return skipDocument(@doc.Id);" type="checkbox" @(doc.IsSkip ? "checked" : "") />
+            </td>
+            <td class="center @(doc.IsDone ? "done" : "")">
+                <input id="isdone_@doc.Id" onchange="return completeDocument(@doc.Id);" type="checkbox" @(doc.IsDone ? "checked" : "") />
+            </td>
+            <td class="center">
+                @(doc.UpdateDate.HasValue && doc.UpdateDate.Value != DateTime.MinValue ? doc.UpdateDate.Value.ToString("dd/MM/yyyy HH:mm:ss") : "")
+            </td>
+        </tr>
+    }
+}
